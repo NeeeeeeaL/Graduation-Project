@@ -1,0 +1,13 @@
+﻿  moc play.h
+  main.cpp
+  play.cpp
+main.cpp(9): error C2247: “QWindow::resize”不可访问，因为“Play”使用“private”从“QOpenGLWindow”继承 (编译源文件 main.cpp)
+  c:\qt\qt5.9.8\5.9.8\msvc2015_64\include\qtgui\qwindow.h(237): note: 参见“QWindow::resize”的声明 (编译源文件 main.cpp)
+  d:\work\毕业设计\毕业设计_余锦淼\code\第一次实验\3dplay\3dplay\play.h(17): note: 参见“Play”的声明 (编译源文件 main.cpp)
+play.cpp(7): error C2664: “QOpenGLWindow::QOpenGLWindow(const QOpenGLWindow &)”: 无法将参数 1 从“QPaintDeviceWindow *”转换为“QOpenGLWindow::UpdateBehavior” (编译源文件 play.cpp)
+  play.cpp(7): note: 没有使该转换得以执行的上下文 (编译源文件 play.cpp)
+  c:\qt\qt5.9.8\5.9.8\msvc2015_64\include\qtgui\qopenglwindow.h(55): note: 参见“QOpenGLWindow”的声明 (编译源文件 main.cpp)
+main.cpp(12): error C2247: “QWindow::show”不可访问，因为“Play”使用“private”从“QOpenGLWindow”继承 (编译源文件 main.cpp)
+  c:\qt\qt5.9.8\5.9.8\msvc2015_64\include\qtgui\qwindow.h(275): note: 参见“QWindow::show”的声明 (编译源文件 main.cpp)
+  d:\work\毕业设计\毕业设计_余锦淼\code\第一次实验\3dplay\3dplay\play.h(17): note: 参见“Play”的声明 (编译源文件 main.cpp)
+  c:\qt\qt5.9.8\5.9.8\msvc2015_64\include\qtgui\qopenglwindow.h(55): note: 参见“QOpenGLWindow”的声明 (编译源文件 main.cpp)

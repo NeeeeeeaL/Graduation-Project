@@ -1,0 +1,11 @@
+﻿  Reading Qt configuration (C:\Qt\Qt5.9.8\5.9.8\msvc2015_64\bin\qmake.exe)
+  uic openglTest.ui
+  rcc openglTest.qrc
+  moc openglTest.h
+   RCC: Warning: No resources in 'D:\Work\姣曚笟璁捐\姣曚笟璁捐_浣欓敠娣糪code\绗竴娆″疄楠孿openglTest\openglTest\openglTest.qrc'.
+  main.cpp
+  openglTest.cpp
+  qrc_openglTest.cpp
+  moc_openglTest.cpp
+  openglTest.vcxproj -> D:\Work\毕业设计\毕业设计_余锦淼\code\第一次实验\openglTest\x64\Debug\openglTest.exe
+  openglTest.vcxproj -> D:\Work\毕业设计\毕业设计_余锦淼\code\第一次实验\openglTest\x64\Debug\openglTest.pdb (Full PDB)
