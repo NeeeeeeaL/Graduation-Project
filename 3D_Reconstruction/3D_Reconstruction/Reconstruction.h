@@ -23,6 +23,8 @@ public:
 	Reconstruction(QWidget *parent = Q_NULLPTR);
 
 	void dealChild();
+	void dealNotOpen();
+	void dealNotGetP();
 
 protected:
 	//重写绘图事件，虚函数
@@ -38,6 +40,15 @@ private:
 	PMPTrans windowPMP;
 	Welcome welcomeW;
 	QSqlTableModel *model;
+
+private:
+	//判断按钮是否按过标志位
+	bool isOpen = false;
+	bool isFFT = false;
+	bool isFilt = false;
+	bool isIFFT = false;
+	bool isGetP = false;
+	bool isUnwrap = false;
 
 
 public:

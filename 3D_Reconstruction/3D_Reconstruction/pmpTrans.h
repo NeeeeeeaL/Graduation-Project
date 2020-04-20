@@ -17,7 +17,6 @@ public:
 	PMPTrans(QWidget *parent = Q_NULLPTR);
 	~PMPTrans();
 
-	void sendSlot();
 
 protected:
 
@@ -25,6 +24,12 @@ protected:
 
 private:
 	Ui::PMPTrans ui;
+
+private:
+	//判断按钮是否按过标志位
+	bool isOpen = false;
+	bool isGetP = false;
+	bool isUnwrap = false;
 
 public:
 	//声明四幅调制光栅图像
@@ -54,6 +59,8 @@ signals:
 	*使用方法：emit mysignal();
 	*/
 	void signalSwitch();
+	void signalNotOpen();
+	void signalNotGetP();
 
 public slots:
 

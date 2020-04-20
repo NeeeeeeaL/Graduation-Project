@@ -19,6 +19,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
@@ -70,6 +71,7 @@ public:
     QLabel *label_12;
     QPushButton *pushButton1;
     QPushButton *pushButton2;
+    QProgressBar *progressBar;
     QMenuBar *menuBar;
     QMenu *menuSwitchTo;
     QMenu *menuFile;
@@ -206,6 +208,10 @@ public:
         pushButton2 = new QPushButton(centralWidget);
         pushButton2->setObjectName(QStringLiteral("pushButton2"));
         pushButton2->setGeometry(QRect(610, 800, 111, 41));
+        progressBar = new QProgressBar(centralWidget);
+        progressBar->setObjectName(QStringLiteral("progressBar"));
+        progressBar->setGeometry(QRect(1160, 850, 118, 23));
+        progressBar->setValue(24);
         PMPTrans->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(PMPTrans);
         menuBar->setObjectName(QStringLiteral("menuBar"));

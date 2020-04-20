@@ -25,13 +25,6 @@ QTextCodec *codecParent;
 using namespace cv;
 using namespace std;
 
-//判断按钮是否按过标志位
-bool isOpen = false;
-bool isFFT = false;
-bool isFilt = false;
-bool isIFFT = false;
-bool isGetP = false;
-bool isUnwrap = false;
 
 //主窗口构造函数
 Reconstruction::Reconstruction(QWidget *parent)
@@ -133,7 +126,8 @@ Reconstruction::Reconstruction(QWidget *parent)
 
 	//处理子窗口信号
 	connect(&windowPMP, &PMPTrans::signalSwitch, this, &Reconstruction::dealChild);
-
+	connect(&windowPMP, &PMPTrans::signalNotOpen, this, &Reconstruction::dealNotOpen);
+	connect(&windowPMP, &PMPTrans::signalNotGetP, this, &Reconstruction::dealNotGetP);
 }
 
 //处理子窗口发送的消息
@@ -141,6 +135,19 @@ void Reconstruction::dealChild()
 {
 	windowPMP.hide();
 	this->show();
+}
+
+//未打开图片就求相位
+void Reconstruction::dealNotOpen()
+{
+	QMessageBox::about(this, codecParent->toUnicode("提示"), codecParent->toUnicode("还未打开图片！"));
+
+}
+
+void Reconstruction::dealNotGetP()
+{
+	QMessageBox::about(this, codecParent->toUnicode("提示"), codecParent->toUnicode("还未求相位！"));
+
 }
 
 //绘图程序中尽量不要进行复杂的数据处理

@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 static const unsigned char qt_resource_data[] = {
-  // D:/Work/????/????_???/code/?????/3D_Reconstruction/3D_Reconstruction/Resources/myico.ico
+  // D:/Work/????/????_???/code/3D_Reconstruction/3D_Reconstruction/Resources/myico.ico
   0x0,0x0,0x3,0x8,
   0x0,
   0x0,0x54,0x9e,0x78,0x9c,0xed,0x9c,0xbd,0x6e,0xdb,0x30,0x14,0x85,0xaf,0xe1,0xc1,

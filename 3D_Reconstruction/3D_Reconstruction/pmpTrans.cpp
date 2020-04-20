@@ -4,11 +4,15 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QDebug>
+#include <QMessageBox>
+#include <QTextCodec> //转换字符头文件
 
 #define cout qDebug() << "[" << __FILE__ << ":" << __LINE__ << "]"
+QTextCodec *codecChild;
 
 using namespace cv;
 using namespace std;
+
 
 PMPTrans::PMPTrans(QWidget *parent)
 	: QMainWindow(parent)
@@ -19,7 +23,8 @@ PMPTrans::PMPTrans(QWidget *parent)
 	this->setWindowTitle("PMP Translation");
 	statusBar()->setStyleSheet(QString("QStatusBar::item{border: 0px}")); // 设置不显示label的边框
 	statusBar()->setSizeGripEnabled(false); //设置是否显示右边的大小控制点
-	statusBar()->addWidget(ui.labelStatus);
+	statusBar()->addWidget(ui.labelStatus, 4);
+	statusBar()->addWidget(ui.progressBar, 1);
 	ui.labelStatus->setText("Ready");
 
 	//将窗口移动到合适的位置
@@ -32,13 +37,6 @@ PMPTrans::PMPTrans(QWidget *parent)
 PMPTrans::~PMPTrans()
 {
 }
-
-void PMPTrans::sendSlot()
-{
-	//广播信号
-	emit signalSwitch();
-}
-
 
 //在QLabel上显示Mat图像
 void PMPTrans::LabelDisplayMat(Mat & mat_img, QLabel * label)
@@ -155,92 +153,100 @@ void PMPTrans::on_actionOpen_triggered()
 	imgSrc7.convertTo(imgSrc7, CV_64F, 1.0 / 255.0);
 	imgSrc8.convertTo(imgSrc8, CV_64F, 1.0 / 255.0);
 
+	isOpen = true;
 }
 
 //求相位
 void PMPTrans::on_pushButton1_clicked()
 {
-
-	ImageProcess getP;
-
-	phaseFG = getP.getPhase(imgSrc1, imgSrc2, imgSrc3, imgSrc4);
-	phaseBG = getP.getPhase(imgSrc5, imgSrc6, imgSrc7, imgSrc8);
-
-
-	/********解包裹*******/
-
-	Mat imgTmp1(imgSrc1.rows, imgSrc1.cols, CV_64F, Scalar(0));
-	Mat imgTmp2(imgSrc1.rows, imgSrc1.cols, CV_32F, Scalar(0));
-	Mat wrappedPhaseNormal(imgSrc1.rows, imgSrc1.cols, CV_64F, Scalar(0));
-	Mat unwrappedPhaseNormal(imgSrc1.rows, imgSrc1.cols, CV_32F, Scalar(0));
-
-	wrappedPhase = imgTmp1;
-	unwrappedPhase = imgTmp2;
-
-	for (int i = 0; i < wrappedPhase.rows; ++i)
+	if (isOpen == true)
 	{
-		for (int j = 0; j < wrappedPhase.cols; ++j)
+		ImageProcess getP;
+
+		phaseFG = getP.getPhase(imgSrc1, imgSrc2, imgSrc3, imgSrc4);
+		phaseBG = getP.getPhase(imgSrc5, imgSrc6, imgSrc7, imgSrc8);
+
+
+		/********解包裹*******/
+
+		Mat imgTmp1(imgSrc1.rows, imgSrc1.cols, CV_64F, Scalar(0));
+		Mat imgTmp2(imgSrc1.rows, imgSrc1.cols, CV_32F, Scalar(0));
+		Mat wrappedPhaseNormal(imgSrc1.rows, imgSrc1.cols, CV_64F, Scalar(0));
+		Mat unwrappedPhaseNormal(imgSrc1.rows, imgSrc1.cols, CV_32F, Scalar(0));
+
+		wrappedPhase = imgTmp1;
+		unwrappedPhase = imgTmp2;
+
+		for (int i = 0; i < wrappedPhase.rows; ++i)
 		{
-			wrappedPhase.at<double>(i, j) = phaseFG.at<double>(i, j) - phaseBG.at<double>(i, j);
+			for (int j = 0; j < wrappedPhase.cols; ++j)
+			{
+				wrappedPhase.at<double>(i, j) = phaseFG.at<double>(i, j) - phaseBG.at<double>(i, j);
 
+			}
 		}
-	}
 
-	unwrap(wrappedPhase, unwrappedPhase);
+		unwrap(wrappedPhase, unwrappedPhase);
 
-	unwrappedPhase = abs(unwrappedPhase);
+		unwrappedPhase = abs(unwrappedPhase);
 
-	normalize(wrappedPhase, wrappedPhaseNormal, 0, 1, CV_MINMAX);
-	normalize(unwrappedPhase, unwrappedPhaseNormal, 0, 1, CV_MINMAX);
+		normalize(wrappedPhase, wrappedPhaseNormal, 0, 1, CV_MINMAX);
+		normalize(unwrappedPhase, unwrappedPhaseNormal, 0, 1, CV_MINMAX);
 
-	Mat imgDisplay3 = wrappedPhaseNormal;
-	Mat imgDisplay4 = unwrappedPhaseNormal;
+		Mat imgDisplay3 = wrappedPhaseNormal;
+		Mat imgDisplay4 = unwrappedPhaseNormal;
 
-	for (int i = 0; i < imgDisplay3.rows; ++i)
-	{
-		for (int j = 0; j < imgDisplay3.cols; ++j)
+		for (int i = 0; i < imgDisplay3.rows; ++i)
 		{
-			imgDisplay3.at<double>(i, j) *= 255.0;
-			imgDisplay4.at<float>(i, j) *= 255.0;
+			for (int j = 0; j < imgDisplay3.cols; ++j)
+			{
+				imgDisplay3.at<double>(i, j) *= 255.0;
+				imgDisplay4.at<float>(i, j) *= 255.0;
+			}
 		}
-	}
 
-	imgDisplay4.convertTo(imgDisplay4, CV_8U);
-	imgDisplay3.convertTo(imgDisplay3, CV_8U);
+		imgDisplay4.convertTo(imgDisplay4, CV_8U);
+		imgDisplay3.convertTo(imgDisplay3, CV_8U);
 
-	LabelDisplayMat(imgDisplay4, ui.label4_2);
-	LabelDisplayMat(imgDisplay3, ui.label4_1);
+		LabelDisplayMat(imgDisplay4, ui.label4_2);
+		LabelDisplayMat(imgDisplay3, ui.label4_1);
 
-	Mat imgDisplay1 = phaseFG;
-	Mat imgDisplay2 = phaseBG;
+		Mat imgDisplay1 = phaseFG;
+		Mat imgDisplay2 = phaseBG;
 
-	normalize(imgDisplay1, imgDisplay1, 0, 1, CV_MINMAX);
-	normalize(imgDisplay2, imgDisplay2, 0, 1, CV_MINMAX);
+		normalize(imgDisplay1, imgDisplay1, 0, 1, CV_MINMAX);
+		normalize(imgDisplay2, imgDisplay2, 0, 1, CV_MINMAX);
 
-	for (int i = 0; i < imgDisplay1.rows; ++i)
-	{
-		for (int j = 0; j < imgDisplay1.cols; ++j)
+		for (int i = 0; i < imgDisplay1.rows; ++i)
 		{
-			imgDisplay1.at<double>(i, j) *= 255.0;
-			imgDisplay2.at<double>(i, j) *= 255.0;
+			for (int j = 0; j < imgDisplay1.cols; ++j)
+			{
+				imgDisplay1.at<double>(i, j) *= 255.0;
+				imgDisplay2.at<double>(i, j) *= 255.0;
+			}
 		}
+
+		imgDisplay2.convertTo(imgDisplay2, CV_8U);
+		imgDisplay1.convertTo(imgDisplay1, CV_8U);
+
+		LabelDisplayMat(imgDisplay2, ui.label3_2);
+		LabelDisplayMat(imgDisplay1, ui.label3_1);
+
+		ui.tabWidget->setCurrentIndex(2);
+
+		isGetP = true;
 	}
-
-	imgDisplay2.convertTo(imgDisplay2, CV_8U);
-	imgDisplay1.convertTo(imgDisplay1, CV_8U);
-	
-	LabelDisplayMat(imgDisplay2, ui.label3_2);
-	LabelDisplayMat(imgDisplay1, ui.label3_1);
-
-	ui.tabWidget->setCurrentIndex(2);
+	else
+		emit signalNotOpen();
 }
 
 //解包裹
 void PMPTrans::on_pushButton2_clicked()
 {
-	
-	ui.tabWidget->setCurrentIndex(3);
-
+	if (isGetP == true)
+		ui.tabWidget->setCurrentIndex(3);
+	else
+		emit signalNotGetP();
 }
 
 void PMPTrans::on_actionFTP_triggered()
@@ -248,5 +254,6 @@ void PMPTrans::on_actionFTP_triggered()
 	connect(ui.actionFTP, SIGNAL(triggered()), this, SLOT(on_actionFTP_triggered));
 	//发送信号给主窗口
 
-	sendSlot();
+	//广播信号
+	emit signalSwitch();
 }
