@@ -1,7 +1,7 @@
 ﻿  Reading Qt configuration (ERROR: Qt install dir not found\bin\qmake.exe)
 GLTest.vcxproj : error : ERROR running qmake
 GLTest.vcxproj : error : qmake: (ERROR: Qt install dir not found\bin\qmake.exe)
-GLTest.vcxproj : error : qmake: $PWD=C:\Users\ADMINI~1\AppData\Local\Temp\hbk1jx3e.gdh
+GLTest.vcxproj : error : qmake: $PWD=C:\Users\ADMINI~1\AppData\Local\Temp\gcf40dke.dq0
 GLTest.vcxproj : error : qmake: �ļ�����Ŀ¼�������﷨����ȷ��
 GLTest.vcxproj : error : qmake: Error creating Makefile
 GLTest.vcxproj : error : 

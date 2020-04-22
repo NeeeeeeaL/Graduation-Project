@@ -20,4 +20,4 @@ gltest.obj : error LNK2019: 无法解析的外部符号 __imp_glVertex3f，该�
 gltest.obj : error LNK2019: 无法解析的外部符号 __imp_glViewport，该符号在函数 "protected: virtual void __cdecl GLTest::resizeGL(int,int)" (?resizeGL@GLTest@@MEAAXHH@Z) 中被引用
 gltest.obj : error LNK2019: 无法解析的外部符号 gluPickMatrix，该符号在函数 "private: int __cdecl GLTest::faceAtPosition(class QPoint const &)" (?faceAtPosition@GLTest@@AEAAHAEBVQPoint@@@Z) 中被引用
 glu.lib : warning LNK4272: 库计算机类型“X86”与目标计算机类型“x64”冲突
-D:\Work\毕业设计\毕业设计_余锦淼\code\第一次实验\GLTest\x64\Debug\\GLTest.exe : fatal error LNK1120: 21 个无法解析的外部命令
+D:\Work\毕业设计\毕业设计_余锦淼\code\GLTest\x64\Debug\\GLTest.exe : fatal error LNK1120: 21 个无法解析的外部命令
