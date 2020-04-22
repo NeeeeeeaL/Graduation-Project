@@ -12,7 +12,7 @@ typedef Qwt3D::Function Function; // VC6/moc issue
 
 class GLDemo : public QMainWindow
 {
-	Q_OBJECT
+	//Q_OBJECT
 
 public:
 	GLDemo(QWidget *parent = Q_NULLPTR);
@@ -36,7 +36,7 @@ public:
 
 	double operator()(double x, double y)
 	{
-		return x*y;
+		return x * y;
 	}
 };
 
@@ -48,7 +48,7 @@ public:
 		:Function(pw)
 	{
 		setDomain(-1.5, 1.5, -1.5, 1.5);
-		setMesh(41, 41);
+		setMesh(51, 51);
 	}
 
 	double operator()(double x, double y)

@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{2E5BF84C-C499-42E7-A0B6-BACDC1F07F67}</ProjectGuid>
+    <ProjectGuid>{B7794432-A7E7-4ECA-94AE-F6944FAD0896}</ProjectGuid>
     <Keyword>QtVS_v302</Keyword>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
     <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
@@ -38,19 +38,16 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Qt\Qt5.9.8\5.9.8\msvc2015_64\include\Qwt3D;$(IncludePath)</IncludePath>
-  </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <QtInstall>msvc2015_64</QtInstall>
-    <QtModules>core;gui;opengl;widgets</QtModules>
+    <QtModules>core;gui;opengl;widgets;xml</QtModules>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <QtInstall>msvc2015_64</QtInstall>
-    <QtModules>core;gui;opengl;widgets</QtModules>
+    <QtModules>core;gui;opengl;widgets;xml</QtModules>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
     <Import Project="$(QtMsBuild)\qt.props" />
@@ -67,7 +64,7 @@
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>qwtplot3dd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glu32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -84,17 +81,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="gldemo.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="openglprotest.cpp" />
+    <ClCompile Include="openglwindow.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="gldemo.h" />
+    <QtMoc Include="openglprotest.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="gldemo.ui" />
+    <QtUic Include="openglprotest.ui" />
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="gldemo.qrc" />
+    <QtRcc Include="openglprotest.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="openglwindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

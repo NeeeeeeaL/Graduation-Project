@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>GLDemoClass</class>
- <widget class="QMainWindow" name="GLDemoClass">
+ <class>OpenGLProTestClass</class>
+ <widget class="QMainWindow" name="OpenGLProTestClass">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>674</width>
-    <height>467</height>
+    <width>842</width>
+    <height>482</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>GLDemo</string>
+   <string>OpenGLProTest</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <widget class="QWidget" name="widget" native="true">
-      <property name="autoFillBackground">
-       <bool>true</bool>
-      </property>
-     </widget>
+     <widget class="OpenGLWindow" name="widget" native="true"/>
     </item>
    </layout>
   </widget>
@@ -29,7 +25,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>674</width>
+     <width>842</width>
      <height>26</height>
     </rect>
    </property>
@@ -45,8 +41,16 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>OpenGLWindow</class>
+   <extends>QWidget</extends>
+   <header location="global">openglwindow.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
-  <include location="gldemo.qrc"/>
+  <include location="openglprotest.qrc"/>
  </resources>
  <connections/>
 </ui>
