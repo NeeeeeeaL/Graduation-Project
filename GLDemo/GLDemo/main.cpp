@@ -12,6 +12,12 @@ int main(int argc, char *argv[])
 	w.resize(QSize(800, 400));
 	w.show();
 
+	Mat m = imread("mouse.png", 0);
+	Mat m2(m.rows, m.cols, CV_64FC1);
+	m.convertTo(m2, CV_64FC1);
+
+	Plot w2(m2);
+	w2.show();
 
 	return a.exec();
 }

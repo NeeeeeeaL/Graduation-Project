@@ -3,12 +3,17 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_gldemo.h"
 
+#include <opencv2\core\core.hpp>
+#include <opencv2\highgui\highgui.hpp>
+#include <opencv2\imgproc\imgproc.hpp>
+
 #include "qwt3d_surfaceplot.h"
 #include "qwt3d_function.h"
 
 typedef Qwt3D::SurfacePlot SurfacePlot; // VC6/moc issue
 typedef Qwt3D::Function Function; // VC6/moc issue
 
+using namespace cv;
 
 class GLDemo : public QMainWindow
 {
@@ -63,8 +68,9 @@ class Plot : public SurfacePlot
 
 public:
 	Plot(QWidget* pw, int updateinterval);
+	Plot(Mat &m);
 
-	public slots:
+public slots:
 	void rotate();
 
 };

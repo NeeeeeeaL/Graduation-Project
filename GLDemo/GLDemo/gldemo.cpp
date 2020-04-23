@@ -5,6 +5,7 @@
 #include <qtimer.h>
 
 using namespace Qwt3D;
+using namespace cv;
 
 GLDemo::GLDemo(QWidget *parent)
 	: QMainWindow(parent)
@@ -46,6 +47,7 @@ GLDemo::GLDemo(QWidget *parent)
 	a.setMainWidget(spl);
 #endif
 	spl->resize(800, 400);
+	//spl->move(50, 50);
 	spl->show();
 
 
@@ -86,6 +88,38 @@ Plot::Plot(QWidget* pw, int updateinterval)
 
 	timer->start(updateinterval);
 
+}
+
+//Mat×ªÈýÎ¬
+Plot::Plot(Mat & m)
+{
+	setTitle("A Simple SurfacePlot Demonstration");
+
+	coordinates()->axes[X1].setLabelString("x-axis");
+	coordinates()->axes[Y1].setLabelString("y-axis");
+
+	double *imgData = (double *)m.data;
+	double **p2 = new double *[m.rows];
+	for (int i = 0; i < m.rows; i++)
+	{
+		p2[i] = imgData + i*m.cols;
+	}
+
+	loadFromData(p2, m.rows, m.cols, 0, m.rows, 0, m.cols);
+
+	setRotation(30, 0, 15);
+	setScale(1, 1, 1);
+	setShift(0.15, 0, 0);
+	setZoom(0.9);
+	setMeshColor(RGBA(0.1, 0.5, 1));
+	setBackgroundColor(RGBA(1, 1, 157. / 255));
+	setCoordinateStyle(FRAME);
+	setPlotStyle(Qwt3D::POINTS);
+	setFloorStyle(NOFLOOR);
+	setCoordinateStyle(FRAME);
+
+	updateData();
+	updateGL();
 }
 
 void Plot::rotate()
