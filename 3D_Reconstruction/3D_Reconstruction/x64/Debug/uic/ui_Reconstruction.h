@@ -93,7 +93,16 @@ public:
     QTextEdit *textEdit_3;
     QLabel *label_8;
     QProgressBar *progressBar;
-    QFrame *line;
+    QLabel *label_9;
+    QLabel *labelGetImg;
+    QWidget *layoutWidget;
+    QGridLayout *gridLayout;
+    QPushButton *pushButton_8;
+    QPushButton *pushButton_9;
+    QPushButton *pushButton_10;
+    QPushButton *pushButton_11;
+    QLabel *label_10;
+    QWidget *widget;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuswitchTo;
@@ -173,7 +182,7 @@ public:
         toolBox->addItem(page, QStringLiteral("Page 1"));
         page_2 = new QWidget();
         page_2->setObjectName(QStringLiteral("page_2"));
-        page_2->setGeometry(QRect(0, 0, 231, 319));
+        page_2->setGeometry(QRect(0, 0, 115, 52));
         gridLayout_3 = new QGridLayout(page_2);
         gridLayout_3->setSpacing(6);
         gridLayout_3->setContentsMargins(11, 11, 11, 11);
@@ -289,7 +298,7 @@ public:
         label_5->setAlignment(Qt::AlignCenter);
         tableView = new QTableView(centralWidget);
         tableView->setObjectName(QStringLiteral("tableView"));
-        tableView->setGeometry(QRect(980, 40, 451, 381));
+        tableView->setGeometry(QRect(970, 730, 451, 121));
         textEdit = new QTextEdit(centralWidget);
         textEdit->setObjectName(QStringLiteral("textEdit"));
         textEdit->setGeometry(QRect(1190, 540, 171, 31));
@@ -319,11 +328,49 @@ public:
         progressBar->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         progressBar->setOrientation(Qt::Horizontal);
         progressBar->setTextDirection(QProgressBar::TopToBottom);
-        line = new QFrame(centralWidget);
-        line->setObjectName(QStringLiteral("line"));
-        line->setGeometry(QRect(250, 60, 20, 331));
-        line->setFrameShape(QFrame::VLine);
-        line->setFrameShadow(QFrame::Sunken);
+        label_9 = new QLabel(centralWidget);
+        label_9->setObjectName(QStringLiteral("label_9"));
+        label_9->setGeometry(QRect(80, 450, 71, 31));
+        label_9->setFont(font1);
+        labelGetImg = new QLabel(centralWidget);
+        labelGetImg->setObjectName(QStringLiteral("labelGetImg"));
+        labelGetImg->setGeometry(QRect(10, 500, 251, 211));
+        layoutWidget = new QWidget(centralWidget);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 730, 231, 101));
+        gridLayout = new QGridLayout(layoutWidget);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        pushButton_8 = new QPushButton(layoutWidget);
+        pushButton_8->setObjectName(QStringLiteral("pushButton_8"));
+
+        gridLayout->addWidget(pushButton_8, 0, 0, 1, 1);
+
+        pushButton_9 = new QPushButton(layoutWidget);
+        pushButton_9->setObjectName(QStringLiteral("pushButton_9"));
+
+        gridLayout->addWidget(pushButton_9, 0, 1, 1, 1);
+
+        pushButton_10 = new QPushButton(layoutWidget);
+        pushButton_10->setObjectName(QStringLiteral("pushButton_10"));
+
+        gridLayout->addWidget(pushButton_10, 1, 0, 1, 1);
+
+        pushButton_11 = new QPushButton(layoutWidget);
+        pushButton_11->setObjectName(QStringLiteral("pushButton_11"));
+
+        gridLayout->addWidget(pushButton_11, 1, 1, 1, 1);
+
+        label_10 = new QLabel(centralWidget);
+        label_10->setObjectName(QStringLiteral("label_10"));
+        label_10->setGeometry(QRect(1140, 700, 111, 16));
+        label_10->setFont(font1);
+        label_10->setAlignment(Qt::AlignCenter);
+        widget = new QWidget(centralWidget);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(980, 70, 441, 351));
         ReconstructionClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(ReconstructionClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -407,10 +454,17 @@ public:
         labelImg2_6->setText(QApplication::translate("ReconstructionClass", "TextLabel", Q_NULLPTR));
         tabWidget2->setTabText(tabWidget2->indexOf(tab_19), QApplication::translate("ReconstructionClass", "\350\247\243\345\214\205\350\243\271\347\233\270\344\275\215\345\233\276", Q_NULLPTR));
         label_4->setText(QApplication::translate("ReconstructionClass", "\346\225\260\346\215\256\346\230\276\347\244\272", Q_NULLPTR));
-        label_5->setText(QApplication::translate("ReconstructionClass", "\346\225\260\346\215\256\347\273\237\350\256\241", Q_NULLPTR));
+        label_5->setText(QApplication::translate("ReconstructionClass", "\344\270\211\347\273\264\345\275\242\350\262\214\346\230\276\347\244\272", Q_NULLPTR));
         label_6->setText(QApplication::translate("ReconstructionClass", "\345\275\223\345\211\215\347\202\271\345\235\220\346\240\207(mm)\357\274\232", Q_NULLPTR));
         label_7->setText(QApplication::translate("ReconstructionClass", "\345\275\223\345\211\215\347\202\271\351\253\230\345\272\246(mm)\357\274\232", Q_NULLPTR));
         label_8->setText(QApplication::translate("ReconstructionClass", "\345\276\205\346\265\213\347\211\251\344\275\223\344\275\223\347\247\257(mm^3)\357\274\232", Q_NULLPTR));
+        label_9->setText(QApplication::translate("ReconstructionClass", "\345\233\276\345\203\217\351\207\207\351\233\206", Q_NULLPTR));
+        labelGetImg->setText(QApplication::translate("ReconstructionClass", "TextLabel", Q_NULLPTR));
+        pushButton_8->setText(QApplication::translate("ReconstructionClass", "\345\215\225\345\270\247\351\207\207\351\233\206", Q_NULLPTR));
+        pushButton_9->setText(QApplication::translate("ReconstructionClass", "\350\277\236\347\273\255\351\207\207\351\233\206", Q_NULLPTR));
+        pushButton_10->setText(QApplication::translate("ReconstructionClass", "\345\201\234\346\255\242\351\207\207\351\233\206", Q_NULLPTR));
+        pushButton_11->setText(QApplication::translate("ReconstructionClass", "\344\277\235\345\255\230", Q_NULLPTR));
+        label_10->setText(QApplication::translate("ReconstructionClass", "\346\225\260\346\215\256\347\273\237\350\256\241", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("ReconstructionClass", "File", Q_NULLPTR));
         menuswitchTo->setTitle(QApplication::translate("ReconstructionClass", "SwitchTo", Q_NULLPTR));
     } // retranslateUi

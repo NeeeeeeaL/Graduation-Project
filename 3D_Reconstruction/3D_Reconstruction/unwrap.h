@@ -14,7 +14,6 @@
 
 typedef enum { yes, no } yes_no;
 
-using namespace cv;
 using namespace std;
 
 
@@ -59,4 +58,4 @@ void  verticalEDGEs(PIXEL *pixel, EDGE *edge, int image_width, int image_height)
 void  gatherPIXELs(EDGE *edge, int image_width, int image_height);
 void  unwrapImage(PIXEL *pixel, int image_width, int image_height);
 void  returnImage(PIXEL *pixel, float *unwrappedImage, int image_width, int image_height);
-void  unwrap(const Mat & src, Mat & dst);
+void  unwrap(const cv::Mat & src, cv::Mat & dst);

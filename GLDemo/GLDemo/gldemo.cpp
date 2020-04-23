@@ -15,7 +15,7 @@ GLDemo::GLDemo(QWidget *parent)
 #if QT_VERSION < 0x040000
 	QSplitter* spl = new QSplitter(QSplitter::Horizontal);
 #else
-	QSplitter* spl = new QSplitter(Qt::Horizontal, this);
+	QSplitter* spl = new QSplitter(Qt::Horizontal);
 #endif
 	Plot* plot1 = new Plot(spl, 130);
 	//Plot* plot1 = new Plot(ui.widget, 30);
@@ -50,6 +50,17 @@ GLDemo::GLDemo(QWidget *parent)
 	//spl->move(50, 50);
 	spl->show();
 
+	Mat m = imread("mouse.png", 0);
+	Mat m2(m.rows, m.cols, CV_64FC1);
+	m.convertTo(m2, CV_64FC1);
+
+	QSplitter* spl1 = new QSplitter(Qt::Horizontal, this);
+	Plot* plot3 = new Plot(spl1, m2);
+
+	spl1->resize(800, 400);
+	//Plot w2(spl1, m2);
+	//w2.show();
+	spl1->show();
 
 }
 
@@ -91,7 +102,8 @@ Plot::Plot(QWidget* pw, int updateinterval)
 }
 
 //Mat×ªÈýÎ¬
-Plot::Plot(Mat & m)
+Plot::Plot(QWidget* pw, Mat & m)
+	:SurfacePlot(pw)
 {
 	setTitle("A Simple SurfacePlot Demonstration");
 

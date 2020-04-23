@@ -72,6 +72,7 @@ public:
     QPushButton *pushButton1;
     QPushButton *pushButton2;
     QProgressBar *progressBar;
+    QPushButton *pushButton3;
     QMenuBar *menuBar;
     QMenu *menuSwitchTo;
     QMenu *menuFile;
@@ -197,21 +198,24 @@ public:
         label_11->setAlignment(Qt::AlignCenter);
         listView = new QListView(centralWidget);
         listView->setObjectName(QStringLiteral("listView"));
-        listView->setGeometry(QRect(880, 40, 511, 341));
+        listView->setGeometry(QRect(890, 500, 511, 341));
         label_12 = new QLabel(centralWidget);
         label_12->setObjectName(QStringLiteral("label_12"));
         label_12->setGeometry(QRect(1100, 480, 71, 16));
         label_12->setFont(font1);
         pushButton1 = new QPushButton(centralWidget);
         pushButton1->setObjectName(QStringLiteral("pushButton1"));
-        pushButton1->setGeometry(QRect(150, 800, 121, 41));
+        pushButton1->setGeometry(QRect(110, 800, 111, 41));
         pushButton2 = new QPushButton(centralWidget);
         pushButton2->setObjectName(QStringLiteral("pushButton2"));
-        pushButton2->setGeometry(QRect(610, 800, 111, 41));
+        pushButton2->setGeometry(QRect(360, 800, 111, 41));
         progressBar = new QProgressBar(centralWidget);
         progressBar->setObjectName(QStringLiteral("progressBar"));
         progressBar->setGeometry(QRect(1160, 850, 118, 23));
         progressBar->setValue(24);
+        pushButton3 = new QPushButton(centralWidget);
+        pushButton3->setObjectName(QStringLiteral("pushButton3"));
+        pushButton3->setGeometry(QRect(600, 800, 111, 41));
         PMPTrans->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(PMPTrans);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -288,6 +292,7 @@ public:
         label_12->setText(QApplication::translate("PMPTrans", "\346\225\260\346\215\256\345\210\206\346\236\220", Q_NULLPTR));
         pushButton1->setText(QApplication::translate("PMPTrans", "\346\261\202\347\233\270\344\275\215", Q_NULLPTR));
         pushButton2->setText(QApplication::translate("PMPTrans", "\347\233\270\344\275\215\350\247\243\345\214\205\350\243\271", Q_NULLPTR));
+        pushButton3->setText(QApplication::translate("PMPTrans", "\344\270\211\347\273\264\351\207\215\345\273\272", Q_NULLPTR));
         menuSwitchTo->setTitle(QApplication::translate("PMPTrans", "SwitchTo", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("PMPTrans", "File", Q_NULLPTR));
     } // retranslateUi

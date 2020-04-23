@@ -6,7 +6,6 @@
 #include <opencv2\highgui\highgui.hpp>
 #include <opencv2\imgproc\imgproc.hpp>
 
-using namespace cv;
 using namespace std;
 
 class PMPTrans : public QMainWindow
@@ -20,7 +19,7 @@ public:
 
 protected:
 
-	void LabelDisplayMat(Mat& mat_img, QLabel* label);
+	void LabelDisplayMat(cv::Mat& mat_img, QLabel* label);
 
 private:
 	Ui::PMPTrans ui;
@@ -33,23 +32,23 @@ private:
 
 public:
 	//声明四幅调制光栅图像
-	Mat imgSrc1;
-	Mat imgSrc2;
-	Mat imgSrc3;
-	Mat imgSrc4;
+	cv::Mat imgSrc1;
+	cv::Mat imgSrc2;
+	cv::Mat imgSrc3;
+	cv::Mat imgSrc4;
 
 	//声明四幅原光栅图像
-	Mat imgSrc5;
-	Mat imgSrc6;
-	Mat imgSrc7;
-	Mat imgSrc8;
+	cv::Mat imgSrc5;
+	cv::Mat imgSrc6;
+	cv::Mat imgSrc7;
+	cv::Mat imgSrc8;
 
 	//相位
-	Mat phaseFG;
-	Mat phaseBG;
+	cv::Mat phaseFG;
+	cv::Mat phaseBG;
 
-	Mat wrappedPhase;
-	Mat unwrappedPhase;
+	cv::Mat wrappedPhase;
+	cv::Mat unwrappedPhase;
 
 signals:
 	/*
@@ -68,5 +67,6 @@ void on_actionFTP_triggered();
 void on_actionOpen_triggered();
 void on_pushButton1_clicked();
 void on_pushButton2_clicked();
+void on_pushButton3_clicked();
 
 };

@@ -436,11 +436,11 @@ void  returnImage(PIXEL *pixel, float *unwrappedImage, int image_width, int imag
 }
 
 
-void unwrap(const Mat & src, Mat & dst)
+void unwrap(const cv::Mat & src, cv::Mat & dst)
 {
 	std::cout << "Start to unwrap..." << endl;
 
-	Mat tmpImg(src.rows, src.cols, CV_32FC1);
+	cv::Mat tmpImg(src.rows, src.cols, CV_32FC1);
 	src.convertTo(tmpImg, CV_32FC1);
 
 	int image_width = src.cols;

@@ -68,7 +68,7 @@ class Plot : public SurfacePlot
 
 public:
 	Plot(QWidget* pw, int updateinterval);
-	Plot(Mat &m);
+	Plot(QWidget* pw, Mat &m);
 
 public slots:
 	void rotate();

@@ -11,7 +11,6 @@
 
 #include <QSqlTableModel>
 
-using namespace cv;
 using namespace std;
 
 
@@ -32,7 +31,7 @@ protected:
 	//绘图事件内部自动调用（窗口需要重绘的时候）
 	void paintEvent(QPaintEvent *);
 
-	void LabelDisplayMat(Mat& mat_img, QLabel* label);
+	void LabelDisplayMat(cv::Mat& mat_img, QLabel* label);
 
 private:
 	Ui::ReconstructionClass ui;
@@ -56,20 +55,20 @@ public:
 	//对临时变量进行操作，完成后再将值赋给全局变量
 	QImage img1, img2;
 
-	Mat imgOriginal_src;
-	Mat imgOriginal_fft;
-	Mat imgOriginal_filt;
-	Mat imgOriginal_ifft;
-	Mat imgOriginal_angel;
+	cv::Mat imgOriginal_src;
+	cv::Mat imgOriginal_fft;
+	cv::Mat imgOriginal_filt;
+	cv::Mat imgOriginal_ifft;
+	cv::Mat imgOriginal_angel;
 
-	Mat imgModulated_src;
-	Mat imgModulated_fft;
-	Mat imgModulated_filt;
-	Mat imgModulated_ifft;
-	Mat imgModulated_angel;
+	cv::Mat imgModulated_src;
+	cv::Mat imgModulated_fft;
+	cv::Mat imgModulated_filt;
+	cv::Mat imgModulated_ifft;
+	cv::Mat imgModulated_angel;
 
-	Mat wrappedPhase;
-	Mat unwrappedPhase;
+	cv::Mat wrappedPhase;
+	cv::Mat unwrappedPhase;
 
 public slots:
 
@@ -79,6 +78,7 @@ void on_pushButton_2_clicked();//滤波按钮
 void on_pushButton_3_clicked();//傅里叶反变换
 void on_pushButton_4_clicked();//求相位
 void on_pushButton_5_clicked();//解相位
+void on_pushButton_6_clicked();//解相位
 
 //三维重建一步操作
 void on_pushButton_7_clicked();//One Step 

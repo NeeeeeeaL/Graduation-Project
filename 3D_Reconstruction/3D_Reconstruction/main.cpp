@@ -43,6 +43,7 @@ int main(int argc, char *argv[])
 	//w.show();
 
 	//splash.finish(&w);
+
 	
 	return a.exec();
 }

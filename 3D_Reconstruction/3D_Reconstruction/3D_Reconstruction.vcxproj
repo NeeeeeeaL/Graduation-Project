@@ -39,7 +39,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>D:\opencv\build\include\opencv;D:\opencv\build\include\opencv2;D:\opencv\build\include;$(IncludePath)</IncludePath>
+    <IncludePath>D:\opencv\build\include\opencv;D:\opencv\build\include\opencv2;D:\opencv\build\include;C:\Qt\Qt5.9.8\5.9.8\msvc2015_64\include\Qwt3D;$(IncludePath)</IncludePath>
     <LibraryPath>D:\opencv\build\x64\vc14\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
@@ -68,7 +68,7 @@
       <SubSystem>Console</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opencv_world346d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world346d.lib;qwtplot3dd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -85,6 +85,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="display.cpp" />
     <ClCompile Include="imageProcess.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pmpTrans.cpp" />
@@ -106,6 +107,7 @@
   <ItemGroup>
     <QtMoc Include="welcome.h" />
     <QtMoc Include="pmpTrans.h" />
+    <ClInclude Include="display.h" />
     <ClInclude Include="unwrap.h" />
     <ClInclude Include="imageProcess.h" />
     <ClInclude Include="resource.h" />

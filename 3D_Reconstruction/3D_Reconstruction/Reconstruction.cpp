@@ -1,6 +1,7 @@
 #include "Reconstruction.h"
 #include "imageProcess.h"
 #include "unwrap.h"
+#include "display.h"
 #include <QPainter>
 #include <QtWidgets/QApplication>
 #include <iostream>
@@ -11,6 +12,7 @@
 #include <QGridLayout>
 #include <QTextCodec> //转换字符头文件
 #include <QMessageBox>
+#include <QSplitter>
 
 //数据库相关
 #include "QSqlDatabase"
@@ -22,7 +24,7 @@
 
 QTextCodec *codecParent;
 
-using namespace cv;
+using namespace Qwt3D;
 using namespace std;
 
 
@@ -128,6 +130,8 @@ Reconstruction::Reconstruction(QWidget *parent)
 	connect(&windowPMP, &PMPTrans::signalSwitch, this, &Reconstruction::dealChild);
 	connect(&windowPMP, &PMPTrans::signalNotOpen, this, &Reconstruction::dealNotOpen);
 	connect(&windowPMP, &PMPTrans::signalNotGetP, this, &Reconstruction::dealNotGetP);
+
+	
 }
 
 //处理子窗口发送的消息
@@ -180,7 +184,7 @@ void Reconstruction::paintEvent(QPaintEvent *)
 }
 
 //在QLabel上显示Mat图像
-void Reconstruction::LabelDisplayMat(Mat & mat_img, QLabel * label)
+void Reconstruction::LabelDisplayMat(cv::Mat & mat_img, QLabel * label)
 {
 	QImage img;
 	if (mat_img.channels() == 3)//RGB image
@@ -206,7 +210,7 @@ void Reconstruction::on_pushButton_clicked()
 {
 	if (isOpen == true)
 	{
-		long t1 = getTickCount();
+		long t1 = cv::getTickCount();
 
 		ui.labelStatus->setText("Start the DFT transformation...");
 		ui.progressBar->setValue(10);
@@ -243,8 +247,8 @@ void Reconstruction::on_pushButton_clicked()
 
 		ui.progressBar->setValue(80);
 
-		Mat imgDisplay1;
-		Mat imgDisplay2;
+		cv::Mat imgDisplay1;
+		cv::Mat imgDisplay2;
 
 		imgDft.changeCh(imgOriginal_fft, imgDisplay1);
 		imgDft.changeCh(imgModulated_fft, imgDisplay2);
@@ -271,7 +275,7 @@ void Reconstruction::on_pushButton_clicked()
 		//imgOriginal_fft = imgOrifftTmp.clone();
 		//imgModulated_fft = imgMdafftTmp.clone();
 
-		long t2 = getTickCount();
+		long t2 = cv::getTickCount();
 		cout << "Time of fft :" << (t2 - t1) / 1e7 << "s" << endl;
 	}
 	else
@@ -283,7 +287,7 @@ void Reconstruction::on_pushButton_2_clicked()
 {
 	if (isFFT == true)
 	{
-		long t1 = getTickCount();
+		long t1 = cv::getTickCount();
 		ui.labelStatus->setText("Start to filt...");
 		ui.progressBar->setValue(10);
 
@@ -301,8 +305,8 @@ void Reconstruction::on_pushButton_2_clicked()
 		//imgFilt.filt(imgOrifftTmp, imgOrifiltTmp);
 		//imgFilt.filt(imgMdafftTmp, imgMdafiltTmp);
 
-		Mat imgDisplay1;
-		Mat imgDisplay2;
+		cv::Mat imgDisplay1;
+		cv::Mat imgDisplay2;
 
 		imgFilt.changeCh(imgOriginal_filt, imgDisplay1);
 		ui.progressBar->setValue(70);
@@ -328,7 +332,7 @@ void Reconstruction::on_pushButton_2_clicked()
 		//imgOriginal_filt = imgOrifiltTmp.clone();
 		//imgModulated_filt = imgMdafiltTmp.clone();
 
-		long t2 = getTickCount();
+		long t2 = cv::getTickCount();
 		cout << "Time of filt :" << (t2 - t1) / 1e7 << "s" << endl;
 	}
 	else
@@ -340,7 +344,7 @@ void Reconstruction::on_pushButton_3_clicked()
 {
 	if (isFilt == true)
 	{
-		long t1 = getTickCount();
+		long t1 = cv::getTickCount();
 		ui.labelStatus->setText("Start the IDFT transformation...");
 		ui.progressBar->setValue(10);
 		//声明临时变量
@@ -365,11 +369,11 @@ void Reconstruction::on_pushButton_3_clicked()
 		//imgIfft.ifft2(imgOrifiltTmp, imgOriifftTmp);
 		//imgIfft.ifft2(imgMdafiltTmp, imgMdaifftTmp); //CV_64FC2
 
-		Mat imgDisplay1;
-		Mat imgDisplay2;
+		cv::Mat imgDisplay1;
+		cv::Mat imgDisplay2;
 
-		vector<Mat> planes1;
-		vector<Mat> planes2;
+		vector<cv::Mat> planes1;
+		vector<cv::Mat> planes2;
 
 		split(imgOriginal_ifft, planes1);
 		//split(imgOriifftTmp, planes1);
@@ -413,7 +417,7 @@ void Reconstruction::on_pushButton_3_clicked()
 		//imgOriginal_ifft = imgOriifftTmp;
 		//imgModulated_ifft = imgMdaifftTmp;
 
-		long t2 = getTickCount();
+		long t2 = cv::getTickCount();
 		cout << "Time of ifft :" << (t2 - t1) / 1e7 << "s" << endl;
 	}
 	else
@@ -426,12 +430,12 @@ void Reconstruction::on_pushButton_4_clicked()
 {
 	if (isIFFT == true)
 	{
-		long t1 = getTickCount();
+		long t1 = cv::getTickCount();
 		ui.labelStatus->setText("Start to obtain the angel...");
 		ui.progressBar->setValue(10);
 
-		Mat imgTmp1(imgModulated_src.rows, imgModulated_src.cols, CV_64F, Scalar(0));
-		Mat imgTmp2(imgModulated_src.rows, imgModulated_src.cols, CV_64F, Scalar(0));
+		cv::Mat imgTmp1(imgModulated_src.rows, imgModulated_src.cols, CV_64F, cv::Scalar(0));
+		cv::Mat imgTmp2(imgModulated_src.rows, imgModulated_src.cols, CV_64F, cv::Scalar(0));
 
 		//定义临时变量
 		//Mat imgOriifftTmp = imgOriginal_ifft.clone();
@@ -441,8 +445,8 @@ void Reconstruction::on_pushButton_4_clicked()
 		imgOriginal_angel = imgTmp1;
 		imgModulated_angel = imgTmp2;//给imgModulated_angel赋初值，避免求相位时出错
 
-		vector<Mat> planes1;
-		vector<Mat> planes2;
+		vector<cv::Mat> planes1;
+		vector<cv::Mat> planes2;
 
 		split(imgOriginal_ifft, planes1);
 		split(imgModulated_ifft, planes2);
@@ -469,10 +473,10 @@ void Reconstruction::on_pushButton_4_clicked()
 		}
 		ui.progressBar->setValue(30);
 		/**************测试***************/
-		Mat imgTmp3(imgModulated_src.rows, imgModulated_src.cols, CV_64F, Scalar(0));
-		Mat imgTmp4(imgModulated_src.rows, imgModulated_src.cols, CV_32F, Scalar(0));
-		Mat wrappedPhaseNormal(imgModulated_src.rows, imgModulated_src.cols, CV_64F, Scalar(0));
-		Mat unwrappedPhaseNormal(imgModulated_src.rows, imgModulated_src.cols, CV_32F, Scalar(0));
+		cv::Mat imgTmp3(imgModulated_src.rows, imgModulated_src.cols, CV_64F, cv::Scalar(0));
+		cv::Mat imgTmp4(imgModulated_src.rows, imgModulated_src.cols, CV_32F, cv::Scalar(0));
+		cv::Mat wrappedPhaseNormal(imgModulated_src.rows, imgModulated_src.cols, CV_64F, cv::Scalar(0));
+		cv::Mat unwrappedPhaseNormal(imgModulated_src.rows, imgModulated_src.cols, CV_32F, cv::Scalar(0));
 
 		wrappedPhase = imgTmp3;
 		unwrappedPhase = imgTmp4;
@@ -513,8 +517,8 @@ void Reconstruction::on_pushButton_4_clicked()
 
 		/****************测试结束*****************/
 
-		Mat imgDisplay1 = imgOriginal_angel;//CV_64F
-		Mat imgDisplay2 = imgModulated_angel;//CV_64F
+		cv::Mat imgDisplay1 = imgOriginal_angel;//CV_64F
+		cv::Mat imgDisplay2 = imgModulated_angel;//CV_64F
 		//Mat imgDisplay1 = imgTmp1.clone();//CV_64F
 		//Mat imgDisplay2 = imgTmp2.clone();//CV_64F
 
@@ -558,7 +562,7 @@ void Reconstruction::on_pushButton_4_clicked()
 		//wrappedPhase = imgTmp3.clone();
 		//unwrappedPhase = imgTmp4.clone();
 
-		long t2 = getTickCount();
+		long t2 = cv::getTickCount();
 		cout << "Time of getting phase :" << (t2 - t1) / 1e7 << "s" << endl;
 	}
 	else
@@ -576,7 +580,7 @@ void Reconstruction::on_pushButton_5_clicked()
 		//Mat imgTmp1(imgModulated_src.rows, imgModulated_src.cols, CV_64F, Scalar(0));
 		//Mat imgTmp2(imgModulated_src.rows, imgModulated_src.cols, CV_32F, Scalar(0));
 		//Mat wrappedPhaseNormal(imgModulated_src.rows, imgModulated_src.cols, CV_64F, Scalar(0));
-		Mat unwrappedPhaseNormal(imgModulated_src.rows, imgModulated_src.cols, CV_32F, Scalar(0));
+		cv::Mat unwrappedPhaseNormal(imgModulated_src.rows, imgModulated_src.cols, CV_32F, cv::Scalar(0));
 		ui.progressBar->setValue(20);
 		//wrappedPhase = imgTmp1;
 		//unwrappedPhase = imgTmp2;
@@ -608,7 +612,7 @@ void Reconstruction::on_pushButton_5_clicked()
 		//resizeWindow("unwrappedPhase", 700, 500);
 		//imshow("unwrappedPhase", unwrappedPhaseNormal);
 
-		Mat imgDisplay = unwrappedPhaseNormal;
+		cv::Mat imgDisplay = unwrappedPhaseNormal;
 		ui.progressBar->setValue(50);
 
 		for (int i = 0; i < imgDisplay.rows; ++i)
@@ -642,6 +646,28 @@ void Reconstruction::on_pushButton_5_clicked()
 
 }
 
+//三维重建
+void Reconstruction::on_pushButton_6_clicked()
+{
+	cv::Mat imgDisplay(unwrappedPhase.rows, unwrappedPhase.cols, CV_64FC1);
+	unwrappedPhase.convertTo(imgDisplay, CV_64FC1);
+
+	for (int i = 0; i < imgDisplay.rows; ++i)
+	{
+		for (int j = 0; j < imgDisplay.cols; ++j)
+		{
+			imgDisplay.at<double>(i, j) *= 80.0;
+		}
+	}
+
+	QSplitter* spl = new QSplitter(Qt::Horizontal, this);
+	Plot* plot = new Plot(spl, imgDisplay);
+
+	spl->resize(440, 350);
+	spl->move(980, 100);
+	spl->show();
+}
+
 //One Step
 void Reconstruction::on_pushButton_7_clicked()
 {
@@ -660,8 +686,8 @@ void Reconstruction::on_pushButton_7_clicked()
 	imgDft.fftshift(imgOriginal_fft);
 	imgDft.fftshift(imgModulated_fft); //CV_64FC2
 
-	Mat imgDisplay1_2;
-	Mat imgDisplay2_2;
+	cv::Mat imgDisplay1_2;
+	cv::Mat imgDisplay2_2;
 
 	imgDft.changeCh(imgOriginal_fft, imgDisplay1_2);
 	imgDft.changeCh(imgModulated_fft, imgDisplay2_2);
@@ -683,8 +709,8 @@ void Reconstruction::on_pushButton_7_clicked()
 	imgFilt.filt(imgOriginal_fft, imgOriginal_filt);
 	imgFilt.filt(imgModulated_fft, imgModulated_filt);
 
-	Mat imgDisplay1_3;
-	Mat imgDisplay2_3;
+	cv::Mat imgDisplay1_3;
+	cv::Mat imgDisplay2_3;
 
 	imgFilt.changeCh(imgOriginal_filt, imgDisplay1_3);
 	imgFilt.changeCh(imgModulated_filt, imgDisplay2_3);
@@ -705,11 +731,11 @@ void Reconstruction::on_pushButton_7_clicked()
 	imgIfft.ifft2(imgOriginal_filt, imgOriginal_ifft);
 	imgIfft.ifft2(imgModulated_filt, imgModulated_ifft); //CV_64FC2
 
-	Mat imgDisplay1_4;
-	Mat imgDisplay2_4;
+	cv::Mat imgDisplay1_4;
+	cv::Mat imgDisplay2_4;
 
-	vector<Mat> planes1;
-	vector<Mat> planes2;
+	vector<cv::Mat> planes1;
+	vector<cv::Mat> planes2;
 
 	split(imgOriginal_ifft, planes1);
 	imgDisplay1_4 = planes1[0];
@@ -737,15 +763,15 @@ void Reconstruction::on_pushButton_7_clicked()
 	ui.tabWidget2->setCurrentIndex(3);
 
 	/*****************求相位及解相位********************/
-	Mat imgTmp1(imgModulated_src.rows, imgModulated_src.cols, CV_64F, Scalar(0));
-	Mat imgTmp2(imgModulated_src.rows, imgModulated_src.cols, CV_64F, Scalar(0));
+	cv::Mat imgTmp1(imgModulated_src.rows, imgModulated_src.cols, CV_64F, cv::Scalar(0));
+	cv::Mat imgTmp2(imgModulated_src.rows, imgModulated_src.cols, CV_64F, cv::Scalar(0));
 
 	//想偷懒一点都不行，不能只声明一个imgTmp赋给两个变量，否则两个变量内容会相同
 	imgOriginal_angel = imgTmp1;
 	imgModulated_angel = imgTmp2;//给imgModulated_angel赋初值，避免求相位时出错
 
-	vector<Mat> planes3;
-	vector<Mat> planes4;
+	vector<cv::Mat> planes3;
+	vector<cv::Mat> planes4;
 
 	split(imgOriginal_ifft, planes3);
 	split(imgModulated_ifft, planes4);
@@ -763,10 +789,10 @@ void Reconstruction::on_pushButton_7_clicked()
 		}
 	}
 	ui.progressBar->setValue(60);
-	Mat imgTmp3(imgModulated_src.rows, imgModulated_src.cols, CV_64F, Scalar(0));
-	Mat imgTmp4(imgModulated_src.rows, imgModulated_src.cols, CV_32F, Scalar(0));
-	Mat wrappedPhaseNormal(imgModulated_src.rows, imgModulated_src.cols, CV_64F, Scalar(0));
-	Mat unwrappedPhaseNormal(imgModulated_src.rows, imgModulated_src.cols, CV_32F, Scalar(0));
+	cv::Mat imgTmp3(imgModulated_src.rows, imgModulated_src.cols, CV_64F, cv::Scalar(0));
+	cv::Mat imgTmp4(imgModulated_src.rows, imgModulated_src.cols, CV_32F, cv::Scalar(0));
+	cv::Mat wrappedPhaseNormal(imgModulated_src.rows, imgModulated_src.cols, CV_64F, cv::Scalar(0));
+	cv::Mat unwrappedPhaseNormal(imgModulated_src.rows, imgModulated_src.cols, CV_32F, cv::Scalar(0));
 
 	wrappedPhase = imgTmp3;
 	unwrappedPhase = imgTmp4;
@@ -791,8 +817,8 @@ void Reconstruction::on_pushButton_7_clicked()
 	normalize(unwrappedPhase, unwrappedPhaseNormal, 0, 1, CV_MINMAX);
 
 
-	Mat imgDisplay1_5 = imgOriginal_angel;//CV_64F
-	Mat imgDisplay2_5 = imgModulated_angel;//CV_64F
+	cv::Mat imgDisplay1_5 = imgOriginal_angel;//CV_64F
+	cv::Mat imgDisplay2_5 = imgModulated_angel;//CV_64F
 
 	int type = imgModulated_angel.type();
 
@@ -825,7 +851,7 @@ void Reconstruction::on_pushButton_7_clicked()
 	ui.tabWidget1->setCurrentIndex(4);
 	ui.tabWidget2->setCurrentIndex(4);
 
-	Mat imgDisplay_6 = unwrappedPhaseNormal;
+	cv::Mat imgDisplay_6 = unwrappedPhaseNormal;
 
 	for (int i = 0; i < imgDisplay_6.rows; ++i)
 	{
@@ -873,13 +899,13 @@ void Reconstruction::on_actionOpen_triggered()
 
 			if (i == 0)
 			{
-				imgOriginal_src = imread("..\\image\\" + imgName.toStdString(), 0);
+				imgOriginal_src = cv::imread("..\\image\\" + imgName.toStdString(), 0);
 				LabelDisplayMat(imgOriginal_src, ui.labelImg1_1);
 				cout << "Read imgOriginal_src successfully!" << endl;
 			}
 			else
 			{
-				imgModulated_src = imread("..\\image\\" + imgName.toStdString(), 0);
+				imgModulated_src = cv::imread("..\\image\\" + imgName.toStdString(), 0);
 				LabelDisplayMat(imgModulated_src, ui.labelImg2_1);
 				cout << "Read imgModulated_src successfully!" << endl;
 			}

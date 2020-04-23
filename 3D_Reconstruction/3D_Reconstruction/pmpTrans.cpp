@@ -1,16 +1,17 @@
 #include "pmpTrans.h"
 #include "imageProcess.h"
 #include "unwrap.h"
+#include "display.h"
 #include <QFileDialog>
 #include <QFile>
 #include <QDebug>
 #include <QMessageBox>
+#include <QSplitter>
 #include <QTextCodec> //转换字符头文件
 
 #define cout qDebug() << "[" << __FILE__ << ":" << __LINE__ << "]"
 QTextCodec *codecChild;
 
-using namespace cv;
 using namespace std;
 
 
@@ -39,7 +40,7 @@ PMPTrans::~PMPTrans()
 }
 
 //在QLabel上显示Mat图像
-void PMPTrans::LabelDisplayMat(Mat & mat_img, QLabel * label)
+void PMPTrans::LabelDisplayMat(cv::Mat & mat_img, QLabel * label)
 {
 	QImage img;
 	if (mat_img.channels() == 3)//RGB image
@@ -89,50 +90,50 @@ void PMPTrans::on_actionOpen_triggered()
 				/***********读入四幅原光栅图像************/
 
 			case 0: {
-						imgSrc5 = imread("..\\image\\phase4\\backGround3-0.bmp", 0);
+						imgSrc5 = cv::imread("..\\image\\phase4\\backGround3-0.bmp", 0);
 						LabelDisplayMat(imgSrc5, ui.label2_1);
 
 					}break;
 
 			case 1: {
-						imgSrc6 = imread("..\\image\\phase4\\backGround3-1.bmp", 0);
+						imgSrc6 = cv::imread("..\\image\\phase4\\backGround3-1.bmp", 0);
 						LabelDisplayMat(imgSrc6, ui.label2_2);
 
 					}break;
 
 			case 2: {
-						imgSrc7 = imread("..\\image\\phase4\\backGround3-2.bmp", 0);
+						imgSrc7 = cv::imread("..\\image\\phase4\\backGround3-2.bmp", 0);
 						LabelDisplayMat(imgSrc7, ui.label2_3);
 
 					}break;
 
 			case 3: {
-						imgSrc8 = imread("..\\image\\phase4\\backGround3-3.bmp", 0);
+						imgSrc8 = cv::imread("..\\image\\phase4\\backGround3-3.bmp", 0);
 						LabelDisplayMat(imgSrc8, ui.label2_4);
 
 					}break;
 
 				/**********读入四幅调制光栅图像*************/
 			case 4: {
-						imgSrc1 = imread("..\\image\\phase4\\phase3-0.bmp", 0);
+						imgSrc1 = cv::imread("..\\image\\phase4\\phase3-0.bmp", 0);
 						LabelDisplayMat(imgSrc1, ui.label1_1);
 						
 					}break;
 
 			case 5: {
-						imgSrc2 = imread("..\\image\\phase4\\phase3-1.bmp", 0);
+						imgSrc2 = cv::imread("..\\image\\phase4\\phase3-1.bmp", 0);
 						LabelDisplayMat(imgSrc2, ui.label1_2);
 						
 					}break;
 
 			case 6: {
-						imgSrc3 = imread("..\\image\\phase4\\phase3-2.bmp", 0); 
+						imgSrc3 = cv::imread("..\\image\\phase4\\phase3-2.bmp", 0);
 						LabelDisplayMat(imgSrc3, ui.label1_3);
 						
 					}break;
 
 			case 7: {
-						imgSrc4 = imread("..\\image\\phase4\\phase3-3.bmp", 0);
+						imgSrc4 = cv::imread("..\\image\\phase4\\phase3-3.bmp", 0);
 						LabelDisplayMat(imgSrc4, ui.label1_4);
 						
 					}break;
@@ -169,10 +170,10 @@ void PMPTrans::on_pushButton1_clicked()
 
 		/********解包裹*******/
 
-		Mat imgTmp1(imgSrc1.rows, imgSrc1.cols, CV_64F, Scalar(0));
-		Mat imgTmp2(imgSrc1.rows, imgSrc1.cols, CV_32F, Scalar(0));
-		Mat wrappedPhaseNormal(imgSrc1.rows, imgSrc1.cols, CV_64F, Scalar(0));
-		Mat unwrappedPhaseNormal(imgSrc1.rows, imgSrc1.cols, CV_32F, Scalar(0));
+		cv::Mat imgTmp1(imgSrc1.rows, imgSrc1.cols, CV_64F, cv::Scalar(0));
+		cv::Mat imgTmp2(imgSrc1.rows, imgSrc1.cols, CV_32F, cv::Scalar(0));
+		cv::Mat wrappedPhaseNormal(imgSrc1.rows, imgSrc1.cols, CV_64F, cv::Scalar(0));
+		cv::Mat unwrappedPhaseNormal(imgSrc1.rows, imgSrc1.cols, CV_32F, cv::Scalar(0));
 
 		wrappedPhase = imgTmp1;
 		unwrappedPhase = imgTmp2;
@@ -193,8 +194,8 @@ void PMPTrans::on_pushButton1_clicked()
 		normalize(wrappedPhase, wrappedPhaseNormal, 0, 1, CV_MINMAX);
 		normalize(unwrappedPhase, unwrappedPhaseNormal, 0, 1, CV_MINMAX);
 
-		Mat imgDisplay3 = wrappedPhaseNormal;
-		Mat imgDisplay4 = unwrappedPhaseNormal;
+		cv::Mat imgDisplay3 = wrappedPhaseNormal;
+		cv::Mat imgDisplay4 = unwrappedPhaseNormal;
 
 		for (int i = 0; i < imgDisplay3.rows; ++i)
 		{
@@ -211,8 +212,8 @@ void PMPTrans::on_pushButton1_clicked()
 		LabelDisplayMat(imgDisplay4, ui.label4_2);
 		LabelDisplayMat(imgDisplay3, ui.label4_1);
 
-		Mat imgDisplay1 = phaseFG;
-		Mat imgDisplay2 = phaseBG;
+		cv::Mat imgDisplay1 = phaseFG;
+		cv::Mat imgDisplay2 = phaseBG;
 
 		normalize(imgDisplay1, imgDisplay1, 0, 1, CV_MINMAX);
 		normalize(imgDisplay2, imgDisplay2, 0, 1, CV_MINMAX);
@@ -247,6 +248,28 @@ void PMPTrans::on_pushButton2_clicked()
 		ui.tabWidget->setCurrentIndex(3);
 	else
 		emit signalNotGetP();
+}
+
+//三维重建
+void PMPTrans::on_pushButton3_clicked()
+{
+	cv::Mat imgDisplay(unwrappedPhase.rows, unwrappedPhase.cols, CV_64FC1);
+	unwrappedPhase.convertTo(imgDisplay, CV_64FC1);
+
+	for (int i = 0; i < imgDisplay.rows; ++i)
+	{
+		for (int j = 0; j < imgDisplay.cols; ++j)
+		{
+			imgDisplay.at<double>(i, j) *= 20.0;
+		}
+	}
+
+	QSplitter* spl = new QSplitter(Qt::Horizontal, this);
+	Plot* plot = new Plot(spl, imgDisplay);
+
+	spl->resize(440, 350);
+	spl->move(920, 100);
+	spl->show();
 }
 
 void PMPTrans::on_actionFTP_triggered()
