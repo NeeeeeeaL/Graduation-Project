@@ -88,6 +88,7 @@
     <ClCompile Include="display.cpp" />
     <ClCompile Include="imageProcess.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mythread.cpp" />
     <ClCompile Include="pmpTrans.cpp" />
     <ClCompile Include="Reconstruction.cpp" />
     <ClCompile Include="unwrap.cpp" />
@@ -108,6 +109,7 @@
     <QtMoc Include="welcome.h" />
     <QtMoc Include="pmpTrans.h" />
     <ClInclude Include="display.h" />
+    <QtMoc Include="mythread.h" />
     <ClInclude Include="unwrap.h" />
     <ClInclude Include="imageProcess.h" />
     <ClInclude Include="resource.h" />

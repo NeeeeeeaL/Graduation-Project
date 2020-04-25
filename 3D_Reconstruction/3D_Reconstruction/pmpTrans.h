@@ -60,6 +60,7 @@ signals:
 	void signalSwitch();
 	void signalNotOpen();
 	void signalNotGetP();
+	void signalNotUnwrap();
 
 public slots:
 

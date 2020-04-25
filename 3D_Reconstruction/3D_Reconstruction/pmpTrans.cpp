@@ -27,6 +27,10 @@ PMPTrans::PMPTrans(QWidget *parent)
 	statusBar()->addWidget(ui.labelStatus, 4);
 	statusBar()->addWidget(ui.progressBar, 1);
 	ui.labelStatus->setText("Ready");
+	ui.progressBar->setVisible(true);
+	ui.progressBar->setMinimum(0);
+	ui.progressBar->setMaximum(100);
+	ui.progressBar->reset();
 
 	//将窗口移动到合适的位置
 	this->move(120, 40);
@@ -162,11 +166,14 @@ void PMPTrans::on_pushButton1_clicked()
 {
 	if (isOpen == true)
 	{
+		ui.labelStatus->setText("Getting phase...");
+		ui.progressBar->setValue(10);
+
 		ImageProcess getP;
 
 		phaseFG = getP.getPhase(imgSrc1, imgSrc2, imgSrc3, imgSrc4);
 		phaseBG = getP.getPhase(imgSrc5, imgSrc6, imgSrc7, imgSrc8);
-
+		ui.progressBar->setValue(20);
 
 		/********解包裹*******/
 
@@ -174,10 +181,10 @@ void PMPTrans::on_pushButton1_clicked()
 		cv::Mat imgTmp2(imgSrc1.rows, imgSrc1.cols, CV_32F, cv::Scalar(0));
 		cv::Mat wrappedPhaseNormal(imgSrc1.rows, imgSrc1.cols, CV_64F, cv::Scalar(0));
 		cv::Mat unwrappedPhaseNormal(imgSrc1.rows, imgSrc1.cols, CV_32F, cv::Scalar(0));
-
+		ui.progressBar->setValue(30);
 		wrappedPhase = imgTmp1;
 		unwrappedPhase = imgTmp2;
-
+		ui.progressBar->setValue(40);
 		for (int i = 0; i < wrappedPhase.rows; ++i)
 		{
 			for (int j = 0; j < wrappedPhase.cols; ++j)
@@ -186,11 +193,11 @@ void PMPTrans::on_pushButton1_clicked()
 
 			}
 		}
-
+		ui.progressBar->setValue(50);
 		unwrap(wrappedPhase, unwrappedPhase);
 
 		unwrappedPhase = abs(unwrappedPhase);
-
+		ui.progressBar->setValue(70);
 		normalize(wrappedPhase, wrappedPhaseNormal, 0, 1, CV_MINMAX);
 		normalize(unwrappedPhase, unwrappedPhaseNormal, 0, 1, CV_MINMAX);
 
@@ -205,7 +212,7 @@ void PMPTrans::on_pushButton1_clicked()
 				imgDisplay4.at<float>(i, j) *= 255.0;
 			}
 		}
-
+		ui.progressBar->setValue(80);
 		imgDisplay4.convertTo(imgDisplay4, CV_8U);
 		imgDisplay3.convertTo(imgDisplay3, CV_8U);
 
@@ -214,9 +221,12 @@ void PMPTrans::on_pushButton1_clicked()
 
 		cv::Mat imgDisplay1 = phaseFG;
 		cv::Mat imgDisplay2 = phaseBG;
+		ui.progressBar->setValue(100);
 
 		normalize(imgDisplay1, imgDisplay1, 0, 1, CV_MINMAX);
 		normalize(imgDisplay2, imgDisplay2, 0, 1, CV_MINMAX);
+		ui.progressBar->reset();
+		ui.labelStatus->setText("Ready");
 
 		for (int i = 0; i < imgDisplay1.rows; ++i)
 		{
@@ -245,7 +255,14 @@ void PMPTrans::on_pushButton1_clicked()
 void PMPTrans::on_pushButton2_clicked()
 {
 	if (isGetP == true)
+	{
+		ui.labelStatus->setText("unwrap...");
+		Sleep(0.5);
 		ui.tabWidget->setCurrentIndex(3);
+		ui.labelStatus->setText("Ready");
+		isUnwrap = true;
+	}
+		
 	else
 		emit signalNotGetP();
 }
@@ -253,23 +270,40 @@ void PMPTrans::on_pushButton2_clicked()
 //三维重建
 void PMPTrans::on_pushButton3_clicked()
 {
-	cv::Mat imgDisplay(unwrappedPhase.rows, unwrappedPhase.cols, CV_64FC1);
-	unwrappedPhase.convertTo(imgDisplay, CV_64FC1);
-
-	for (int i = 0; i < imgDisplay.rows; ++i)
+	if (isUnwrap == true)
 	{
-		for (int j = 0; j < imgDisplay.cols; ++j)
+		ui.labelStatus->setText("Reconstructing...");
+		ui.progressBar->setValue(10);
+		cv::Mat imgDisplay(unwrappedPhase.rows, unwrappedPhase.cols, CV_64FC1);
+		unwrappedPhase.convertTo(imgDisplay, CV_64FC1);
+		ui.progressBar->setValue(30);
+		for (int i = 0; i < imgDisplay.rows; ++i)
 		{
-			imgDisplay.at<double>(i, j) *= 20.0;
+			for (int j = 0; j < imgDisplay.cols; ++j)
+			{
+				imgDisplay.at<double>(i, j) *= 20.0;
+			}
+			if (i == imgDisplay.rows / 2)
+				ui.progressBar->setValue(50);
 		}
+		Sleep(0.5);
+		ui.progressBar->setValue(70);
+		QSplitter* spl = new QSplitter(Qt::Horizontal, this);
+		Plot* plot = new Plot(spl, imgDisplay);
+
+		ui.progressBar->setValue(80);
+		spl->resize(440, 350);
+		spl->move(920, 100);
+		ui.progressBar->setValue(90);
+		spl->show();
+		ui.progressBar->setValue(100);
+		Sleep(0.5);
+		ui.progressBar->reset();
+		ui.labelStatus->setText("Ready");
 	}
+	else
+		emit signalNotUnwrap();
 
-	QSplitter* spl = new QSplitter(Qt::Horizontal, this);
-	Plot* plot = new Plot(spl, imgDisplay);
-
-	spl->resize(440, 350);
-	spl->move(920, 100);
-	spl->show();
 }
 
 void PMPTrans::on_actionFTP_triggered()

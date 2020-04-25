@@ -6,6 +6,7 @@
 #include <opencv2\highgui\highgui.hpp>
 #include <opencv2\imgproc\imgproc.hpp>
 #include <iostream>
+#include "mythread.h"
 #include "pmpTrans.h"
 #include "welcome.h"
 
@@ -24,6 +25,12 @@ public:
 	void dealChild();
 	void dealNotOpen();
 	void dealNotGetP();
+	void dealNotUnwrap();
+
+	//线程相关处理函数
+	void dealEndPlot();
+	void killThread();
+	void dealTransmit();
 
 protected:
 	//重写绘图事件，虚函数
@@ -33,12 +40,15 @@ protected:
 
 	void LabelDisplayMat(cv::Mat& mat_img, QLabel* label);
 
+
 private:
 	Ui::ReconstructionClass ui;
 
 	PMPTrans windowPMP;
 	Welcome welcomeW;
 	QSqlTableModel *model;
+
+	MyThread *thread;//线程对象
 
 private:
 	//判断按钮是否按过标志位
@@ -70,6 +80,7 @@ public:
 	cv::Mat wrappedPhase;
 	cv::Mat unwrappedPhase;
 
+
 public slots:
 
 //图像处理操作按钮槽函数
@@ -89,3 +100,22 @@ void on_actionSave_triggered();
 void on_actionPMP_triggered();
 
 };
+
+
+//class MyThread : public QThread
+//{
+//	Q_OBJECT
+//
+//public:
+//	MyThread(QObject *parent);
+//	~MyThread();
+//
+//protected:
+//	//线程处理函数
+//	//只能通过start间接调用，不能直接调用
+//	void run();
+//
+//signals:
+//	void signalEndPlot();
+//};
+

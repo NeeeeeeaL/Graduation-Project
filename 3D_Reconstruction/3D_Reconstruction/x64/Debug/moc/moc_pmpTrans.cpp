@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_PMPTrans_t {
-    QByteArrayData data[10];
-    char stringdata0[167];
+    QByteArrayData data[11];
+    char stringdata0[183];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,17 +36,19 @@ QT_MOC_LITERAL(1, 9, 12), // "signalSwitch"
 QT_MOC_LITERAL(2, 22, 0), // ""
 QT_MOC_LITERAL(3, 23, 13), // "signalNotOpen"
 QT_MOC_LITERAL(4, 37, 13), // "signalNotGetP"
-QT_MOC_LITERAL(5, 51, 22), // "on_actionFTP_triggered"
-QT_MOC_LITERAL(6, 74, 23), // "on_actionOpen_triggered"
-QT_MOC_LITERAL(7, 98, 22), // "on_pushButton1_clicked"
-QT_MOC_LITERAL(8, 121, 22), // "on_pushButton2_clicked"
-QT_MOC_LITERAL(9, 144, 22) // "on_pushButton3_clicked"
+QT_MOC_LITERAL(5, 51, 15), // "signalNotUnwrap"
+QT_MOC_LITERAL(6, 67, 22), // "on_actionFTP_triggered"
+QT_MOC_LITERAL(7, 90, 23), // "on_actionOpen_triggered"
+QT_MOC_LITERAL(8, 114, 22), // "on_pushButton1_clicked"
+QT_MOC_LITERAL(9, 137, 22), // "on_pushButton2_clicked"
+QT_MOC_LITERAL(10, 160, 22) // "on_pushButton3_clicked"
 
     },
     "PMPTrans\0signalSwitch\0\0signalNotOpen\0"
-    "signalNotGetP\0on_actionFTP_triggered\0"
-    "on_actionOpen_triggered\0on_pushButton1_clicked\0"
-    "on_pushButton2_clicked\0on_pushButton3_clicked"
+    "signalNotGetP\0signalNotUnwrap\0"
+    "on_actionFTP_triggered\0on_actionOpen_triggered\0"
+    "on_pushButton1_clicked\0on_pushButton2_clicked\0"
+    "on_pushButton3_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -56,26 +58,28 @@ static const uint qt_meta_data_PMPTrans[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       3,       // signalCount
+       4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   54,    2, 0x06 /* Public */,
-       3,    0,   55,    2, 0x06 /* Public */,
-       4,    0,   56,    2, 0x06 /* Public */,
+       1,    0,   59,    2, 0x06 /* Public */,
+       3,    0,   60,    2, 0x06 /* Public */,
+       4,    0,   61,    2, 0x06 /* Public */,
+       5,    0,   62,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       5,    0,   57,    2, 0x0a /* Public */,
-       6,    0,   58,    2, 0x0a /* Public */,
-       7,    0,   59,    2, 0x0a /* Public */,
-       8,    0,   60,    2, 0x0a /* Public */,
-       9,    0,   61,    2, 0x0a /* Public */,
+       6,    0,   63,    2, 0x0a /* Public */,
+       7,    0,   64,    2, 0x0a /* Public */,
+       8,    0,   65,    2, 0x0a /* Public */,
+       9,    0,   66,    2, 0x0a /* Public */,
+      10,    0,   67,    2, 0x0a /* Public */,
 
  // signals: parameters
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -99,11 +103,12 @@ void PMPTrans::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 0: _t->signalSwitch(); break;
         case 1: _t->signalNotOpen(); break;
         case 2: _t->signalNotGetP(); break;
-        case 3: _t->on_actionFTP_triggered(); break;
-        case 4: _t->on_actionOpen_triggered(); break;
-        case 5: _t->on_pushButton1_clicked(); break;
-        case 6: _t->on_pushButton2_clicked(); break;
-        case 7: _t->on_pushButton3_clicked(); break;
+        case 3: _t->signalNotUnwrap(); break;
+        case 4: _t->on_actionFTP_triggered(); break;
+        case 5: _t->on_actionOpen_triggered(); break;
+        case 6: _t->on_pushButton1_clicked(); break;
+        case 7: _t->on_pushButton2_clicked(); break;
+        case 8: _t->on_pushButton3_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -126,6 +131,13 @@ void PMPTrans::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
             typedef void (PMPTrans::*_t)();
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&PMPTrans::signalNotGetP)) {
                 *result = 2;
+                return;
+            }
+        }
+        {
+            typedef void (PMPTrans::*_t)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&PMPTrans::signalNotUnwrap)) {
+                *result = 3;
                 return;
             }
         }
@@ -158,13 +170,13 @@ int PMPTrans::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 9)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }
@@ -185,6 +197,12 @@ void PMPTrans::signalNotOpen()
 void PMPTrans::signalNotGetP()
 {
     QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
+}
+
+// SIGNAL 3
+void PMPTrans::signalNotUnwrap()
+{
+    QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

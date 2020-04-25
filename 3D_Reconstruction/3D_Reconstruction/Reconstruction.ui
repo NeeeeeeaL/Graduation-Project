@@ -27,6 +27,9 @@
   <property name="windowTitle">
    <string>3D-Reconstruction</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
   <property name="animated">
    <bool>true</bool>
   </property>
@@ -72,7 +75,7 @@
       <rect>
        <x>0</x>
        <y>40</y>
-       <width>231</width>
+       <width>201</width>
        <height>391</height>
       </rect>
      </property>
@@ -87,7 +90,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>231</width>
+        <width>201</width>
         <height>319</height>
        </rect>
       </property>
@@ -144,8 +147,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>115</width>
-        <height>52</height>
+        <width>201</width>
+        <height>319</height>
        </rect>
       </property>
       <attribute name="label">
@@ -212,7 +215,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab_7">
      <attribute name="title">
@@ -724,6 +727,31 @@
       <height>351</height>
      </rect>
     </property>
+    <widget class="QComboBox" name="comboBox">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>40</y>
+       <width>87</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>系统标定</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>傅里叶轮廓术</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>相移轮廓术</string>
+      </property>
+     </item>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

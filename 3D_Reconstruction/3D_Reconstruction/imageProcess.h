@@ -7,7 +7,6 @@
 #include <opencv2\imgproc\imgproc.hpp>
 #include <vector>
 
-
 using namespace std;
 
 class ImageProcess

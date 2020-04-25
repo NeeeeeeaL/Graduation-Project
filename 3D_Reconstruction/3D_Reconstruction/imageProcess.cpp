@@ -138,8 +138,6 @@ void ImageProcess::filt(const cv::Mat & src, cv::Mat & imgFilt)
 		}
 	}
 
-	//showImg("Hann", hann);
-
 	//滤波
 	const int imgRows = src.rows;
 	const int imgCols = src.cols;
@@ -166,6 +164,7 @@ void ImageProcess::filt(const cv::Mat & src, cv::Mat & imgFilt)
 	}
 
 	merge(filtPlanes, 2, imgFilt); //CV_64FC2
+
 }
 
 //将双通道图像转为单通道显示

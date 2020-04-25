@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
@@ -103,6 +104,7 @@ public:
     QPushButton *pushButton_11;
     QLabel *label_10;
     QWidget *widget;
+    QComboBox *comboBox;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuswitchTo;
@@ -119,6 +121,7 @@ public:
         font.setFamily(QString::fromUtf8(".\350\213\271\346\226\271-\347\256\200"));
         ReconstructionClass->setFont(font);
         ReconstructionClass->setMouseTracking(true);
+        ReconstructionClass->setAutoFillBackground(false);
         ReconstructionClass->setAnimated(true);
         actionOpen = new QAction(ReconstructionClass);
         actionOpen->setObjectName(QStringLiteral("actionOpen"));
@@ -140,11 +143,11 @@ public:
         frame->setFrameShadow(QFrame::Raised);
         toolBox = new QToolBox(frame);
         toolBox->setObjectName(QStringLiteral("toolBox"));
-        toolBox->setGeometry(QRect(0, 40, 231, 391));
+        toolBox->setGeometry(QRect(0, 40, 201, 391));
         toolBox->setAutoFillBackground(false);
         page = new QWidget();
         page->setObjectName(QStringLiteral("page"));
-        page->setGeometry(QRect(0, 0, 231, 319));
+        page->setGeometry(QRect(0, 0, 201, 319));
         gridLayout_2 = new QGridLayout(page);
         gridLayout_2->setSpacing(6);
         gridLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -182,7 +185,7 @@ public:
         toolBox->addItem(page, QStringLiteral("Page 1"));
         page_2 = new QWidget();
         page_2->setObjectName(QStringLiteral("page_2"));
-        page_2->setGeometry(QRect(0, 0, 115, 52));
+        page_2->setGeometry(QRect(0, 0, 201, 319));
         gridLayout_3 = new QGridLayout(page_2);
         gridLayout_3->setSpacing(6);
         gridLayout_3->setContentsMargins(11, 11, 11, 11);
@@ -371,6 +374,9 @@ public:
         widget = new QWidget(centralWidget);
         widget->setObjectName(QStringLiteral("widget"));
         widget->setGeometry(QRect(980, 70, 441, 351));
+        comboBox = new QComboBox(widget);
+        comboBox->setObjectName(QStringLiteral("comboBox"));
+        comboBox->setGeometry(QRect(210, 40, 87, 22));
         ReconstructionClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(ReconstructionClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -403,7 +409,7 @@ public:
         retranslateUi(ReconstructionClass);
 
         toolBox->setCurrentIndex(0);
-        tabWidget1->setCurrentIndex(0);
+        tabWidget1->setCurrentIndex(2);
         tabWidget2->setCurrentIndex(0);
 
 
@@ -465,6 +471,12 @@ public:
         pushButton_10->setText(QApplication::translate("ReconstructionClass", "\345\201\234\346\255\242\351\207\207\351\233\206", Q_NULLPTR));
         pushButton_11->setText(QApplication::translate("ReconstructionClass", "\344\277\235\345\255\230", Q_NULLPTR));
         label_10->setText(QApplication::translate("ReconstructionClass", "\346\225\260\346\215\256\347\273\237\350\256\241", Q_NULLPTR));
+        comboBox->clear();
+        comboBox->insertItems(0, QStringList()
+         << QApplication::translate("ReconstructionClass", "\347\263\273\347\273\237\346\240\207\345\256\232", Q_NULLPTR)
+         << QApplication::translate("ReconstructionClass", "\345\202\205\351\207\214\345\217\266\350\275\256\345\273\223\346\234\257", Q_NULLPTR)
+         << QApplication::translate("ReconstructionClass", "\347\233\270\347\247\273\350\275\256\345\273\223\346\234\257", Q_NULLPTR)
+        );
         menuFile->setTitle(QApplication::translate("ReconstructionClass", "File", Q_NULLPTR));
         menuswitchTo->setTitle(QApplication::translate("ReconstructionClass", "SwitchTo", Q_NULLPTR));
     } // retranslateUi

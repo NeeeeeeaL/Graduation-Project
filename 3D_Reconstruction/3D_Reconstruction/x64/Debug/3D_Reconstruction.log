@@ -1,3 +1,25 @@
-﻿  pmpTrans.cpp
+﻿  Reading Qt configuration (C:\Qt\Qt5.9.8\5.9.8\msvc2015_64\bin\qmake.exe)
+  uic pmpTrans.ui
+  uic Reconstruction.ui
+  uic welcome.ui
+  rcc Reconstruction.qrc
+  moc Reconstruction.h
+  moc welcome.h
+  moc pmpTrans.h
+  moc mythread.h
+  display.cpp
+  imageProcess.cpp
+  main.cpp
+  mythread.cpp
+  pmpTrans.cpp
+  Reconstruction.cpp
+  unwrap.cpp
+  welcome.cpp
+d:\work\毕业设计\毕业设计_余锦淼\code\3d_reconstruction\3d_reconstruction\unwrap.cpp(138): warning C4715: “find_pivot”: 不是所有的控件路径都返回值
+  qrc_Reconstruction.cpp
+  moc_Reconstruction.cpp
+  moc_welcome.cpp
+  moc_pmpTrans.cpp
+  moc_mythread.cpp
   3D_Reconstruction.vcxproj -> D:\Work\毕业设计\毕业设计_余锦淼\code\3D_Reconstruction\x64\Debug\3D_Reconstruction.exe
   3D_Reconstruction.vcxproj -> D:\Work\毕业设计\毕业设计_余锦淼\code\3D_Reconstruction\x64\Debug\3D_Reconstruction.pdb (Full PDB)

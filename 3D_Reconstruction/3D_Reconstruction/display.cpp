@@ -32,8 +32,8 @@ Plot::Plot(QWidget* pw, cv::Mat & m)
 	setScale(1, 1, 1);
 	setShift(0.15, 0, 0);
 	setZoom(0.9);
-	setMeshColor(RGBA(0.1, 0.5, 1));
-	setBackgroundColor(RGBA(1, 1, 157. / 255));
+	setMeshColor(RGBA(33. / 255, 64. / 255, 102. / 255));
+	setBackgroundColor(RGBA(214. / 255, 219. /255, 233. / 255));
 	setCoordinateStyle(FRAME);
 	setPlotStyle(Qwt3D::POINTS);
 	setFloorStyle(NOFLOOR);

@@ -114,6 +114,8 @@ Reconstruction::Reconstruction(QWidget *parent)
 	ui.progressBar->setMaximum(100);
 	ui.progressBar->reset();
 
+	//线程初始化
+	thread = new MyThread(this);
 
 	//将窗口移动到合适的位置
 	this->move(120, 40);
@@ -130,7 +132,11 @@ Reconstruction::Reconstruction(QWidget *parent)
 	connect(&windowPMP, &PMPTrans::signalSwitch, this, &Reconstruction::dealChild);
 	connect(&windowPMP, &PMPTrans::signalNotOpen, this, &Reconstruction::dealNotOpen);
 	connect(&windowPMP, &PMPTrans::signalNotGetP, this, &Reconstruction::dealNotGetP);
+	connect(&windowPMP, &PMPTrans::signalNotUnwrap, this, &Reconstruction::dealNotUnwrap);
 
+	//线程相关
+	connect(thread, &MyThread::signalEndPlot, this, &Reconstruction::dealEndPlot);
+	connect(thread, &MyThread::signalEndPlot, this, &Reconstruction::killThread);
 	
 }
 
@@ -152,6 +158,31 @@ void Reconstruction::dealNotGetP()
 {
 	QMessageBox::about(this, codecParent->toUnicode("提示"), codecParent->toUnicode("还未求相位！"));
 
+}
+
+void Reconstruction::dealNotUnwrap()
+{
+	QMessageBox::about(this, codecParent->toUnicode("提示"), codecParent->toUnicode("还未解包裹！"));
+
+}
+
+//关闭进度条
+void Reconstruction::dealEndPlot()
+{
+	ui.progressBar->setVisible(false);
+}
+
+//关闭进程
+void Reconstruction::killThread()
+{
+	thread->quit();
+
+	//等待线程完全停止
+	thread->wait();
+}
+
+void Reconstruction::dealTransmit()
+{
 }
 
 //绘图程序中尽量不要进行复杂的数据处理
@@ -204,6 +235,7 @@ void Reconstruction::LabelDisplayMat(cv::Mat & mat_img, QLabel * label)
 	label->setPixmap(fitpixmap);
 	label->setAlignment(Qt::AlignCenter);//图片居中显示
 }
+
 
 //离散傅里叶变换
 void Reconstruction::on_pushButton_clicked()
@@ -637,8 +669,7 @@ void Reconstruction::on_pushButton_5_clicked()
 
 		ui.progressBar->reset();
 		ui.labelStatus->setText("Ready");
-		ui.progressBar->setVisible(false);
-
+		
 		isUnwrap = true;
 	}
 	else
@@ -649,9 +680,13 @@ void Reconstruction::on_pushButton_5_clicked()
 //三维重建
 void Reconstruction::on_pushButton_6_clicked()
 {
+	ui.labelStatus->setText("Reconstructing...");
+
+	ui.progressBar->setValue(10);
 	cv::Mat imgDisplay(unwrappedPhase.rows, unwrappedPhase.cols, CV_64FC1);
 	unwrappedPhase.convertTo(imgDisplay, CV_64FC1);
 
+	ui.progressBar->setValue(20);
 	for (int i = 0; i < imgDisplay.rows; ++i)
 	{
 		for (int j = 0; j < imgDisplay.cols; ++j)
@@ -660,12 +695,23 @@ void Reconstruction::on_pushButton_6_clicked()
 		}
 	}
 
+	ui.progressBar->setValue(40);
+
 	QSplitter* spl = new QSplitter(Qt::Horizontal, this);
 	Plot* plot = new Plot(spl, imgDisplay);
 
+	ui.progressBar->setValue(80);
+
 	spl->resize(440, 350);
 	spl->move(980, 100);
+	ui.progressBar->setValue(90);
+	
 	spl->show();
+	ui.progressBar->setValue(100);
+	Sleep(1);
+	ui.progressBar->reset();
+	ui.labelStatus->setText("Ready");
+
 }
 
 //One Step
@@ -954,4 +1000,22 @@ void Reconstruction::on_actionPMP_triggered()
 	windowPMP.show();
 	this->hide();
 }
+
+//MyThread::MyThread(QObject *parent)
+//	: QThread(parent)
+//{
+//}
+//
+//MyThread::~MyThread()
+//{
+//}
+//
+//
+//void MyThread::run()
+//{
+//	//复杂的数据处理
+//	
+//	//处理完成
+//	emit signalEndPlot();
+//}
 
