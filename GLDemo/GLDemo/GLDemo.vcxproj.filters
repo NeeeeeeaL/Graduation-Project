@@ -31,9 +31,21 @@
     <ClCompile Include="gldemo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="childtest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mywidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="gldemo.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="childtest.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="mywidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -43,8 +55,14 @@
     </QtRcc>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="gldemo.h">
+    <QtMoc Include="childtest.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
+    </QtMoc>
+    <QtMoc Include="gldemo.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="mywidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>

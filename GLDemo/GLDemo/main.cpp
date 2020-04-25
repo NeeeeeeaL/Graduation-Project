@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
 	GLDemo w;
-	w.resize(QSize(800, 400));
+	//w.resize(QSize(800, 400));
 	w.show();
 
 	

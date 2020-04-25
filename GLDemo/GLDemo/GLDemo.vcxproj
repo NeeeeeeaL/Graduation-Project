@@ -86,17 +86,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="childtest.cpp" />
     <ClCompile Include="gldemo.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mywidget.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="gldemo.h" />
+    <QtMoc Include="childtest.h" />
+    <QtMoc Include="gldemo.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="childtest.ui" />
     <QtUic Include="gldemo.ui" />
+    <QtUic Include="mywidget.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="gldemo.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="mywidget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

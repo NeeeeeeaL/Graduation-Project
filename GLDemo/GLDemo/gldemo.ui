@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>740</width>
-    <height>491</height>
+    <width>853</width>
+    <height>564</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,17 +15,47 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QWidget" name="widget" native="true">
-      <property name="autoFillBackground">
-       <bool>true</bool>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>子窗口</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="1">
-     <widget class="QLabel" name="label">
+    <item row="0" column="0">
+     <widget class="QCalendarWidget" name="calendarWidget"/>
+    </item>
+    <item row="1" column="3">
+     <widget class="QComboBox" name="comboBox">
+      <item>
+       <property name="text">
+        <string>数码管</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>日期</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="pushButton2">
       <property name="text">
-       <string>TextLabel</string>
+       <string>回主界面</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1" colspan="3">
+     <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <family>.PingFang HK</family>
+        <pointsize>24</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>啦啦啦</string>
       </property>
      </widget>
     </item>
@@ -36,7 +66,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>740</width>
+     <width>853</width>
      <height>26</height>
     </rect>
    </property>
