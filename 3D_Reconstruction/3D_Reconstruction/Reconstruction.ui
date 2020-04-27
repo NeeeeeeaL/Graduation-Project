@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1440</width>
+    <width>1800</width>
     <height>960</height>
    </rect>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1440</width>
+    <width>1800</width>
     <height>960</height>
    </size>
   </property>
@@ -61,6 +61,11 @@
       <height>431</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>.苹方-简</family>
+     </font>
+    </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
@@ -74,16 +79,21 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>40</y>
+       <y>120</y>
        <width>201</width>
-       <height>391</height>
+       <height>311</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>.苹方-简</family>
+      </font>
      </property>
      <property name="autoFillBackground">
       <bool>false</bool>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="page">
       <property name="geometry">
@@ -91,7 +101,7 @@
         <x>0</x>
         <y>0</y>
         <width>201</width>
-        <height>319</height>
+        <height>239</height>
        </rect>
       </property>
       <attribute name="label">
@@ -100,6 +110,11 @@
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="1" column="0">
         <widget class="QPushButton" name="pushButton_2">
+         <property name="font">
+          <font>
+           <family>.苹方-简</family>
+          </font>
+         </property>
          <property name="text">
           <string>滤波</string>
          </property>
@@ -107,6 +122,11 @@
        </item>
        <item row="2" column="0">
         <widget class="QPushButton" name="pushButton_3">
+         <property name="font">
+          <font>
+           <family>.苹方-简</family>
+          </font>
+         </property>
          <property name="text">
           <string>离散傅里叶反变换</string>
          </property>
@@ -114,6 +134,11 @@
        </item>
        <item row="0" column="0">
         <widget class="QPushButton" name="pushButton">
+         <property name="font">
+          <font>
+           <family>.苹方-简</family>
+          </font>
+         </property>
          <property name="text">
           <string>离散傅里叶变换</string>
          </property>
@@ -121,6 +146,11 @@
        </item>
        <item row="3" column="0">
         <widget class="QPushButton" name="pushButton_4">
+         <property name="font">
+          <font>
+           <family>.苹方-简</family>
+          </font>
+         </property>
          <property name="text">
           <string>求相位</string>
          </property>
@@ -128,6 +158,11 @@
        </item>
        <item row="4" column="0">
         <widget class="QPushButton" name="pushButton_5">
+         <property name="font">
+          <font>
+           <family>.苹方-简</family>
+          </font>
+         </property>
          <property name="text">
           <string>解相位</string>
          </property>
@@ -135,6 +170,11 @@
        </item>
        <item row="5" column="0">
         <widget class="QPushButton" name="pushButton_6">
+         <property name="font">
+          <font>
+           <family>.苹方-简</family>
+          </font>
+         </property>
          <property name="text">
           <string>重建三维模型</string>
          </property>
@@ -148,7 +188,7 @@
         <x>0</x>
         <y>0</y>
         <width>201</width>
-        <height>319</height>
+        <height>239</height>
        </rect>
       </property>
       <attribute name="label">
@@ -157,6 +197,9 @@
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="0">
         <widget class="QPushButton" name="pushButton_7">
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>One Step</string>
          </property>
@@ -168,14 +211,15 @@
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>60</x>
-       <y>0</y>
+       <x>40</x>
+       <y>80</y>
        <width>121</width>
        <height>31</height>
       </rect>
      </property>
      <property name="font">
       <font>
+       <family>.苹方-简</family>
        <pointsize>10</pointsize>
       </font>
      </property>
@@ -183,51 +227,162 @@
       <string>图像处理操作</string>
      </property>
     </widget>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>450</y>
-      <width>191</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::LeftToRight</enum>
-    </property>
-    <property name="text">
-     <string>调制光栅图像处理结果</string>
-    </property>
+    <widget class="QComboBox" name="comboBox">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>20</y>
+       <width>141</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox {
+    border: 1px solid gray;
+    border-radius: 4px;
+    padding: 1px 2px 1px 2px; 
+    min-width: 9em; 
+    border-image:：url(:/Reconstruction/Resources/myico.ico)
+}</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>三维重建预览</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>统计与分析</string>
+      </property>
+     </item>
+    </widget>
    </widget>
    <widget class="QTabWidget" name="tabWidget1">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>250</x>
       <y>40</y>
-      <width>660</width>
-      <height>380</height>
+      <width>1520</width>
+      <height>800</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>.苹方-简</family>
+     </font>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::DefaultContextMenu</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+
+QTabWidget::tab-bar{ alignment: center;}
+QTabBar::tab:selected{ background-color: rgb(0, 122, 255);color: white; }
+
+QTabBar::tab{ width: 120px; height:25px; border-radius: 4px; margin-bottom: 6px;}​
+
+</string>
+    </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_7">
+     <property name="font">
+      <font/>
+     </property>
      <attribute name="title">
       <string>原图</string>
      </attribute>
      <widget class="QLabel" name="labelImg1_1">
       <property name="geometry">
        <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>750</width>
+        <height>720</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font/>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelImg2_1">
+      <property name="geometry">
+       <rect>
+        <x>770</x>
+        <y>0</y>
+        <width>750</width>
+        <height>720</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font/>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>335</x>
+        <y>730</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font/>
+      </property>
+      <property name="text">
+       <string>原光栅图像</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>1100</x>
+        <y>730</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font/>
+      </property>
+      <property name="text">
+       <string>调制光栅图像</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_9">
+     <attribute name="title">
+      <string>滤波后频域图像</string>
+     </attribute>
+     <widget class="QLabel" name="labelImg1_3">
+      <property name="geometry">
+       <rect>
         <x>30</x>
         <y>0</y>
-        <width>600</width>
-        <height>340</height>
+        <width>511</width>
+        <height>741</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelImg2_3">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>10</y>
+        <width>541</width>
+        <height>731</height>
        </rect>
       </property>
       <property name="text">
@@ -244,26 +399,21 @@
        <rect>
         <x>30</x>
         <y>0</y>
-        <width>600</width>
-        <height>340</height>
+        <width>531</width>
+        <height>751</height>
        </rect>
       </property>
       <property name="text">
        <string>TextLabel</string>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tab_9">
-     <attribute name="title">
-      <string>滤波后频域图像</string>
-     </attribute>
-     <widget class="QLabel" name="labelImg1_3">
+     <widget class="QLabel" name="labelImg2_2">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>0</y>
-        <width>600</width>
-        <height>340</height>
+        <x>599</x>
+        <y>20</y>
+        <width>541</width>
+        <height>721</height>
        </rect>
       </property>
       <property name="text">
@@ -280,8 +430,21 @@
        <rect>
         <x>30</x>
         <y>0</y>
-        <width>600</width>
-        <height>340</height>
+        <width>541</width>
+        <height>741</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelImg2_4">
+      <property name="geometry">
+       <rect>
+        <x>620</x>
+        <y>10</y>
+        <width>521</width>
+        <height>741</height>
        </rect>
       </property>
       <property name="text">
@@ -296,10 +459,23 @@
      <widget class="QLabel" name="labelImg1_5">
       <property name="geometry">
        <rect>
-        <x>30</x>
+        <x>10</x>
         <y>0</y>
-        <width>600</width>
-        <height>340</height>
+        <width>571</width>
+        <height>731</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelImg2_5">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>10</y>
+        <width>541</width>
+        <height>711</height>
        </rect>
       </property>
       <property name="text">
@@ -316,8 +492,27 @@
        <rect>
         <x>30</x>
         <y>0</y>
-        <width>600</width>
-        <height>340</height>
+        <width>691</width>
+        <height>731</height>
+       </rect>
+      </property>
+      <property name="statusTip">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelImg2_6">
+      <property name="geometry">
+       <rect>
+        <x>780</x>
+        <y>10</y>
+        <width>711</width>
+        <height>731</height>
        </rect>
       </property>
       <property name="text">
@@ -329,14 +524,15 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>530</x>
+      <x>935</x>
       <y>10</y>
-      <width>191</width>
+      <width>171</width>
       <height>16</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>.苹方-简</family>
       <pointsize>10</pointsize>
      </font>
     </property>
@@ -347,268 +543,19 @@
      <string>参考平面图像处理结果</string>
     </property>
    </widget>
-   <widget class="QTabWidget" name="tabWidget2">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>480</y>
-      <width>660</width>
-      <height>380</height>
-     </rect>
-    </property>
-    <property name="currentIndex">
-     <number>0</number>
-    </property>
-    <widget class="QWidget" name="tab_14">
-     <attribute name="title">
-      <string>原图</string>
-     </attribute>
-     <widget class="QLabel" name="labelImg2_1">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>0</y>
-        <width>600</width>
-        <height>340</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_15">
-     <attribute name="title">
-      <string>频域图像</string>
-     </attribute>
-     <widget class="QLabel" name="labelImg2_2">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>0</y>
-        <width>600</width>
-        <height>340</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_16">
-     <attribute name="title">
-      <string>滤波后频域图像</string>
-     </attribute>
-     <widget class="QLabel" name="labelImg2_3">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>0</y>
-        <width>600</width>
-        <height>340</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_17">
-     <attribute name="title">
-      <string>滤波后空域图像</string>
-     </attribute>
-     <widget class="QLabel" name="labelImg2_4">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>0</y>
-        <width>600</width>
-        <height>340</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_18">
-     <attribute name="title">
-      <string>包裹相位图</string>
-     </attribute>
-     <widget class="QLabel" name="labelImg2_5">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>0</y>
-        <width>600</width>
-        <height>340</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_19">
-     <attribute name="title">
-      <string>解包裹相位图</string>
-     </attribute>
-     <widget class="QLabel" name="labelImg2_6">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>0</y>
-        <width>600</width>
-        <height>340</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </widget>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>1160</x>
-      <y>450</y>
-      <width>72</width>
-      <height>15</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>数据显示</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>1150</x>
-      <y>10</y>
-      <width>111</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>三维形貌显示</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QTableView" name="tableView">
-    <property name="geometry">
-     <rect>
-      <x>970</x>
-      <y>730</y>
-      <width>451</width>
-      <height>121</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textEdit">
-    <property name="geometry">
-     <rect>
-      <x>1190</x>
-      <y>540</y>
-      <width>171</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>1030</x>
-      <y>550</y>
-      <width>151</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>当前点坐标(mm)：</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textEdit_2">
-    <property name="geometry">
-     <rect>
-      <x>1190</x>
-      <y>590</y>
-      <width>171</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_7">
-    <property name="geometry">
-     <rect>
-      <x>1030</x>
-      <y>600</y>
-      <width>141</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>当前点高度(mm)：</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textEdit_3">
-    <property name="geometry">
-     <rect>
-      <x>1190</x>
-      <y>640</y>
-      <width>171</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_8">
-    <property name="geometry">
-     <rect>
-      <x>990</x>
-      <y>650</y>
-      <width>181</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>待测物体体积(mm^3)：</string>
-    </property>
-   </widget>
    <widget class="QProgressBar" name="progressBar">
     <property name="geometry">
      <rect>
-      <x>1230</x>
-      <y>850</y>
+      <x>1220</x>
+      <y>860</y>
       <width>181</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>.苹方-简</family>
+     </font>
     </property>
     <property name="layoutDirection">
      <enum>Qt::LeftToRight</enum>
@@ -637,6 +584,7 @@
     </property>
     <property name="font">
      <font>
+      <family>.苹方-简</family>
       <pointsize>10</pointsize>
      </font>
     </property>
@@ -653,6 +601,11 @@
       <height>211</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>.苹方-简</family>
+     </font>
+    </property>
     <property name="text">
      <string>TextLabel</string>
     </property>
@@ -666,9 +619,19 @@
       <height>101</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>.苹方-简</family>
+     </font>
+    </property>
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="0">
       <widget class="QPushButton" name="pushButton_8">
+       <property name="font">
+        <font>
+         <family>.苹方-简</family>
+        </font>
+       </property>
        <property name="text">
         <string>单帧采集</string>
        </property>
@@ -676,6 +639,11 @@
      </item>
      <item row="0" column="1">
       <widget class="QPushButton" name="pushButton_9">
+       <property name="font">
+        <font>
+         <family>.苹方-简</family>
+        </font>
+       </property>
        <property name="text">
         <string>连续采集</string>
        </property>
@@ -683,6 +651,11 @@
      </item>
      <item row="1" column="0">
       <widget class="QPushButton" name="pushButton_10">
+       <property name="font">
+        <font>
+         <family>.苹方-简</family>
+        </font>
+       </property>
        <property name="text">
         <string>停止采集</string>
        </property>
@@ -690,6 +663,11 @@
      </item>
      <item row="1" column="1">
       <widget class="QPushButton" name="pushButton_11">
+       <property name="font">
+        <font>
+         <family>.苹方-简</family>
+        </font>
+       </property>
        <property name="text">
         <string>保存</string>
        </property>
@@ -697,70 +675,14 @@
      </item>
     </layout>
    </widget>
-   <widget class="QLabel" name="label_10">
-    <property name="geometry">
-     <rect>
-      <x>1140</x>
-      <y>700</y>
-      <width>111</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>数据统计</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QWidget" name="widget" native="true">
-    <property name="geometry">
-     <rect>
-      <x>980</x>
-      <y>70</y>
-      <width>441</width>
-      <height>351</height>
-     </rect>
-    </property>
-    <widget class="QComboBox" name="comboBox">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>40</y>
-       <width>87</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <item>
-      <property name="text">
-       <string>系统标定</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>傅里叶轮廓术</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>相移轮廓术</string>
-      </property>
-     </item>
-    </widget>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1440</width>
-     <height>26</height>
+     <width>1800</width>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

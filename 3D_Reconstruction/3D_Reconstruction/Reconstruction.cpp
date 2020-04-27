@@ -91,15 +91,15 @@ Reconstruction::Reconstruction(QWidget *parent)
 	//窗体设置
 
 	//设置模型
-	model = new QSqlTableModel(this);
-	model->setTable("position");//指定admin数据表
+	//model = new QSqlTableModel(this);
+	//model->setTable("position");//指定admin数据表
 
 
 	//把model放在tabview
-	ui.tableView->setModel(model);
+	//ui.tableView->setModel(model);
 
 	//显示model的数据
-	model->select();
+	//model->select();
 
 
 	/***********************程序界面初始化设置***********************/
@@ -115,15 +115,18 @@ Reconstruction::Reconstruction(QWidget *parent)
 	ui.progressBar->reset();
 
 	//线程初始化
-	thread = new MyThread(this);
+	//thread = new MyThread(this);
 
 	//将窗口移动到合适的位置
-	this->move(120, 40);
+	this->move(50, 40);
 
 	//设置TabWidget的初始Tab
 	ui.tabWidget1->setCurrentIndex(0);
-	ui.tabWidget2->setCurrentIndex(0);
+	//ui.tabWidget2->setCurrentIndex(0);
 
+	//设置下拉框图标
+	QIcon icon("..//icon//myico.ico"); 
+	ui.comboBox->setItemIcon(0, icon);
 	//修改toolbox的page名称
 	ui.toolBox->setItemText(0, codecParent->toUnicode("手动处理"));
 	ui.toolBox->setItemText(1, codecParent->toUnicode("自动处理"));
@@ -135,8 +138,8 @@ Reconstruction::Reconstruction(QWidget *parent)
 	connect(&windowPMP, &PMPTrans::signalNotUnwrap, this, &Reconstruction::dealNotUnwrap);
 
 	//线程相关
-	connect(thread, &MyThread::signalEndPlot, this, &Reconstruction::dealEndPlot);
-	connect(thread, &MyThread::signalEndPlot, this, &Reconstruction::killThread);
+	//connect(thread, &MyThread::signalEndPlot, this, &Reconstruction::dealEndPlot);
+	//connect(thread, &MyThread::signalEndPlot, this, &Reconstruction::killThread);
 	
 }
 
@@ -293,7 +296,7 @@ void Reconstruction::on_pushButton_clicked()
 		LabelDisplayMat(imgDisplay2, ui.labelImg2_2);
 	
 		ui.tabWidget1->setCurrentIndex(1);
-		ui.tabWidget2->setCurrentIndex(1);
+		//ui.tabWidget2->setCurrentIndex(1);
 
 		ui.progressBar->reset();
 
@@ -354,7 +357,7 @@ void Reconstruction::on_pushButton_2_clicked()
 		LabelDisplayMat(imgDisplay2, ui.labelImg2_3);
 
 		ui.tabWidget1->setCurrentIndex(2);
-		ui.tabWidget2->setCurrentIndex(2);
+		//ui.tabWidget2->setCurrentIndex(2);
 
 		ui.progressBar->reset();
 		ui.labelStatus->setText("Ready");
@@ -439,7 +442,7 @@ void Reconstruction::on_pushButton_3_clicked()
 		cout << "imgOriginal_ifft.type = " << imgOriginal_ifft.type() << endl;
 
 		ui.tabWidget1->setCurrentIndex(3);
-		ui.tabWidget2->setCurrentIndex(3);
+		//ui.tabWidget2->setCurrentIndex(3);
 
 		ui.progressBar->reset();
 		ui.labelStatus->setText("Ready");
@@ -582,7 +585,7 @@ void Reconstruction::on_pushButton_4_clicked()
 		LabelDisplayMat(imgDisplay2, ui.labelImg2_5);
 
 		ui.tabWidget1->setCurrentIndex(4);
-		ui.tabWidget2->setCurrentIndex(4);
+		//ui.tabWidget2->setCurrentIndex(4);
 		ui.progressBar->reset();
 		ui.labelStatus->setText("Ready");
 
@@ -665,7 +668,7 @@ void Reconstruction::on_pushButton_5_clicked()
 		LabelDisplayMat(imgDisplay, ui.labelImg2_6);
 
 		ui.tabWidget1->setCurrentIndex(5);
-		ui.tabWidget2->setCurrentIndex(5);
+		//ui.tabWidget2->setCurrentIndex(5);
 
 		ui.progressBar->reset();
 		ui.labelStatus->setText("Ready");
@@ -748,7 +751,7 @@ void Reconstruction::on_pushButton_7_clicked()
 	ui.progressBar->setValue(20);
 
 	ui.tabWidget1->setCurrentIndex(1);
-	ui.tabWidget2->setCurrentIndex(1);
+	//ui.tabWidget2->setCurrentIndex(1);
 
 	/*******************滤波********************/
 	ImageProcess imgFilt;
@@ -766,7 +769,7 @@ void Reconstruction::on_pushButton_7_clicked()
 	ui.progressBar->setValue(30);
 
 	ui.tabWidget1->setCurrentIndex(2);
-	ui.tabWidget2->setCurrentIndex(2);
+	//ui.tabWidget2->setCurrentIndex(2);
 
 	/*****************傅里叶反变换********************/
 	ImageProcess imgIfft;
@@ -806,7 +809,7 @@ void Reconstruction::on_pushButton_7_clicked()
 	ui.progressBar->setValue(50);
 
 	ui.tabWidget1->setCurrentIndex(3);
-	ui.tabWidget2->setCurrentIndex(3);
+	//ui.tabWidget2->setCurrentIndex(3);
 
 	/*****************求相位及解相位********************/
 	cv::Mat imgTmp1(imgModulated_src.rows, imgModulated_src.cols, CV_64F, cv::Scalar(0));
@@ -895,7 +898,7 @@ void Reconstruction::on_pushButton_7_clicked()
 	ui.progressBar->setValue(90);
 
 	ui.tabWidget1->setCurrentIndex(4);
-	ui.tabWidget2->setCurrentIndex(4);
+	//ui.tabWidget2->setCurrentIndex(4);
 
 	cv::Mat imgDisplay_6 = unwrappedPhaseNormal;
 
@@ -914,7 +917,7 @@ void Reconstruction::on_pushButton_7_clicked()
 	ui.progressBar->setValue(100);
 
 	ui.tabWidget1->setCurrentIndex(5);
-	ui.tabWidget2->setCurrentIndex(5);
+	//ui.tabWidget2->setCurrentIndex(5);
 
 	ui.progressBar->reset();
 	ui.labelStatus->setText("Ready");
@@ -964,7 +967,7 @@ void Reconstruction::on_actionOpen_triggered()
 
 
 	ui.tabWidget1->setCurrentIndex(0);
-	ui.tabWidget2->setCurrentIndex(0);
+	//ui.tabWidget2->setCurrentIndex(0);
 	
 }
 
