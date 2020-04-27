@@ -230,9 +230,9 @@
     <widget class="QComboBox" name="comboBox">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>60</x>
        <y>20</y>
-       <width>141</width>
+       <width>161</width>
        <height>31</height>
       </rect>
      </property>
@@ -243,7 +243,13 @@
     padding: 1px 2px 1px 2px; 
     min-width: 9em; 
     border-image:：url(:/Reconstruction/Resources/myico.ico)
-}</string>
+}
+QComboBox::drop-down{width: 25px;border-left: 1px solid gray;}
+
+QComboBox::down-arrow { image: url(:/Reconstruction/Resources/arrowd.ico)}
+
+QComboBox::down-arrow:on {image: url(:/Reconstruction/Resources/arrowa.ico);}
+</string>
      </property>
      <item>
       <property name="text">

@@ -195,14 +195,20 @@ public:
         label->setFont(font1);
         comboBox = new QComboBox(frame);
         comboBox->setObjectName(QStringLiteral("comboBox"));
-        comboBox->setGeometry(QRect(80, 20, 141, 31));
+        comboBox->setGeometry(QRect(60, 20, 161, 31));
         comboBox->setStyleSheet(QString::fromUtf8("QComboBox {\n"
 "    border: 1px solid gray;\n"
 "    border-radius: 4px;\n"
 "    padding: 1px 2px 1px 2px; \n"
 "    min-width: 9em; \n"
 "    border-image:\357\274\232url(:/Reconstruction/Resources/myico.ico)\n"
-"}"));
+"}\n"
+"QComboBox::drop-down{width: 25px;border-left: 1px solid gray;}\n"
+"\n"
+"QComboBox::down-arrow { image: url(:/Reconstruction/Resources/arrowd.ico)}\n"
+"\n"
+"QComboBox::down-arrow:on {image: url(:/Reconstruction/Resources/arrowa.ico);}\n"
+""));
         tabWidget1 = new QTabWidget(centralWidget);
         tabWidget1->setObjectName(QStringLiteral("tabWidget1"));
         tabWidget1->setGeometry(QRect(250, 40, 1520, 800));

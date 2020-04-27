@@ -1,5 +1,10 @@
 <RCC>
-    <qresource prefix="Reconstruction">
-	<file>Resources/myico.ico</file>
-    </qresource>
+  <qresource prefix="Reconstruction">
+    <file>Resources/arrowd.ico</file>
+    <file>Resources/more.ico</file>
+    <file>Resources/arrowa.ico</file>
+    <file>Resources/flip.ico</file>
+    <file>Resources/arrow.ico</file>
+    <file>Resources/myico.ico</file>
+  </qresource>
 </RCC>

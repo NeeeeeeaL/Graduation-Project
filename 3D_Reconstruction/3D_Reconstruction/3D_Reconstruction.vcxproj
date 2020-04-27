@@ -118,6 +118,7 @@
     <ResourceCompile Include="3D_Reconstruction.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\icon\myico.ico" />
     <Image Include="myico.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

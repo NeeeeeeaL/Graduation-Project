@@ -95,5 +95,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="myico.ico" />
+    <Image Include="..\icon\myico.ico" />
   </ItemGroup>
 </Project>
