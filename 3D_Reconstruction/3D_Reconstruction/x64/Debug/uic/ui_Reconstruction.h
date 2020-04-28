@@ -61,7 +61,6 @@ public:
     QLabel *labelImg2_1;
     QLabel *label_4;
     QLabel *label_5;
-    QWidget *widget;
     QWidget *tab_8;
     QLabel *labelImg1_2;
     QLabel *labelImg2_2;
@@ -197,7 +196,7 @@ public:
         comboBox = new QComboBox(frame);
         comboBox->setObjectName(QStringLiteral("comboBox"));
         comboBox->setGeometry(QRect(40, 20, 165, 35));
-        comboBox->setMinimumSize(QSize(135, 0));
+        comboBox->setMinimumSize(QSize(141, 0));
         comboBox->setFont(font1);
         comboBox->setStyleSheet(QLatin1String("QComboBox {\n"
 "    border: 1px solid gray;\n"
@@ -239,10 +238,12 @@ public:
         labelImg1_1->setObjectName(QStringLiteral("labelImg1_1"));
         labelImg1_1->setGeometry(QRect(0, 0, 750, 720));
         labelImg1_1->setFont(font);
+        labelImg1_1->setStyleSheet(QStringLiteral(""));
         labelImg2_1 = new QLabel(tab_7);
         labelImg2_1->setObjectName(QStringLiteral("labelImg2_1"));
         labelImg2_1->setGeometry(QRect(770, 0, 750, 720));
         labelImg2_1->setFont(font);
+        labelImg2_1->setStyleSheet(QStringLiteral(""));
         label_4 = new QLabel(tab_7);
         label_4->setObjectName(QStringLiteral("label_4"));
         label_4->setGeometry(QRect(335, 730, 81, 16));
@@ -251,9 +252,6 @@ public:
         label_5->setObjectName(QStringLiteral("label_5"));
         label_5->setGeometry(QRect(1100, 730, 91, 16));
         label_5->setFont(font);
-        widget = new QWidget(tab_7);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(-20, 70, 1531, 831));
         tabWidget1->addTab(tab_7, QString());
         tab_8 = new QWidget();
         tab_8->setObjectName(QStringLiteral("tab_8"));

@@ -85,6 +85,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="calibration.cpp" />
+    <ClCompile Include="cube.cpp" />
     <ClCompile Include="datalist.cpp" />
     <ClCompile Include="display.cpp" />
     <ClCompile Include="imageProcess.cpp" />
@@ -99,6 +101,8 @@
     <QtMoc Include="Reconstruction.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="calibration.ui" />
+    <QtUic Include="cube.ui" />
     <QtUic Include="datalist.ui" />
     <QtUic Include="pmpTrans.ui" />
     <QtUic Include="Reconstruction.ui" />
@@ -111,6 +115,8 @@
     <QtMoc Include="welcome.h" />
     <QtMoc Include="pmpTrans.h" />
     <QtMoc Include="datalist.h" />
+    <QtMoc Include="calibration.h" />
+    <QtMoc Include="cube.h" />
     <ClInclude Include="display.h" />
     <QtMoc Include="mythread.h" />
     <ClInclude Include="unwrap.h" />

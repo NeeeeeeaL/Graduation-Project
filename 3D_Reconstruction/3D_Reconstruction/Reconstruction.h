@@ -11,6 +11,8 @@
 #include "pmpTrans.h"
 #include "welcome.h"
 #include "datalist.h"
+#include "calibration.h"
+#include "cube.h"
 
 #include <QSqlTableModel>
 
@@ -36,6 +38,8 @@ public:
 
 	DataList* dataWidget;
 	QSplitter* spl;
+	Calibration* caliWidget;
+	Cube* cubeWidget;
 
 protected:
 	//重写绘图事件，虚函数

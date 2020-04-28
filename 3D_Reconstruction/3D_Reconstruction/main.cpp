@@ -44,9 +44,6 @@ int main(int argc, char *argv[])
 	//w.show();
 
 	//splash.finish(&w);
-
-	//DataList list;
-	//list.show();
 	
 	return a.exec();
 }

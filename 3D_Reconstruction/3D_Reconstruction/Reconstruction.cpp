@@ -81,12 +81,21 @@ Reconstruction::Reconstruction(QWidget *parent)
 	//connect(thread, &MyThread::signalEndPlot, this, &Reconstruction::killThread);
 	
 	//其他功能模块Widget初始化
+	ui.label_3->hide(); 
+	ui.tabWidget1->hide();
+
 	dataWidget = new DataList(this);
 	dataWidget->hide();
 
 	spl = new QSplitter(Qt::Horizontal, this);
 	spl->hide();
 
+	caliWidget = new Calibration(this);
+	caliWidget->move(250, 40);
+	caliWidget->show();
+
+	cubeWidget = new Cube(this);
+	cubeWidget->hide();
 }
 
 //处理子窗口发送的消息
@@ -979,13 +988,13 @@ void Reconstruction::on_comboBox_activated(int index)
 	switch (index)
 	{
 	//系统标定
-	case 0: {ui.label_3->hide(); ui.tabWidget1->hide(); dataWidget->hide(); spl->hide(); } break;
+	case 0: {ui.label_3->hide(); ui.tabWidget1->hide(); dataWidget->hide(); spl->hide(); caliWidget->show(); caliWidget->move(250, 40); cubeWidget->hide(); } break;
 	//图像处理
-	case 1: {ui.label_3->show(); ui.tabWidget1->show(); dataWidget->hide(); spl->hide(); } break;
+	case 1: {ui.label_3->show(); ui.tabWidget1->show(); dataWidget->hide(); spl->hide(); caliWidget->hide(); cubeWidget->hide(); } break;
 	//三维重建预览
-	case 2: {ui.label_3->hide(); ui.tabWidget1->hide(); dataWidget->hide(); spl->show(); } break;
+	case 2: {ui.label_3->hide(); ui.tabWidget1->hide(); dataWidget->hide(); spl->show(); caliWidget->hide(); cubeWidget->move(250, 40); cubeWidget->show(); } break;
 	//统计与分析
-	case 3: {ui.label_3->hide(); ui.tabWidget1->hide(); dataWidget->move(250, 40); spl->hide(); dataWidget->show(); } break;
+	case 3: {ui.label_3->hide(); ui.tabWidget1->hide(); dataWidget->move(250, 40); spl->hide(); dataWidget->show(); caliWidget->hide(); cubeWidget->hide(); } break;
 	}
 }
 
