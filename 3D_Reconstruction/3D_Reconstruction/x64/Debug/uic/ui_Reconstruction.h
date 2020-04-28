@@ -61,6 +61,7 @@ public:
     QLabel *labelImg2_1;
     QLabel *label_4;
     QLabel *label_5;
+    QWidget *widget;
     QWidget *tab_8;
     QLabel *labelImg1_2;
     QLabel *labelImg2_2;
@@ -250,6 +251,9 @@ public:
         label_5->setObjectName(QStringLiteral("label_5"));
         label_5->setGeometry(QRect(1100, 730, 91, 16));
         label_5->setFont(font);
+        widget = new QWidget(tab_7);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(-20, 70, 1531, 831));
         tabWidget1->addTab(tab_7, QString());
         tab_8 = new QWidget();
         tab_8->setObjectName(QStringLiteral("tab_8"));
@@ -397,7 +401,7 @@ public:
         retranslateUi(ReconstructionClass);
 
         toolBox->setCurrentIndex(0);
-        tabWidget1->setCurrentIndex(5);
+        tabWidget1->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(ReconstructionClass);

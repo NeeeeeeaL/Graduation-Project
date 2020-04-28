@@ -319,7 +319,7 @@ QTabBar::tab{ width: 120px; height:25px; border-radius: 4px; margin-bottom: 6px;
 </string>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_7">
      <property name="font">
@@ -398,6 +398,16 @@ QTabBar::tab{ width: 120px; height:25px; border-radius: 4px; margin-bottom: 6px;
       </property>
       <property name="text">
        <string>调制光栅图像</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>-20</x>
+        <y>70</y>
+        <width>1531</width>
+        <height>831</height>
+       </rect>
       </property>
      </widget>
     </widget>

@@ -6,9 +6,11 @@
 #include <opencv2\highgui\highgui.hpp>
 #include <opencv2\imgproc\imgproc.hpp>
 #include <iostream>
+#include <QSplitter>
 #include "mythread.h"
 #include "pmpTrans.h"
 #include "welcome.h"
+#include "datalist.h"
 
 #include <QSqlTableModel>
 
@@ -31,6 +33,9 @@ public:
 	void dealEndPlot();
 	void killThread();
 	void dealTransmit();
+
+	DataList* dataWidget;
+	QSplitter* spl;
 
 protected:
 	//ÖØÐ´»æÍ¼ÊÂ¼þ£¬Ðéº¯Êý
@@ -98,6 +103,9 @@ void on_pushButton_7_clicked();//One Step
 void on_actionOpen_triggered();
 void on_actionSave_triggered();
 void on_actionPMP_triggered();
+
+//ComboBox ÇÐ»»
+void on_comboBox_activated(int);
 
 };
 

@@ -1,5 +1,6 @@
 #include "Reconstruction.h"
 #include "welcome.h"
+#include "datalist.h"
 #include <QtWidgets/QApplication>
 #include <QSplashScreen>
 #include <QMovie>
@@ -44,6 +45,8 @@ int main(int argc, char *argv[])
 
 	//splash.finish(&w);
 
+	//DataList list;
+	//list.show();
 	
 	return a.exec();
 }

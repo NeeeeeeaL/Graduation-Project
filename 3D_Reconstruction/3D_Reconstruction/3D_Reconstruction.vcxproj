@@ -85,6 +85,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="datalist.cpp" />
     <ClCompile Include="display.cpp" />
     <ClCompile Include="imageProcess.cpp" />
     <ClCompile Include="main.cpp" />
@@ -98,6 +99,7 @@
     <QtMoc Include="Reconstruction.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="datalist.ui" />
     <QtUic Include="pmpTrans.ui" />
     <QtUic Include="Reconstruction.ui" />
     <QtUic Include="welcome.ui" />
@@ -108,6 +110,7 @@
   <ItemGroup>
     <QtMoc Include="welcome.h" />
     <QtMoc Include="pmpTrans.h" />
+    <QtMoc Include="datalist.h" />
     <ClInclude Include="display.h" />
     <QtMoc Include="mythread.h" />
     <ClInclude Include="unwrap.h" />

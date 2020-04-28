@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Reconstruction_t {
-    QByteArrayData data[12];
-    char stringdata0[253];
+    QByteArrayData data[13];
+    char stringdata0[275];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -42,7 +42,8 @@ QT_MOC_LITERAL(7, 134, 23), // "on_pushButton_6_clicked"
 QT_MOC_LITERAL(8, 158, 23), // "on_pushButton_7_clicked"
 QT_MOC_LITERAL(9, 182, 23), // "on_actionOpen_triggered"
 QT_MOC_LITERAL(10, 206, 23), // "on_actionSave_triggered"
-QT_MOC_LITERAL(11, 230, 22) // "on_actionPMP_triggered"
+QT_MOC_LITERAL(11, 230, 22), // "on_actionPMP_triggered"
+QT_MOC_LITERAL(12, 253, 21) // "on_comboBox_activated"
 
     },
     "Reconstruction\0on_pushButton_clicked\0"
@@ -50,7 +51,8 @@ QT_MOC_LITERAL(11, 230, 22) // "on_actionPMP_triggered"
     "on_pushButton_3_clicked\0on_pushButton_4_clicked\0"
     "on_pushButton_5_clicked\0on_pushButton_6_clicked\0"
     "on_pushButton_7_clicked\0on_actionOpen_triggered\0"
-    "on_actionSave_triggered\0on_actionPMP_triggered"
+    "on_actionSave_triggered\0on_actionPMP_triggered\0"
+    "on_comboBox_activated"
 };
 #undef QT_MOC_LITERAL
 
@@ -60,7 +62,7 @@ static const uint qt_meta_data_Reconstruction[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -68,16 +70,17 @@ static const uint qt_meta_data_Reconstruction[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   64,    2, 0x0a /* Public */,
-       3,    0,   65,    2, 0x0a /* Public */,
-       4,    0,   66,    2, 0x0a /* Public */,
-       5,    0,   67,    2, 0x0a /* Public */,
-       6,    0,   68,    2, 0x0a /* Public */,
-       7,    0,   69,    2, 0x0a /* Public */,
-       8,    0,   70,    2, 0x0a /* Public */,
-       9,    0,   71,    2, 0x0a /* Public */,
-      10,    0,   72,    2, 0x0a /* Public */,
-      11,    0,   73,    2, 0x0a /* Public */,
+       1,    0,   69,    2, 0x0a /* Public */,
+       3,    0,   70,    2, 0x0a /* Public */,
+       4,    0,   71,    2, 0x0a /* Public */,
+       5,    0,   72,    2, 0x0a /* Public */,
+       6,    0,   73,    2, 0x0a /* Public */,
+       7,    0,   74,    2, 0x0a /* Public */,
+       8,    0,   75,    2, 0x0a /* Public */,
+       9,    0,   76,    2, 0x0a /* Public */,
+      10,    0,   77,    2, 0x0a /* Public */,
+      11,    0,   78,    2, 0x0a /* Public */,
+      12,    1,   79,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -90,6 +93,7 @@ static const uint qt_meta_data_Reconstruction[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    2,
 
        0        // eod
 };
@@ -110,10 +114,10 @@ void Reconstruction::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 7: _t->on_actionOpen_triggered(); break;
         case 8: _t->on_actionSave_triggered(); break;
         case 9: _t->on_actionPMP_triggered(); break;
+        case 10: _t->on_comboBox_activated((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObject Reconstruction::staticMetaObject = {
@@ -141,13 +145,13 @@ int Reconstruction::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 11;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 11)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 10;
+        _id -= 11;
     }
     return _id;
 }
