@@ -118,8 +118,11 @@
     <ResourceCompile Include="3D_Reconstruction.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\icon\arrow.ico" />
     <Image Include="..\icon\myico.ico" />
     <Image Include="myico.ico" />
+    <Image Include="Resources\arrow.ico" />
+    <Image Include="Resources\cube.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

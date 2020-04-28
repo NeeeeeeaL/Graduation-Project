@@ -125,8 +125,14 @@ Reconstruction::Reconstruction(QWidget *parent)
 	//ui.tabWidget2->setCurrentIndex(0);
 
 	//设置下拉框图标
-	QIcon icon("..//icon//myico.ico"); 
-	ui.comboBox->setItemIcon(0, icon);
+	QIcon icon0("Resources//checkered.ico"); 
+	QIcon icon1("Resources//imageProcess.ico");
+	QIcon icon2("Resources//cube.ico");
+	QIcon icon3("Resources//stats.ico");
+	ui.comboBox->setItemIcon(0, icon0);
+	ui.comboBox->setItemIcon(1, icon1);
+	ui.comboBox->setItemIcon(2, icon2);
+	ui.comboBox->setItemIcon(3, icon3);
 	//修改toolbox的page名称
 	ui.toolBox->setItemText(0, codecParent->toUnicode("手动处理"));
 	ui.toolBox->setItemText(1, codecParent->toUnicode("自动处理"));

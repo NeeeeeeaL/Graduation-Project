@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="Reconstruction">
+    <file>Resources/cube.ico</file>
     <file>Resources/arrowd.ico</file>
     <file>Resources/more.ico</file>
     <file>Resources/arrowa.ico</file>

@@ -94,7 +94,10 @@
     <ResourceCompile Include="3D_Reconstruction.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="myico.ico" />
     <Image Include="..\icon\myico.ico" />
+    <Image Include="Resources\cube.ico" />
+    <Image Include="myico.ico" />
+    <Image Include="..\icon\arrow.ico" />
+    <Image Include="Resources\arrow.ico" />
   </ItemGroup>
 </Project>

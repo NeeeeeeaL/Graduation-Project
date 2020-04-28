@@ -61,12 +61,12 @@ public:
     QLabel *labelImg2_1;
     QLabel *label_4;
     QLabel *label_5;
-    QWidget *tab_9;
-    QLabel *labelImg1_3;
-    QLabel *labelImg2_3;
     QWidget *tab_8;
     QLabel *labelImg1_2;
     QLabel *labelImg2_2;
+    QWidget *tab_9;
+    QLabel *labelImg1_3;
+    QLabel *labelImg2_3;
     QWidget *tab_10;
     QLabel *labelImg1_4;
     QLabel *labelImg2_4;
@@ -195,19 +195,27 @@ public:
         label->setFont(font1);
         comboBox = new QComboBox(frame);
         comboBox->setObjectName(QStringLiteral("comboBox"));
-        comboBox->setGeometry(QRect(60, 20, 161, 31));
-        comboBox->setStyleSheet(QString::fromUtf8("QComboBox {\n"
+        comboBox->setGeometry(QRect(40, 20, 165, 35));
+        comboBox->setMinimumSize(QSize(135, 0));
+        comboBox->setFont(font1);
+        comboBox->setStyleSheet(QLatin1String("QComboBox {\n"
 "    border: 1px solid gray;\n"
 "    border-radius: 4px;\n"
 "    padding: 1px 2px 1px 2px; \n"
 "    min-width: 9em; \n"
-"    border-image:\357\274\232url(:/Reconstruction/Resources/myico.ico)\n"
 "}\n"
 "QComboBox::drop-down{width: 25px;border-left: 1px solid gray;}\n"
 "\n"
 "QComboBox::down-arrow { image: url(:/Reconstruction/Resources/arrowd.ico)}\n"
 "\n"
 "QComboBox::down-arrow:on {image: url(:/Reconstruction/Resources/arrowa.ico);}\n"
+"\n"
+"QComboBox QAbstractItemView {outline:0px;}\n"
+"\n"
+"QComboBox QAbstractItemView::item:hover {color: white;background-color: rgb(0, 122, 255);}\n"
+"\n"
+"\n"
+"\n"
 ""));
         tabWidget1 = new QTabWidget(centralWidget);
         tabWidget1->setObjectName(QStringLiteral("tabWidget1"));
@@ -229,61 +237,70 @@ public:
         labelImg1_1 = new QLabel(tab_7);
         labelImg1_1->setObjectName(QStringLiteral("labelImg1_1"));
         labelImg1_1->setGeometry(QRect(0, 0, 750, 720));
-        labelImg1_1->setFont(font2);
+        labelImg1_1->setFont(font);
         labelImg2_1 = new QLabel(tab_7);
         labelImg2_1->setObjectName(QStringLiteral("labelImg2_1"));
         labelImg2_1->setGeometry(QRect(770, 0, 750, 720));
-        labelImg2_1->setFont(font2);
+        labelImg2_1->setFont(font);
         label_4 = new QLabel(tab_7);
         label_4->setObjectName(QStringLiteral("label_4"));
         label_4->setGeometry(QRect(335, 730, 81, 16));
-        label_4->setFont(font2);
+        label_4->setFont(font);
         label_5 = new QLabel(tab_7);
         label_5->setObjectName(QStringLiteral("label_5"));
         label_5->setGeometry(QRect(1100, 730, 91, 16));
-        label_5->setFont(font2);
+        label_5->setFont(font);
         tabWidget1->addTab(tab_7, QString());
-        tab_9 = new QWidget();
-        tab_9->setObjectName(QStringLiteral("tab_9"));
-        labelImg1_3 = new QLabel(tab_9);
-        labelImg1_3->setObjectName(QStringLiteral("labelImg1_3"));
-        labelImg1_3->setGeometry(QRect(30, 0, 511, 741));
-        labelImg2_3 = new QLabel(tab_9);
-        labelImg2_3->setObjectName(QStringLiteral("labelImg2_3"));
-        labelImg2_3->setGeometry(QRect(600, 10, 541, 731));
-        tabWidget1->addTab(tab_9, QString());
         tab_8 = new QWidget();
         tab_8->setObjectName(QStringLiteral("tab_8"));
         labelImg1_2 = new QLabel(tab_8);
         labelImg1_2->setObjectName(QStringLiteral("labelImg1_2"));
         labelImg1_2->setGeometry(QRect(30, 0, 531, 751));
+        labelImg1_2->setFont(font);
         labelImg2_2 = new QLabel(tab_8);
         labelImg2_2->setObjectName(QStringLiteral("labelImg2_2"));
         labelImg2_2->setGeometry(QRect(599, 20, 541, 721));
+        labelImg2_2->setFont(font);
         tabWidget1->addTab(tab_8, QString());
+        tab_9 = new QWidget();
+        tab_9->setObjectName(QStringLiteral("tab_9"));
+        labelImg1_3 = new QLabel(tab_9);
+        labelImg1_3->setObjectName(QStringLiteral("labelImg1_3"));
+        labelImg1_3->setGeometry(QRect(30, 0, 511, 741));
+        labelImg1_3->setFont(font);
+        labelImg2_3 = new QLabel(tab_9);
+        labelImg2_3->setObjectName(QStringLiteral("labelImg2_3"));
+        labelImg2_3->setGeometry(QRect(600, 10, 541, 731));
+        labelImg2_3->setFont(font);
+        tabWidget1->addTab(tab_9, QString());
         tab_10 = new QWidget();
         tab_10->setObjectName(QStringLiteral("tab_10"));
         labelImg1_4 = new QLabel(tab_10);
         labelImg1_4->setObjectName(QStringLiteral("labelImg1_4"));
         labelImg1_4->setGeometry(QRect(30, 0, 541, 741));
+        labelImg1_4->setFont(font);
         labelImg2_4 = new QLabel(tab_10);
         labelImg2_4->setObjectName(QStringLiteral("labelImg2_4"));
         labelImg2_4->setGeometry(QRect(620, 10, 521, 741));
+        labelImg2_4->setFont(font);
         tabWidget1->addTab(tab_10, QString());
         tab_11 = new QWidget();
         tab_11->setObjectName(QStringLiteral("tab_11"));
         labelImg1_5 = new QLabel(tab_11);
         labelImg1_5->setObjectName(QStringLiteral("labelImg1_5"));
         labelImg1_5->setGeometry(QRect(10, 0, 571, 731));
+        labelImg1_5->setFont(font);
         labelImg2_5 = new QLabel(tab_11);
         labelImg2_5->setObjectName(QStringLiteral("labelImg2_5"));
         labelImg2_5->setGeometry(QRect(590, 10, 541, 711));
+        labelImg2_5->setFont(font);
         tabWidget1->addTab(tab_11, QString());
         tab_12 = new QWidget();
         tab_12->setObjectName(QStringLiteral("tab_12"));
         labelImg1_6 = new QLabel(tab_12);
         labelImg1_6->setObjectName(QStringLiteral("labelImg1_6"));
         labelImg1_6->setGeometry(QRect(30, 0, 691, 731));
+        labelImg1_6->setFont(font);
 #ifndef QT_NO_STATUSTIP
         labelImg1_6->setStatusTip(QStringLiteral(""));
 #endif // QT_NO_STATUSTIP
@@ -291,6 +308,7 @@ public:
         labelImg2_6 = new QLabel(tab_12);
         labelImg2_6->setObjectName(QStringLiteral("labelImg2_6"));
         labelImg2_6->setGeometry(QRect(780, 10, 711, 731));
+        labelImg2_6->setFont(font);
         tabWidget1->addTab(tab_12, QString());
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
@@ -350,7 +368,7 @@ public:
         ReconstructionClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(ReconstructionClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1800, 27));
+        menuBar->setGeometry(QRect(0, 0, 1800, 26));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menuswitchTo = new QMenu(menuBar);
@@ -378,8 +396,8 @@ public:
 
         retranslateUi(ReconstructionClass);
 
-        toolBox->setCurrentIndex(1);
-        tabWidget1->setCurrentIndex(1);
+        toolBox->setCurrentIndex(0);
+        tabWidget1->setCurrentIndex(5);
 
 
         QMetaObject::connectSlotsByName(ReconstructionClass);
@@ -404,6 +422,8 @@ public:
         label->setText(QApplication::translate("ReconstructionClass", "\345\233\276\345\203\217\345\244\204\347\220\206\346\223\215\344\275\234", Q_NULLPTR));
         comboBox->clear();
         comboBox->insertItems(0, QStringList()
+         << QApplication::translate("ReconstructionClass", "\347\263\273\347\273\237\346\240\207\345\256\232", Q_NULLPTR)
+         << QApplication::translate("ReconstructionClass", "\345\233\276\345\203\217\345\244\204\347\220\206", Q_NULLPTR)
          << QApplication::translate("ReconstructionClass", "\344\270\211\347\273\264\351\207\215\345\273\272\351\242\204\350\247\210", Q_NULLPTR)
          << QApplication::translate("ReconstructionClass", "\347\273\237\350\256\241\344\270\216\345\210\206\346\236\220", Q_NULLPTR)
         );
@@ -412,12 +432,12 @@ public:
         label_4->setText(QApplication::translate("ReconstructionClass", "\345\216\237\345\205\211\346\240\205\345\233\276\345\203\217", Q_NULLPTR));
         label_5->setText(QApplication::translate("ReconstructionClass", "\350\260\203\345\210\266\345\205\211\346\240\205\345\233\276\345\203\217", Q_NULLPTR));
         tabWidget1->setTabText(tabWidget1->indexOf(tab_7), QApplication::translate("ReconstructionClass", "\345\216\237\345\233\276", Q_NULLPTR));
-        labelImg1_3->setText(QApplication::translate("ReconstructionClass", "TextLabel", Q_NULLPTR));
-        labelImg2_3->setText(QApplication::translate("ReconstructionClass", "TextLabel", Q_NULLPTR));
-        tabWidget1->setTabText(tabWidget1->indexOf(tab_9), QApplication::translate("ReconstructionClass", "\346\273\244\346\263\242\345\220\216\351\242\221\345\237\237\345\233\276\345\203\217", Q_NULLPTR));
         labelImg1_2->setText(QApplication::translate("ReconstructionClass", "TextLabel", Q_NULLPTR));
         labelImg2_2->setText(QApplication::translate("ReconstructionClass", "TextLabel", Q_NULLPTR));
         tabWidget1->setTabText(tabWidget1->indexOf(tab_8), QApplication::translate("ReconstructionClass", "\351\242\221\345\237\237\345\233\276\345\203\217", Q_NULLPTR));
+        labelImg1_3->setText(QApplication::translate("ReconstructionClass", "TextLabel", Q_NULLPTR));
+        labelImg2_3->setText(QApplication::translate("ReconstructionClass", "TextLabel", Q_NULLPTR));
+        tabWidget1->setTabText(tabWidget1->indexOf(tab_9), QApplication::translate("ReconstructionClass", "\346\273\244\346\263\242\345\220\216\351\242\221\345\237\237\345\233\276\345\203\217", Q_NULLPTR));
         labelImg1_4->setText(QApplication::translate("ReconstructionClass", "TextLabel", Q_NULLPTR));
         labelImg2_4->setText(QApplication::translate("ReconstructionClass", "TextLabel", Q_NULLPTR));
         tabWidget1->setTabText(tabWidget1->indexOf(tab_10), QApplication::translate("ReconstructionClass", "\346\273\244\346\263\242\345\220\216\347\251\272\345\237\237\345\233\276\345\203\217", Q_NULLPTR));
