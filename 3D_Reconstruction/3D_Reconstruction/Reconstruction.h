@@ -55,6 +55,7 @@ private:
 
 	PMPTrans windowPMP;
 	Welcome welcomeW;
+	Calibration calibWidget;
 	QSqlTableModel *model;
 
 	MyThread *thread;//线程对象
@@ -89,6 +90,14 @@ public:
 	cv::Mat wrappedPhase;
 	cv::Mat unwrappedPhase;
 
+signals:
+	/*
+	*信号必须由signals关键字来声明
+	*信号没有返回值，但可以有参数
+	*信号就是函数的声明，只需声明，无需定义
+	*使用方法：emit mysignal();
+	*/
+	void signalLoadCalibImg();
 
 public slots:
 

@@ -5,7 +5,6 @@
 #include <QPainter>
 #include <QtWidgets/QApplication>
 #include <QFile>
-#include <QLabel>
 #include <QFileDialog>
 #include <QDebug>
 #include <QGridLayout>
@@ -75,6 +74,9 @@ Reconstruction::Reconstruction(QWidget *parent)
 	connect(&windowPMP, &PMPTrans::signalNotOpen, this, &Reconstruction::dealNotOpen);
 	connect(&windowPMP, &PMPTrans::signalNotGetP, this, &Reconstruction::dealNotGetP);
 	connect(&windowPMP, &PMPTrans::signalNotUnwrap, this, &Reconstruction::dealNotUnwrap);
+
+	//与子窗口连接，向子窗口发送信号
+	connect(this, &Reconstruction::signalLoadCalibImg, &calibWidget, &Calibration::dealLoadCalibImg);
 
 	//线程相关
 	//connect(thread, &MyThread::signalEndPlot, this, &Reconstruction::dealEndPlot);
@@ -908,45 +910,52 @@ void Reconstruction::on_actionOpen_triggered()
 {
 	connect(ui.actionOpen, SIGNAL(triggered()), this, SLOT(on_actionOpen_triggered));
 
-	//打开原图像
-	QStringList pathList = QFileDialog::getOpenFileNames(this, "open", "../");//打开所有文件
-	for (int i = 0; i < pathList.size(); ++i)
+	if (ui.comboBox->currentIndex() == 1)
 	{
-		if (false == pathList[i].isEmpty())
+		//打开原图像
+		QStringList pathList = QFileDialog::getOpenFileNames(this, "open", "../");//打开所有文件
+		for (int i = 0; i < pathList.size(); ++i)
 		{
-			//定义QFile对象
-			QFile file(pathList[i]);
-
-			//定义QFileInfo对象，获取文件名
-			QFileInfo fileInfo(file);
-
-			QString imgName = fileInfo.fileName();
-
-			//状态栏显示
-			ui.statusBar->showMessage("Open " + imgName + " successfully! Path: " + fileInfo.path(), 1000);
-
-			if (i == 0)
+			if (false == pathList[i].isEmpty())
 			{
-				imgOriginal_src = cv::imread("..\\image\\" + imgName.toStdString(), 0);
-				LabelDisplayMat(imgOriginal_src, ui.labelImg1_1);
-				cout << "Read imgOriginal_src successfully!" << endl;
-			}
-			else
-			{
-				imgModulated_src = cv::imread("..\\image\\" + imgName.toStdString(), 0);
-				LabelDisplayMat(imgModulated_src, ui.labelImg2_1);
-				cout << "Read imgModulated_src successfully!" << endl;
-			}
+				//定义QFile对象
+				QFile file(pathList[i]);
 
+				//定义QFileInfo对象，获取文件名
+				QFileInfo fileInfo(file);
+
+				QString imgName = fileInfo.fileName();
+
+				//状态栏显示
+				ui.statusBar->showMessage("Open " + imgName + " successfully! Path: " + fileInfo.path(), 1000);
+
+				if (i == 0)
+				{
+					imgOriginal_src = cv::imread("..\\image\\" + imgName.toStdString(), 0);
+					LabelDisplayMat(imgOriginal_src, ui.labelImg1_1);
+					cout << "Read imgOriginal_src successfully!" << endl;
+				}
+				else
+				{
+					imgModulated_src = cv::imread("..\\image\\" + imgName.toStdString(), 0);
+					LabelDisplayMat(imgModulated_src, ui.labelImg2_1);
+					cout << "Read imgModulated_src successfully!" << endl;
+				}
+
+			}
 		}
+
+		if (!imgOriginal_src.empty() && !imgModulated_src.empty())
+			isOpen = true;
+
+
+		ui.tabWidget1->setCurrentIndex(0);
+		//ui.tabWidget2->setCurrentIndex(0);
 	}
-
-	if(!imgOriginal_src.empty() && !imgModulated_src.empty())
-		isOpen = true;
-
-
-	ui.tabWidget1->setCurrentIndex(0);
-	//ui.tabWidget2->setCurrentIndex(0);
+	else if (ui.comboBox->currentIndex() == 0)
+	{
+		emit signalLoadCalibImg();
+	}
 	
 }
 

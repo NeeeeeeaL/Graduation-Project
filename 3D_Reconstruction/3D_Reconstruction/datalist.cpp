@@ -73,6 +73,14 @@ DataList::DataList(QWidget *parent)
 
 }
 
+//导出按钮
+void DataList::on_pushButton_clicked()
+{
+	//测试界面是否处于激活状态
+	qDebug() << "Fuck!" << endl;
+	ui.lineEdit->setText("active!");
+}
+
 DataList::~DataList()
 {
 }

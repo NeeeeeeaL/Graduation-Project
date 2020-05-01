@@ -1,9 +1,3 @@
-﻿  moc calibration.h
-  Reconstruction.cpp
-  calibration.cpp
-  main.cpp
-  mythread.cpp
-  moc_Reconstruction.cpp
-  moc_calibration.cpp
+﻿  calibration.cpp
   3D_Reconstruction.vcxproj -> D:\Work\毕业设计\毕业设计_余锦淼\code\3D_Reconstruction\x64\Debug\3D_Reconstruction.exe
   3D_Reconstruction.vcxproj -> D:\Work\毕业设计\毕业设计_余锦淼\code\3D_Reconstruction\x64\Debug\3D_Reconstruction.pdb (Full PDB)
