@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="Reconstruction">
+    <file>Resources/stats.png</file>
     <file>Resources/cube.png</file>
     <file>Resources/checkered.png</file>
     <file>Resources/cube.ico</file>

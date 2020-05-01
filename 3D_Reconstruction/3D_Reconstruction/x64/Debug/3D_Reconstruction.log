@@ -1,15 +1,9 @@
-﻿  Reading Qt configuration (C:\Qt\Qt5.9.8\5.9.8\msvc2015_64\bin\qmake.exe)
-  uic cube.ui
-  uic Reconstruction.ui
-  rcc Reconstruction.qrc
-  moc Reconstruction.h
-  moc cube.h
-  cube.cpp
+﻿  moc calibration.h
+  Reconstruction.cpp
+  calibration.cpp
   main.cpp
   mythread.cpp
-  Reconstruction.cpp
-  qrc_Reconstruction.cpp
   moc_Reconstruction.cpp
-  moc_cube.cpp
+  moc_calibration.cpp
   3D_Reconstruction.vcxproj -> D:\Work\毕业设计\毕业设计_余锦淼\code\3D_Reconstruction\x64\Debug\3D_Reconstruction.exe
   3D_Reconstruction.vcxproj -> D:\Work\毕业设计\毕业设计_余锦淼\code\3D_Reconstruction\x64\Debug\3D_Reconstruction.pdb (Full PDB)

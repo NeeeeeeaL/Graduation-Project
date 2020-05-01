@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QLabel{background-image: url(:/Reconstruction/Resources/checkered.png)}
+    <string notr="true">QLabel{border-image: url(:/Reconstruction/Resources/checkered.png)}
 </string>
    </property>
    <property name="text">
