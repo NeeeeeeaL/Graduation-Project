@@ -9,6 +9,7 @@ Calibration::Calibration(QWidget *parent)
 {
 	ui.setupUi(this);
 
+	ui.tabWidget->setCurrentIndex(0);
 }
 
 Calibration::~Calibration()
@@ -54,7 +55,7 @@ void Calibration::on_pushButton2_clicked()
 		if (cv::findChessboardCorners(calibImg[i], boardSize, imagePointsBuf) == 0)
 		{
 			//找不到角点
-			std::cout << "Can not find chessboard corners!" << std::endl;
+			cout << "Can not find chessboard corners!" << endl;
 			exit(1);
 		}
 		else
@@ -67,9 +68,11 @@ void Calibration::on_pushButton2_clicked()
 			//保存亚像素点
 			imagePointsSeq.push_back(imagePointsBuf);
 			//在图像上显示角点位置
-			cv::drawChessboardCorners(calibImg[i], boardSize, imagePointsBuf, true);
+			cv::Mat imageDisplay = calibImg[i].clone();
+			cv::drawChessboardCorners(imageDisplay, boardSize, imagePointsBuf, true);
 			//显示图片
 			//cv::imshow("Camera Calibration", calibImg[i]);
+			LabelDisplayMat(imageDisplay, imgLabel[i]);
 			//cv::imwrite("test.jpg", calibImg[i]);
 			//等待0.5s
 			//cv::waitKey(0);
@@ -132,6 +135,30 @@ void Calibration::on_pushButton2_clicked()
 	//开始标定
 	cv::calibrateCamera(objectPoints, imagePointsSeq, imageSize, cameraMatrix, distCoeffs, rvecsMat, tvecsMat);
 
+	//标定完成
+	cout << "标定完成" << endl;
+
+	/************************显示定标结果************************/
+	cv::Mat mapx = cv::Mat(imageSize, CV_32FC1);
+	cv::Mat mapy = cv::Mat(imageSize, CV_32FC1);
+	cv::Mat R = cv::Mat::eye(3, 3, CV_32F);
+	std::cout << "显示矫正图像" << endl;
+
+	for (int i = 0; i != imageCount; i++)
+	{
+		std::cout << "Frame #" << i + 1 << "..." << endl;
+		//计算图片畸变矫正的映射矩阵mapx、mapy(不进行立体校正、立体校正需要使用双摄)
+		initUndistortRectifyMap(cameraMatrix, distCoeffs, R, cameraMatrix, imageSize, CV_32FC1, mapx, mapy);
+		//读取一张图片
+		cv::Mat newimage = calibImg[i].clone();
+		//另一种不需要转换矩阵的方式
+		//undistort(imageSource,newimage,cameraMatrix,distCoeffs);
+		//进行校正
+		remap(calibImg[i], newimage, mapx, mapy, cv::INTER_LINEAR);
+		LabelDisplayMat(newimage, imgLabel2[i]);
+
+	}
+	ui.tabWidget->setCurrentIndex(1);
 }
 
 //打开原图像
@@ -155,12 +182,16 @@ void Calibration::on_pushButton1_clicked()
 			case 0: {
 				imgSrc1 = cv::imread("..\\sample\\left\\left01.jpg");
 				calibImg.push_back(imgSrc1);
+				imgLabel.push_back(ui.label1);
+				imgLabel2.push_back(ui.label1_2);
 				LabelDisplayMat(imgSrc1, ui.label1);
 			}break;
 
 				case 1: {
 				imgSrc2 = cv::imread("..\\sample\\left\\left02.jpg");
 				calibImg.push_back(imgSrc2);
+				imgLabel.push_back(ui.label2);
+				imgLabel2.push_back(ui.label2_2);
 				LabelDisplayMat(imgSrc2, ui.label2);
 
 				}break;
@@ -168,6 +199,8 @@ void Calibration::on_pushButton1_clicked()
 				case 2: {
 				imgSrc3 = cv::imread("..\\sample\\left\\left03.jpg");
 				calibImg.push_back(imgSrc3);
+				imgLabel.push_back(ui.label3);
+				imgLabel2.push_back(ui.label3_2);
 				LabelDisplayMat(imgSrc3, ui.label3);
 
 				}break;
@@ -175,6 +208,8 @@ void Calibration::on_pushButton1_clicked()
 				case 3: {
 				imgSrc4 = cv::imread("..\\sample\\left\\left04.jpg");
 				calibImg.push_back(imgSrc4);
+				imgLabel.push_back(ui.label4);
+				imgLabel2.push_back(ui.label4_2);
 				LabelDisplayMat(imgSrc4, ui.label4);
 
 				}break;
@@ -182,6 +217,8 @@ void Calibration::on_pushButton1_clicked()
 				case 4: {
 				imgSrc5 = cv::imread("..\\sample\\left\\left05.jpg");
 				calibImg.push_back(imgSrc5);
+				imgLabel.push_back(ui.label5);
+				imgLabel2.push_back(ui.label5_2);
 				LabelDisplayMat(imgSrc5, ui.label5);
 
 				}break;
@@ -189,6 +226,8 @@ void Calibration::on_pushButton1_clicked()
 				case 5: {
 				imgSrc6 = cv::imread("..\\sample\\left\\left06.jpg");
 				calibImg.push_back(imgSrc6);
+				imgLabel.push_back(ui.label6);
+				imgLabel2.push_back(ui.label6_2);
 				LabelDisplayMat(imgSrc6, ui.label6);
 
 				}break;
@@ -196,6 +235,8 @@ void Calibration::on_pushButton1_clicked()
 				case 6: {
 				imgSrc7 = cv::imread("..\\sample\\left\\left07.jpg");
 				calibImg.push_back(imgSrc7);
+				imgLabel.push_back(ui.label7);
+				imgLabel2.push_back(ui.label7_2);
 				LabelDisplayMat(imgSrc7, ui.label7);
 
 				}break;
@@ -203,12 +244,16 @@ void Calibration::on_pushButton1_clicked()
 				case 7: {
 				imgSrc8 = cv::imread("..\\sample\\left\\left08.jpg");
 				calibImg.push_back(imgSrc8);
+				imgLabel.push_back(ui.label8);
+				imgLabel2.push_back(ui.label8_2);
 				LabelDisplayMat(imgSrc8, ui.label8);
 
 				}break;
 				case 8: {
 				imgSrc9 = cv::imread("..\\sample\\left\\left09.jpg");
 				calibImg.push_back(imgSrc9);
+				imgLabel.push_back(ui.label9);
+				imgLabel2.push_back(ui.label9_2);
 				LabelDisplayMat(imgSrc9, ui.label9);
 
 				}break;
@@ -216,6 +261,8 @@ void Calibration::on_pushButton1_clicked()
 				case 9: {
 				imgSrc10 = cv::imread("..\\sample\\left\\left10.jpg");
 				calibImg.push_back(imgSrc10);
+				imgLabel.push_back(ui.label10);
+				imgLabel2.push_back(ui.label10_2);
 				LabelDisplayMat(imgSrc10, ui.label10);
 
 				}break;
@@ -223,6 +270,8 @@ void Calibration::on_pushButton1_clicked()
 				case 10: {
 				imgSrc11 = cv::imread("..\\sample\\left\\left11.jpg");
 				calibImg.push_back(imgSrc11);
+				imgLabel.push_back(ui.label11);
+				imgLabel2.push_back(ui.label11_2);
 				LabelDisplayMat(imgSrc11, ui.label11);
 
 				}break;
@@ -230,6 +279,8 @@ void Calibration::on_pushButton1_clicked()
 				case 11: {
 				imgSrc12 = cv::imread("..\\sample\\left\\left12.jpg");
 				calibImg.push_back(imgSrc12);
+				imgLabel.push_back(ui.label12);
+				imgLabel2.push_back(ui.label12_2);
 				LabelDisplayMat(imgSrc12, ui.label12);
 
 				}break;

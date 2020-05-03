@@ -122,9 +122,8 @@ public:
         tabWidget1->setGeometry(QRect(250, 40, 1520, 800));
         tabWidget1->setFont(font);
         tabWidget1->setContextMenuPolicy(Qt::DefaultContextMenu);
-        tabWidget1->setStyleSheet(QString::fromUtf8("\n"
-"\n"
-"QTabWidget::tab-bar{ alignment: center;}\n"
+        tabWidget1->setAutoFillBackground(false);
+        tabWidget1->setStyleSheet(QString::fromUtf8("QTabWidget::tab-bar{ alignment: center;}\n"
 "QTabBar::tab:selected{ background-color: rgb(0, 122, 255);color: white; }\n"
 "\n"
 "QTabBar::tab{ width: 120px; height:25px; border-radius: 4px; margin-bottom: 6px;}\342\200\213\n"
@@ -138,6 +137,7 @@ public:
         labelImg1_1->setObjectName(QStringLiteral("labelImg1_1"));
         labelImg1_1->setGeometry(QRect(0, 0, 750, 720));
         labelImg1_1->setFont(font);
+        labelImg1_1->setAutoFillBackground(false);
         labelImg1_1->setStyleSheet(QStringLiteral(""));
         labelImg2_1 = new QLabel(tab_7);
         labelImg2_1->setObjectName(QStringLiteral("labelImg2_1"));
@@ -368,7 +368,7 @@ public:
         line->setFrameShadow(QFrame::Sunken);
         line_2 = new QFrame(centralWidget);
         line_2->setObjectName(QStringLiteral("line_2"));
-        line_2->setGeometry(QRect(-3, 61, 1811, 20));
+        line_2->setGeometry(QRect(-3, 60, 1811, 20));
         line_2->setFrameShape(QFrame::HLine);
         line_2->setFrameShadow(QFrame::Sunken);
         label_2 = new QLabel(centralWidget);

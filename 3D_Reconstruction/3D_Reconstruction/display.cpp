@@ -14,7 +14,8 @@ Display::~Display()
 Plot::Plot(QWidget* pw, cv::Mat & m)
 	:SurfacePlot(pw)
 {
-	setTitle("A Simple SurfacePlot Demonstration");
+	setTitle("3D Reconstruction");
+	setTitleFont("SansSerif", 18);
 
 	coordinates()->axes[X1].setLabelString("x-axis");
 	coordinates()->axes[Y1].setLabelString("y-axis");

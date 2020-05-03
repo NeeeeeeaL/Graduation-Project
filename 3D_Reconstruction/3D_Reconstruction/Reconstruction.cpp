@@ -38,7 +38,7 @@ Reconstruction::Reconstruction(QWidget *parent)
 	this->setWindowIcon(QIcon("myico.ico"));
 	statusBar()->setStyleSheet(QString("QStatusBar::item{border: 0px}")); // 设置不显示label的边框
 	statusBar()->setSizeGripEnabled(false); //设置是否显示右边的大小控制点
-	statusBar()->addWidget(ui.labelStatus, 4);
+	ui.statusBar->addWidget(ui.labelStatus, 4);
 	ui.statusBar->addWidget(ui.progressBar, 1);
 	ui.labelStatus->setText("Ready");
 	ui.progressBar->setVisible(true);
@@ -50,7 +50,7 @@ Reconstruction::Reconstruction(QWidget *parent)
 	//thread = new MyThread(this);
 
 	//将窗口移动到合适的位置
-	this->move(50, 40);
+	this->move(50, 45);
 
 	//设置TabWidget的初始Tab
 	ui.tabWidget1->setCurrentIndex(0);
@@ -93,7 +93,7 @@ Reconstruction::Reconstruction(QWidget *parent)
 	spl->hide();
 
 	caliWidget = new Calibration(this);
-	caliWidget->move(250, 40);
+	caliWidget->move(220, 47);
 	caliWidget->show();
 
 	cubeWidget = new Cube(this);
@@ -149,29 +149,8 @@ void Reconstruction::dealTransmit()
 //因为绘图函数会被频繁调用
 void Reconstruction::paintEvent(QPaintEvent *)
 {
-	QPainter p(this);//指定welcomeW为绘图设备
-
-	//创建画笔对象
-	QPen pen;
-	pen.setWidth(5);
-	pen.setColor(QColor(0, 255, 0));
-
-	//把笔交给画家
-	p.setPen(pen);
-
-	//绘图操作
-	//画背景图
-	//p.drawPixmap(0, 0, width(), height(), QPixmap("mouse.bmp"));//width(), height()自动获取窗口宽度和高度
-	p.fillRect(rect(), Qt::white);
-
-	//创建画刷对象
-	QBrush brush;
-	brush.setColor(Qt::green);
-	brush.setStyle(Qt::Dense1Pattern);
-
-	//把画刷交给画家
-	p.setBrush(brush);	
-
+	ui.statusBar->addWidget(ui.labelStatus, 4);
+	ui.statusBar->addWidget(ui.progressBar, 1);
 }
 
 //在QLabel上显示Mat图像
@@ -641,36 +620,43 @@ void Reconstruction::on_pushButton_5_clicked()
 //三维重建
 void Reconstruction::on_pushButton_6_clicked()
 {
-	ui.labelStatus->setText("Reconstructing...");
-
-	ui.progressBar->setValue(10);
-	cv::Mat imgDisplay(unwrappedPhase.rows, unwrappedPhase.cols, CV_64FC1);
-	unwrappedPhase.convertTo(imgDisplay, CV_64FC1);
-
-	ui.progressBar->setValue(20);
-	for (int i = 0; i < imgDisplay.rows; ++i)
+	if (isUnwrap == true)
 	{
-		for (int j = 0; j < imgDisplay.cols; ++j)
+		ui.labelStatus->setText("Reconstructing...");
+
+		hideCube = true;
+
+		ui.progressBar->setValue(10);
+		cv::Mat imgDisplay(unwrappedPhase.rows, unwrappedPhase.cols, CV_64FC1);
+		unwrappedPhase.convertTo(imgDisplay, CV_64FC1);
+
+		ui.progressBar->setValue(20);
+		for (int i = 0; i < imgDisplay.rows; ++i)
 		{
-			imgDisplay.at<double>(i, j) *= 80.0;
+			for (int j = 0; j < imgDisplay.cols; ++j)
+			{
+				imgDisplay.at<double>(i, j) *= 80.0;
+			}
 		}
+
+		ui.progressBar->setValue(40);
+
+		Plot* plot = new Plot(spl, imgDisplay);
+
+		ui.progressBar->setValue(80);
+
+		spl->resize(1520, 800);
+		spl->move(250, 100);
+		ui.progressBar->setValue(90);
+
+		//ui.comboBox->setCurrentIndex(2);
+		ui.progressBar->setValue(100);
+		Sleep(1);
+		ui.progressBar->reset();
+		ui.labelStatus->setText("Ready");
 	}
-
-	ui.progressBar->setValue(40);
-
-	Plot* plot = new Plot(spl, imgDisplay);
-
-	ui.progressBar->setValue(80);
-
-	spl->resize(1520, 800);
-	spl->move(250, 40);
-	ui.progressBar->setValue(90);
-	
-	//ui.comboBox->setCurrentIndex(2);
-	ui.progressBar->setValue(100);
-	Sleep(1);
-	ui.progressBar->reset();
-	ui.labelStatus->setText("Ready");
+	else
+		QMessageBox::about(this, codecParent->toUnicode("提示"), codecParent->toUnicode("还未解相位！"));
 
 }
 
@@ -679,9 +665,12 @@ void Reconstruction::on_pushButton_7_clicked()
 {
 	if (isOpen == true)
 	{
-		ui.labelStatus->setText("Only One Step...");
+		//ui.labelStatus->setText("Only One Step...");
+		statusBar()->removeWidget(ui.labelStatus);
 		ui.progressBar->setVisible(true);
 		ui.progressBar->setValue(10);
+
+		hideCube = true;
 
 		/***************傅里叶变换******************/
 		imgOriginal_src.convertTo(imgOriginal_src, CV_64F, 1.0 / 255.0);//傅里叶变换的输入阵列必须是浮点型
@@ -895,8 +884,6 @@ void Reconstruction::on_pushButton_7_clicked()
 
 		spl->resize(1520, 800);
 		ui.progressBar->setValue(100);
-		spl->move(250, 40);
-
 		ui.progressBar->reset();
 		ui.labelStatus->setText("Ready");
 		ui.progressBar->setVisible(false);
@@ -997,11 +984,20 @@ void Reconstruction::on_comboBox_activated(int index)
 	switch (index)
 	{
 	//系统标定
-	case 0: {ui.label_3->hide(); ui.tabWidget1->hide(); dataWidget->hide(); spl->hide(); caliWidget->show(); caliWidget->move(250, 40); cubeWidget->hide(); } break;
+	case 0: {ui.label_3->hide(); ui.tabWidget1->hide(); dataWidget->hide(); spl->hide(); caliWidget->show(); caliWidget->move(220, 47); cubeWidget->hide(); } break;
 	//图像处理
 	case 1: {ui.label_3->show(); ui.tabWidget1->show(); dataWidget->hide(); spl->hide(); caliWidget->hide(); cubeWidget->hide(); } break;
 	//三维重建预览
-	case 2: {ui.label_3->hide(); ui.tabWidget1->hide(); dataWidget->hide(); spl->show(); caliWidget->hide(); cubeWidget->move(250, 40); cubeWidget->show(); } break;
+	case 2: {ui.label_3->hide(); ui.tabWidget1->hide(); dataWidget->hide(); caliWidget->hide(); 
+		if (hideCube == true)
+		{
+			cubeWidget->hide(); spl->move(250, 140); spl->show();
+		}
+		else
+		{
+			cubeWidget->move(250, 70); cubeWidget->show(); 
+		}
+	} break;
 	//统计与分析
 	case 3: {ui.label_3->hide(); ui.tabWidget1->hide(); dataWidget->move(250, 40); spl->hide(); dataWidget->show(); caliWidget->hide(); cubeWidget->hide(); } break;
 	}

@@ -69,10 +69,11 @@
     <property name="contextMenuPolicy">
      <enum>Qt::DefaultContextMenu</enum>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
     <property name="styleSheet">
-     <string notr="true">
-
-QTabWidget::tab-bar{ alignment: center;}
+     <string notr="true">QTabWidget::tab-bar{ alignment: center;}
 QTabBar::tab:selected{ background-color: rgb(0, 122, 255);color: white; }
 
 QTabBar::tab{ width: 120px; height:25px; border-radius: 4px; margin-bottom: 6px;}​
@@ -102,6 +103,9 @@ QTabBar::tab{ width: 120px; height:25px; border-radius: 4px; margin-bottom: 6px;
        <font>
         <family>.苹方-简</family>
        </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
       </property>
       <property name="styleSheet">
        <string notr="true"/>
@@ -766,7 +770,7 @@ QComboBox QAbstractItemView::item:hover {color: white;background-color: rgb(0, 1
     <property name="geometry">
      <rect>
       <x>-3</x>
-      <y>61</y>
+      <y>60</y>
       <width>1811</width>
       <height>20</height>
      </rect>

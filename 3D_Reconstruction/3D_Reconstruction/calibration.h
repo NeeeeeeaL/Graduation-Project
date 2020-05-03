@@ -40,6 +40,9 @@ public:
 
 	//定义保存图像的容器
 	vector<cv::Mat> calibImg;
+	//定义保存控件的容器
+	vector<QLabel*> imgLabel;
+	vector<QLabel*> imgLabel2;
 
 	void dealLoadCalibImg();
 

@@ -69,6 +69,7 @@ private:
 	bool isGetP = false;
 	bool isUnwrap = false;
 
+	bool hideCube = false;
 
 public:
 	//尽量避免对全局变量进行操作，可在函数内声明临时变量，
