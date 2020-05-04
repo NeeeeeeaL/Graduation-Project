@@ -25,9 +25,9 @@ void Calibration::dealLoadCalibImg()
 //标定
 void Calibration::on_pushButton2_clicked()
 {
-	//QString outfilename = "sample/left/caliberation_result.txt";
+	string outfilename = "..//sample//left//caliberation_result.txt";
 	////保存标定的结果  ofstream 是从内存写到硬盘
-	//ofstream fout(outfilename);
+	ofstream fout(outfilename);
 
 	/******************************提取角点****************************/
 	//1.读取毎一幅图像，从中提取出角点，然后对角点进行亚像素精确化、获取每个角点在像素坐标系中的坐标
@@ -137,6 +137,28 @@ void Calibration::on_pushButton2_clicked()
 
 	//标定完成
 	cout << "标定完成" << endl;
+
+	/************************保存定标结果************************/
+	cout << "开始保存标定结果....." << endl;
+	cv::Mat rotationMatrix = cv::Mat(3, 3, CV_32FC1, cv::Scalar::all(0));
+
+	fout << "相机内参数矩阵:" << endl;
+	fout << cameraMatrix << endl << endl;
+	fout << "畸变系数:" << endl;
+	fout << distCoeffs << endl << endl;
+
+	for (int i = 0; i < imageCount; i++)
+	{
+		fout << "第" << i + 1 << "幅图像的旋转向量:" << endl;
+		fout << tvecsMat[i] << endl;
+		//将旋转向量转换为相对应的旋转矩阵
+		cv::Rodrigues(tvecsMat[i], rotationMatrix);
+		fout << "第" << i + 1 << "幅图像的旋转矩阵:" << endl;
+		fout << rotationMatrix << endl;
+		fout << "第" << i + 1 << "幅图像的平移向量:" << endl;
+		fout << rvecsMat[i] << endl;
+	}
+	cout << "保存完成" << endl;
 
 	/************************显示定标结果************************/
 	cv::Mat mapx = cv::Mat(imageSize, CV_32FC1);

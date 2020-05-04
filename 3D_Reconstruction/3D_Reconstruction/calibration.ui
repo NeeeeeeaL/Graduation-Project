@@ -6,9 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1550</width>
+    <width>1580</width>
     <height>800</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>.苹方-简</family>
+   </font>
   </property>
   <property name="windowTitle">
    <string>Calibration</string>
@@ -36,11 +41,16 @@
   <widget class="QPushButton" name="pushButton1">
    <property name="geometry">
     <rect>
-     <x>1260</x>
-     <y>650</y>
+     <x>1430</x>
+     <y>620</y>
      <width>111</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>.苹方-简</family>
+    </font>
    </property>
    <property name="text">
     <string>读取标定图像</string>
@@ -49,11 +59,16 @@
   <widget class="QPushButton" name="pushButton2">
    <property name="geometry">
     <rect>
-     <x>1400</x>
-     <y>650</y>
+     <x>1430</x>
+     <y>690</y>
      <width>111</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>.苹方-简</family>
+    </font>
    </property>
    <property name="text">
     <string>标定</string>
@@ -64,9 +79,14 @@
     <rect>
      <x>30</x>
      <y>50</y>
-     <width>1181</width>
+     <width>1371</width>
      <height>751</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>.苹方-简</family>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">QTabWidget::tab-bar{ alignment: center;}
@@ -86,7 +106,7 @@ QTabBar::tab{ width: 120px; height:25px; border-radius: 4px; margin-bottom: 6px;
       <rect>
        <x>50</x>
        <y>10</y>
-       <width>1081</width>
+       <width>1281</width>
        <height>691</height>
       </rect>
      </property>
@@ -187,7 +207,7 @@ QTabBar::tab{ width: 120px; height:25px; border-radius: 4px; margin-bottom: 6px;
       <rect>
        <x>50</x>
        <y>10</y>
-       <width>1081</width>
+       <width>1281</width>
        <height>691</height>
       </rect>
      </property>
@@ -351,25 +371,6 @@ QTabBar::tab{ width: 120px; height:25px; border-radius: 4px; margin-bottom: 6px;
      </layout>
     </widget>
    </widget>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>590</x>
-     <y>20</y>
-     <width>72</width>
-     <height>15</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>.苹方-简</family>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>相机标定</string>
-   </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

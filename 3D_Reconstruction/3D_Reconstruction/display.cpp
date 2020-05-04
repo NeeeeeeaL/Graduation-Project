@@ -15,7 +15,9 @@ Plot::Plot(QWidget* pw, cv::Mat & m)
 	:SurfacePlot(pw)
 {
 	setTitle("3D Reconstruction");
-	setTitleFont("SansSerif", 18);
+	QFont font;
+	font.setFamily(QString::fromUtf8(".\350\213\271\346\226\271-\347\256\200"));
+	setFont(font);
 
 	coordinates()->axes[X1].setLabelString("x-axis");
 	coordinates()->axes[Y1].setLabelString("y-axis");

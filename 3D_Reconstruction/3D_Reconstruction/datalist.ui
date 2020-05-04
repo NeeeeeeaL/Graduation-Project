@@ -28,25 +28,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>690</x>
-     <y>40</y>
-     <width>121</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>.苹方-简</family>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>数据统计与分析</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
@@ -113,7 +94,6 @@
     <string/>
    </property>
   </widget>
-  <zorder>label</zorder>
   <zorder>pushButton</zorder>
   <zorder>lineEdit</zorder>
   <zorder>label_2</zorder>

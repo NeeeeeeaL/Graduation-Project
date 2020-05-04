@@ -51,6 +51,7 @@ Reconstruction::Reconstruction(QWidget *parent)
 
 	//将窗口移动到合适的位置
 	this->move(50, 45);
+	this->setWindowTitle("FTP Translation");
 
 	//设置TabWidget的初始Tab
 	ui.tabWidget1->setCurrentIndex(0);
@@ -61,10 +62,20 @@ Reconstruction::Reconstruction(QWidget *parent)
 	QIcon icon1("Resources//imageProcess.ico");
 	QIcon icon2("Resources//cube.ico");
 	QIcon icon3("Resources//stats.ico");
+
+	QIcon iconOpen("Resources//openImage.ico");
+	QIcon iconSave("Resources//save.ico");
+	QIcon iconSwitch("Resources//switchLeft.ico");
+
 	ui.comboBox->setItemIcon(0, icon0);
 	ui.comboBox->setItemIcon(1, icon1);
 	ui.comboBox->setItemIcon(2, icon2);
 	ui.comboBox->setItemIcon(3, icon3);
+
+	ui.actionOpen->setIcon(iconOpen);
+	ui.actionSave->setIcon(iconSave);
+	ui.actionPMP->setIcon(iconSwitch);
+
 	//修改toolbox的page名称
 	ui.toolBox->setItemText(0, codecParent->toUnicode("手动处理"));
 	ui.toolBox->setItemText(1, codecParent->toUnicode("自动处理"));
@@ -83,7 +94,7 @@ Reconstruction::Reconstruction(QWidget *parent)
 	//connect(thread, &MyThread::signalEndPlot, this, &Reconstruction::killThread);
 	
 	//其他功能模块Widget初始化
-	ui.label_3->hide(); 
+	ui.label_3->setText(codecParent->toUnicode("相机标定"));
 	ui.tabWidget1->hide();
 
 	dataWidget = new DataList(this);
@@ -93,7 +104,7 @@ Reconstruction::Reconstruction(QWidget *parent)
 	spl->hide();
 
 	caliWidget = new Calibration(this);
-	caliWidget->move(220, 47);
+	caliWidget->move(220, 55);
 	caliWidget->show();
 
 	cubeWidget = new Cube(this);
@@ -149,8 +160,6 @@ void Reconstruction::dealTransmit()
 //因为绘图函数会被频繁调用
 void Reconstruction::paintEvent(QPaintEvent *)
 {
-	ui.statusBar->addWidget(ui.labelStatus, 4);
-	ui.statusBar->addWidget(ui.progressBar, 1);
 }
 
 //在QLabel上显示Mat图像
@@ -665,8 +674,7 @@ void Reconstruction::on_pushButton_7_clicked()
 {
 	if (isOpen == true)
 	{
-		//ui.labelStatus->setText("Only One Step...");
-		statusBar()->removeWidget(ui.labelStatus);
+		ui.labelStatus->setText("Only One Step...");
 		ui.progressBar->setVisible(true);
 		ui.progressBar->setValue(10);
 
@@ -984,22 +992,22 @@ void Reconstruction::on_comboBox_activated(int index)
 	switch (index)
 	{
 	//系统标定
-	case 0: {ui.label_3->hide(); ui.tabWidget1->hide(); dataWidget->hide(); spl->hide(); caliWidget->show(); caliWidget->move(220, 47); cubeWidget->hide(); } break;
+	case 0: {ui.label_3->setText(codecParent->toUnicode("相机标定")); ui.tabWidget1->hide(); dataWidget->hide(); spl->hide(); caliWidget->show(); caliWidget->move(220, 55); cubeWidget->hide(); } break;
 	//图像处理
-	case 1: {ui.label_3->show(); ui.tabWidget1->show(); dataWidget->hide(); spl->hide(); caliWidget->hide(); cubeWidget->hide(); } break;
+	case 1: {ui.label_3->setText(codecParent->toUnicode("傅里叶轮廓术图像处理结果")); ui.tabWidget1->show(); dataWidget->hide(); spl->hide(); caliWidget->hide(); cubeWidget->hide(); } break;
 	//三维重建预览
-	case 2: {ui.label_3->hide(); ui.tabWidget1->hide(); dataWidget->hide(); caliWidget->hide(); 
+	case 2: {ui.label_3->setText(codecParent->toUnicode("物体三维模型复原")); ui.tabWidget1->hide(); dataWidget->hide(); caliWidget->hide();
 		if (hideCube == true)
 		{
-			cubeWidget->hide(); spl->move(250, 140); spl->show();
+			cubeWidget->hide(); spl->move(260, 130); spl->show();
 		}
 		else
 		{
-			cubeWidget->move(250, 70); cubeWidget->show(); 
+			cubeWidget->move(230, 45); cubeWidget->show(); 
 		}
 	} break;
 	//统计与分析
-	case 3: {ui.label_3->hide(); ui.tabWidget1->hide(); dataWidget->move(250, 40); spl->hide(); dataWidget->show(); caliWidget->hide(); cubeWidget->hide(); } break;
+	case 3: {ui.label_3->setText(codecParent->toUnicode("数据统计与分析")); ui.tabWidget1->hide(); dataWidget->move(250, 80); spl->hide(); dataWidget->show(); caliWidget->hide(); cubeWidget->hide(); } break;
 	}
 }
 

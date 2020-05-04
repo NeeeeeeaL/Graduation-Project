@@ -32,8 +32,16 @@ PMPTrans::PMPTrans(QWidget *parent)
 	ui.progressBar->setMaximum(100);
 	ui.progressBar->reset();
 
+	QIcon iconOpen("Resources//openImage.ico");
+	QIcon iconSave("Resources//save.ico");
+	QIcon iconSwitch("Resources//switchRight.ico");
+
+	ui.actionOpen->setIcon(iconOpen);
+	ui.actionSave->setIcon(iconSave);
+	ui.actionFTP->setIcon(iconSwitch);
+
 	//将窗口移动到合适的位置
-	this->move(120, 40);
+	this->move(50, 45);
 
 	//设置TabWidget的初始Tab
 	ui.tabWidget->setCurrentIndex(0);
@@ -292,8 +300,8 @@ void PMPTrans::on_pushButton3_clicked()
 		Plot* plot = new Plot(spl, imgDisplay);
 
 		ui.progressBar->setValue(80);
-		spl->resize(440, 350);
-		spl->move(920, 100);
+		spl->resize(1200, 800);
+		spl->move(200, 100);
 		ui.progressBar->setValue(90);
 		spl->show();
 		ui.progressBar->setValue(100);
