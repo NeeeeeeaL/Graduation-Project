@@ -18,6 +18,7 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLayout>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -74,12 +75,6 @@ public:
     QProgressBar *progressBar;
     QLabel *label_9;
     QLabel *labelGetImg;
-    QWidget *layoutWidget;
-    QGridLayout *gridLayout;
-    QPushButton *pushButton_8;
-    QPushButton *pushButton_9;
-    QPushButton *pushButton_10;
-    QPushButton *pushButton_11;
     QComboBox *comboBox;
     QLabel *label;
     QToolBox *toolBox;
@@ -94,6 +89,7 @@ public:
     QWidget *page_2;
     QGridLayout *gridLayout_3;
     QPushButton *pushButton_7;
+    QLabel *label_6;
     QFrame *line;
     QFrame *line_2;
     QLabel *label_2;
@@ -284,45 +280,12 @@ public:
         progressBar->setTextDirection(QProgressBar::TopToBottom);
         label_9 = new QLabel(centralWidget);
         label_9->setObjectName(QStringLiteral("label_9"));
-        label_9->setGeometry(QRect(80, 460, 71, 31));
+        label_9->setGeometry(QRect(50, 460, 121, 31));
         label_9->setFont(font2);
         labelGetImg = new QLabel(centralWidget);
         labelGetImg->setObjectName(QStringLiteral("labelGetImg"));
-        labelGetImg->setGeometry(QRect(10, 500, 251, 211));
+        labelGetImg->setGeometry(QRect(10, 500, 231, 211));
         labelGetImg->setFont(font);
-        layoutWidget = new QWidget(centralWidget);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 730, 231, 101));
-        layoutWidget->setFont(font);
-        gridLayout = new QGridLayout(layoutWidget);
-        gridLayout->setSpacing(6);
-        gridLayout->setContentsMargins(11, 11, 11, 11);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        gridLayout->setContentsMargins(0, 0, 0, 0);
-        pushButton_8 = new QPushButton(layoutWidget);
-        pushButton_8->setObjectName(QStringLiteral("pushButton_8"));
-        pushButton_8->setFont(font);
-
-        gridLayout->addWidget(pushButton_8, 0, 0, 1, 1);
-
-        pushButton_9 = new QPushButton(layoutWidget);
-        pushButton_9->setObjectName(QStringLiteral("pushButton_9"));
-        pushButton_9->setFont(font);
-
-        gridLayout->addWidget(pushButton_9, 0, 1, 1, 1);
-
-        pushButton_10 = new QPushButton(layoutWidget);
-        pushButton_10->setObjectName(QStringLiteral("pushButton_10"));
-        pushButton_10->setFont(font);
-
-        gridLayout->addWidget(pushButton_10, 1, 0, 1, 1);
-
-        pushButton_11 = new QPushButton(layoutWidget);
-        pushButton_11->setObjectName(QStringLiteral("pushButton_11"));
-        pushButton_11->setFont(font);
-
-        gridLayout->addWidget(pushButton_11, 1, 1, 1, 1);
-
         comboBox = new QComboBox(centralWidget);
         comboBox->setObjectName(QStringLiteral("comboBox"));
         comboBox->setGeometry(QRect(84, 20, 165, 35));
@@ -356,6 +319,7 @@ public:
         toolBox->setGeometry(QRect(10, 120, 201, 311));
         toolBox->setFont(font);
         toolBox->setAutoFillBackground(false);
+        toolBox->setStyleSheet(QStringLiteral(" QToolBox::tab {padding-left: 72px;}"));
         page = new QWidget();
         page->setObjectName(QStringLiteral("page"));
         page->setGeometry(QRect(0, 0, 201, 239));
@@ -412,7 +376,14 @@ public:
         pushButton_7->setFont(font);
         pushButton_7->setStyleSheet(QStringLiteral(""));
 
-        gridLayout_3->addWidget(pushButton_7, 0, 0, 1, 1);
+        gridLayout_3->addWidget(pushButton_7, 1, 0, 1, 1);
+
+        label_6 = new QLabel(page_2);
+        label_6->setObjectName(QStringLiteral("label_6"));
+        label_6->setStyleSheet(QLatin1String("QLabel{border-image: url(:/Reconstruction/Resources/step.ico)}\n"
+""));
+
+        gridLayout_3->addWidget(label_6, 0, 0, 1, 1);
 
         toolBox->addItem(page_2, QStringLiteral("Page 2"));
         line = new QFrame(centralWidget);
@@ -461,7 +432,7 @@ public:
 
         retranslateUi(ReconstructionClass);
 
-        tabWidget1->setCurrentIndex(0);
+        tabWidget1->setCurrentIndex(5);
         toolBox->setCurrentIndex(1);
 
 
@@ -506,17 +477,13 @@ public:
         label_18->setText(QApplication::translate("ReconstructionClass", "\345\216\237\345\205\211\346\240\205\345\233\276\345\203\217", Q_NULLPTR));
         tabWidget1->setTabText(tabWidget1->indexOf(tab_12), QApplication::translate("ReconstructionClass", "\350\247\243\345\214\205\350\243\271\347\233\270\344\275\215\345\233\276", Q_NULLPTR));
         label_3->setText(QApplication::translate("ReconstructionClass", "\345\202\205\351\207\214\345\217\266\350\275\256\345\273\223\346\234\257\345\233\276\345\203\217\345\244\204\347\220\206\347\273\223\346\236\234", Q_NULLPTR));
-        label_9->setText(QApplication::translate("ReconstructionClass", "\345\233\276\345\203\217\351\207\207\351\233\206", Q_NULLPTR));
+        label_9->setText(QApplication::translate("ReconstructionClass", "\346\273\244\346\263\242\345\231\250\345\217\202\346\225\260\350\260\203\350\212\202", Q_NULLPTR));
         labelGetImg->setText(QApplication::translate("ReconstructionClass", "TextLabel", Q_NULLPTR));
-        pushButton_8->setText(QApplication::translate("ReconstructionClass", "\345\215\225\345\270\247\351\207\207\351\233\206", Q_NULLPTR));
-        pushButton_9->setText(QApplication::translate("ReconstructionClass", "\350\277\236\347\273\255\351\207\207\351\233\206", Q_NULLPTR));
-        pushButton_10->setText(QApplication::translate("ReconstructionClass", "\345\201\234\346\255\242\351\207\207\351\233\206", Q_NULLPTR));
-        pushButton_11->setText(QApplication::translate("ReconstructionClass", "\344\277\235\345\255\230", Q_NULLPTR));
         comboBox->clear();
         comboBox->insertItems(0, QStringList()
          << QApplication::translate("ReconstructionClass", "\347\263\273\347\273\237\346\240\207\345\256\232", Q_NULLPTR)
          << QApplication::translate("ReconstructionClass", "\345\233\276\345\203\217\345\244\204\347\220\206", Q_NULLPTR)
-         << QApplication::translate("ReconstructionClass", "\344\270\211\347\273\264\351\207\215\345\273\272\351\242\204\350\247\210", Q_NULLPTR)
+         << QApplication::translate("ReconstructionClass", "\344\270\211\347\273\264\346\250\241\345\236\213\351\242\204\350\247\210", Q_NULLPTR)
          << QApplication::translate("ReconstructionClass", "\347\273\237\350\256\241\344\270\216\345\210\206\346\236\220", Q_NULLPTR)
         );
         label->setText(QApplication::translate("ReconstructionClass", "\345\233\276\345\203\217\345\244\204\347\220\206\346\223\215\344\275\234", Q_NULLPTR));
@@ -528,6 +495,7 @@ public:
         pushButton_6->setText(QApplication::translate("ReconstructionClass", "\351\207\215\345\273\272\344\270\211\347\273\264\346\250\241\345\236\213", Q_NULLPTR));
         toolBox->setItemText(toolBox->indexOf(page), QApplication::translate("ReconstructionClass", "Page 1", Q_NULLPTR));
         pushButton_7->setText(QApplication::translate("ReconstructionClass", "One Step", Q_NULLPTR));
+        label_6->setText(QString());
         toolBox->setItemText(toolBox->indexOf(page_2), QApplication::translate("ReconstructionClass", "Page 2", Q_NULLPTR));
         label_2->setText(QString());
         menuFile->setTitle(QApplication::translate("ReconstructionClass", "File", Q_NULLPTR));

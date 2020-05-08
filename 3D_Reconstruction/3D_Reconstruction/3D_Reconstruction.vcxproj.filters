@@ -65,9 +65,6 @@
     <QtMoc Include="welcome.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="mythread.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="datalist.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -75,6 +72,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="cube.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="mythread.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

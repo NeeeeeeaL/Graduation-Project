@@ -36,9 +36,15 @@ PMPTrans::PMPTrans(QWidget *parent)
 	QIcon iconSave("Resources//save.ico");
 	QIcon iconSwitch("Resources//switchRight.ico");
 
+	QIcon icon0("Resources//imageProcess.ico");
+	QIcon icon1("Resources//cube.ico");
+
 	ui.actionOpen->setIcon(iconOpen);
 	ui.actionSave->setIcon(iconSave);
 	ui.actionFTP->setIcon(iconSwitch);
+
+	ui.comboBox->setItemIcon(0, icon0);
+	ui.comboBox->setItemIcon(1, icon1);
 
 	//将窗口移动到合适的位置
 	this->move(50, 45);

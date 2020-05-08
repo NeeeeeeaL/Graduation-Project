@@ -1,5 +1,10 @@
 <RCC>
   <qresource prefix="Reconstruction">
+    <file>Resources/gear.ico</file>
+    <file>Resources/step.ico</file>
+    <file>Resources/calculator.ico</file>
+    <file>Resources/tap.ico</file>
+    <file>Resources/4.ico</file>
     <file>Resources/stats.png</file>
     <file>Resources/cube.png</file>
     <file>Resources/checkered.png</file>

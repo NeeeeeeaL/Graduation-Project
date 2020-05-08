@@ -13,6 +13,8 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
@@ -69,6 +71,10 @@ public:
     QPushButton *pushButton2;
     QProgressBar *progressBar;
     QPushButton *pushButton3;
+    QComboBox *comboBox;
+    QFrame *line;
+    QFrame *line_2;
+    QLabel *label_10;
     QMenuBar *menuBar;
     QMenu *menuSwitchTo;
     QMenu *menuFile;
@@ -97,12 +103,12 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         tabWidget = new QTabWidget(centralWidget);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
-        tabWidget->setGeometry(QRect(250, 50, 1020, 820));
+        tabWidget->setGeometry(QRect(250, 40, 1020, 820));
         tabWidget->setFont(font);
         tabWidget->setStyleSheet(QString::fromUtf8("QTabWidget::tab-bar{ alignment: center;}\n"
 "QTabBar::tab:selected{ background-color: rgb(0, 122, 255);color: white; }\n"
 "\n"
-"QTabBar::tab{ width: 120px; height:25px; border-radius: 4px; margin-bottom: 6px;}\342\200\213"));
+"QTabBar::tab{ width: 130px; height:25px; border-radius: 4px; margin-bottom: 6px;}\342\200\213"));
         tab = new QWidget();
         tab->setObjectName(QStringLiteral("tab"));
         label1_1 = new QLabel(tab);
@@ -232,6 +238,42 @@ public:
         pushButton3->setObjectName(QStringLiteral("pushButton3"));
         pushButton3->setGeometry(QRect(10, 650, 111, 41));
         pushButton3->setFont(font);
+        comboBox = new QComboBox(centralWidget);
+        comboBox->setObjectName(QStringLiteral("comboBox"));
+        comboBox->setGeometry(QRect(80, 20, 165, 35));
+        comboBox->setFont(font2);
+        comboBox->setStyleSheet(QLatin1String("QComboBox {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 4px;\n"
+"    padding: 1px 2px 1px 2px; \n"
+"    min-width: 9em; \n"
+"}\n"
+"QComboBox::drop-down{width: 25px;border-left: 1px solid gray;}\n"
+"\n"
+"QComboBox::down-arrow { image: url(:/Reconstruction/Resources/arrowd.ico)}\n"
+"\n"
+"QComboBox::down-arrow:on {image: url(:/Reconstruction/Resources/arrowa.ico);}\n"
+"\n"
+"QComboBox QAbstractItemView {outline:0px;}\n"
+"\n"
+"QComboBox QAbstractItemView::item:hover {color: white;background-color: rgb(0, 122, 255);}\n"
+"\n"
+""));
+        line = new QFrame(centralWidget);
+        line->setObjectName(QStringLiteral("line"));
+        line->setGeometry(QRect(-3, 60, 1801, 20));
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+        line_2 = new QFrame(centralWidget);
+        line_2->setObjectName(QStringLiteral("line_2"));
+        line_2->setGeometry(QRect(240, 80, 20, 801));
+        line_2->setFrameShape(QFrame::VLine);
+        line_2->setFrameShadow(QFrame::Sunken);
+        label_10 = new QLabel(centralWidget);
+        label_10->setObjectName(QStringLiteral("label_10"));
+        label_10->setGeometry(QRect(10, 10, 50, 50));
+        label_10->setStyleSheet(QLatin1String("QLabel{border-image: url(:/Reconstruction/Resources/4.ico)}\n"
+""));
         PMPTrans->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(PMPTrans);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -246,6 +288,8 @@ public:
         PMPTrans->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(PMPTrans);
         statusBar->setObjectName(QStringLiteral("statusBar"));
+        statusBar->setFont(font);
+        statusBar->setAutoFillBackground(true);
         PMPTrans->setStatusBar(statusBar);
 
         menuBar->addAction(menuFile->menuAction());
@@ -262,7 +306,7 @@ public:
 
         retranslateUi(PMPTrans);
 
-        tabWidget->setCurrentIndex(3);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(PMPTrans);
@@ -307,6 +351,12 @@ public:
         pushButton1->setText(QApplication::translate("PMPTrans", "\346\261\202\347\233\270\344\275\215", Q_NULLPTR));
         pushButton2->setText(QApplication::translate("PMPTrans", "\347\233\270\344\275\215\350\247\243\345\214\205\350\243\271", Q_NULLPTR));
         pushButton3->setText(QApplication::translate("PMPTrans", "\344\270\211\347\273\264\351\207\215\345\273\272", Q_NULLPTR));
+        comboBox->clear();
+        comboBox->insertItems(0, QStringList()
+         << QApplication::translate("PMPTrans", "\345\233\276\345\203\217\345\244\204\347\220\206", Q_NULLPTR)
+         << QApplication::translate("PMPTrans", "\344\270\211\347\273\264\346\250\241\345\236\213\351\242\204\350\247\210", Q_NULLPTR)
+        );
+        label_10->setText(QString());
         menuSwitchTo->setTitle(QApplication::translate("PMPTrans", "SwitchTo", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("PMPTrans", "File", Q_NULLPTR));
     } // retranslateUi

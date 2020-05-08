@@ -26,7 +26,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>50</y>
+      <y>40</y>
       <width>1020</width>
       <height>820</height>
      </rect>
@@ -40,10 +40,10 @@
      <string notr="true">QTabWidget::tab-bar{ alignment: center;}
 QTabBar::tab:selected{ background-color: rgb(0, 122, 255);color: white; }
 
-QTabBar::tab{ width: 120px; height:25px; border-radius: 4px; margin-bottom: 6px;}​</string>
+QTabBar::tab{ width: 130px; height:25px; border-radius: 4px; margin-bottom: 6px;}​</string>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -559,6 +559,94 @@ QTabBar::tab{ width: 120px; height:25px; border-radius: 4px; margin-bottom: 6px;
      <string>三维重建</string>
     </property>
    </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>20</y>
+      <width>165</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>.苹方-简</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {
+    border: 1px solid gray;
+    border-radius: 4px;
+    padding: 1px 2px 1px 2px; 
+    min-width: 9em; 
+}
+QComboBox::drop-down{width: 25px;border-left: 1px solid gray;}
+
+QComboBox::down-arrow { image: url(:/Reconstruction/Resources/arrowd.ico)}
+
+QComboBox::down-arrow:on {image: url(:/Reconstruction/Resources/arrowa.ico);}
+
+QComboBox QAbstractItemView {outline:0px;}
+
+QComboBox QAbstractItemView::item:hover {color: white;background-color: rgb(0, 122, 255);}
+
+</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>图像处理</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>三维模型预览</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>-3</x>
+      <y>60</y>
+      <width>1801</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_2">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>80</y>
+      <width>20</width>
+      <height>801</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{border-image: url(:/Reconstruction/Resources/4.ico)}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -599,7 +687,16 @@ QTabBar::tab{ width: 120px; height:25px; border-radius: 4px; margin-bottom: 6px;
    <addaction name="actionFTP"/>
    <addaction name="separator"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="font">
+    <font>
+     <family>.苹方-简</family>
+    </font>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+  </widget>
   <action name="actionFTP">
    <property name="text">
     <string>FTP</string>
@@ -632,6 +729,8 @@ QTabBar::tab{ width: 120px; height:25px; border-radius: 4px; margin-bottom: 6px;
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="Reconstruction.qrc"/>
+ </resources>
  <connections/>
 </ui>

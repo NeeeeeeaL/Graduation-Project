@@ -1,3 +1,12 @@
-﻿  pmpTrans.cpp
+﻿  uic pmpTrans.ui
+  uic Reconstruction.ui
+  rcc Reconstruction.qrc
+  Reconstruction.cpp
+  main.cpp
+  mythread.cpp
+  pmpTrans.cpp
+  moc_Reconstruction.cpp
+  moc_pmpTrans.cpp
+  qrc_Reconstruction.cpp
   3D_Reconstruction.vcxproj -> D:\Work\毕业设计\毕业设计_余锦淼\code\3D_Reconstruction\x64\Debug\3D_Reconstruction.exe
   3D_Reconstruction.vcxproj -> D:\Work\毕业设计\毕业设计_余锦淼\code\3D_Reconstruction\x64\Debug\3D_Reconstruction.pdb (Full PDB)
