@@ -9,7 +9,7 @@ int main()
 {
 	/***************** 原条纹图像处理 ********************/
 
-	Mat imgOriginal_src = imread("1.bmp");//15.5blue;
+	Mat imgOriginal_src = imread("3-1.bmp");//15.5blue;
 	cvtColor(imgOriginal_src, imgOriginal_src, COLOR_BGR2GRAY);
 
 	if (imgOriginal_src.empty())
@@ -70,7 +70,7 @@ int main()
 	//showImg("img_ifft", imgOriginal_ifft);
 
 	/***************** 调制条纹图像处理 ******************/
-	Mat imgModulated_src = imread("2.bmp");//15.5blue
+	Mat imgModulated_src = imread("3-2.bmp");//15.5blue
 	cvtColor(imgModulated_src, imgModulated_src, COLOR_BGR2GRAY);
 
 
@@ -177,7 +177,7 @@ int main()
 
 	unwrappedPhase = abs(unwrappedPhase);
 	normalize(unwrappedPhase, unwrappedPhaseNormal, 0, 1, CV_MINMAX);
-	showImg("unwrappedPhase", unwrappedPhaseNormal);
+	showImg("unwrappedPhase", unwrappedPhase);
 
 	waitKey(0);
 	destroyAllWindows();

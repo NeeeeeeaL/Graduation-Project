@@ -24,6 +24,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QToolBar>
@@ -93,6 +94,8 @@ public:
     QFrame *line;
     QFrame *line_2;
     QLabel *label_2;
+    QSlider *horizontalSlider;
+    QSlider *verticalSlider;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuswitchTo;
@@ -319,7 +322,7 @@ public:
         toolBox->setGeometry(QRect(10, 120, 201, 311));
         toolBox->setFont(font);
         toolBox->setAutoFillBackground(false);
-        toolBox->setStyleSheet(QStringLiteral(" QToolBox::tab {padding-left: 72px;}"));
+        toolBox->setStyleSheet(QStringLiteral(" QToolBox::tab {padding-left: 70px;}"));
         page = new QWidget();
         page->setObjectName(QStringLiteral("page"));
         page->setGeometry(QRect(0, 0, 201, 239));
@@ -400,6 +403,14 @@ public:
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(15, 10, 50, 50));
         label_2->setStyleSheet(QStringLiteral("QLabel{border-image: url(:/Reconstruction/Resources/myico.ico)}"));
+        horizontalSlider = new QSlider(centralWidget);
+        horizontalSlider->setObjectName(QStringLiteral("horizontalSlider"));
+        horizontalSlider->setGeometry(QRect(20, 770, 160, 22));
+        horizontalSlider->setOrientation(Qt::Horizontal);
+        verticalSlider = new QSlider(centralWidget);
+        verticalSlider->setObjectName(QStringLiteral("verticalSlider"));
+        verticalSlider->setGeometry(QRect(170, 640, 22, 91));
+        verticalSlider->setOrientation(Qt::Vertical);
         ReconstructionClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(ReconstructionClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -433,7 +444,7 @@ public:
         retranslateUi(ReconstructionClass);
 
         tabWidget1->setCurrentIndex(5);
-        toolBox->setCurrentIndex(1);
+        toolBox->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(ReconstructionClass);
