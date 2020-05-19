@@ -5,8 +5,8 @@
 #include <opencv2\imgproc\imgproc.hpp>
 #include <vector>
 
-using namespace cv;
+
 using namespace std;
 
-void fft2(const Mat &src, Mat &Fourier);
-void ifft2(const Mat &src, Mat &Fourier);
+void fft2(const cv::Mat &src, cv::Mat &Fourier);
+void ifft2(const cv::Mat &src, cv::Mat &Fourier);

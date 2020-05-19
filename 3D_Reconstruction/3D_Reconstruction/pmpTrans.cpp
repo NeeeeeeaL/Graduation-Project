@@ -20,6 +20,9 @@ PMPTrans::PMPTrans(QWidget *parent)
 {
 	ui.setupUi(this);
 
+	//初始化codec
+	codecChild = QTextCodec::codecForName("GBK");
+
 	this->setWindowIcon(QIcon("myico.ico"));
 	this->setWindowTitle("PMP Translation");
 	statusBar()->setStyleSheet(QString("QStatusBar::item{border: 0px}")); // 设置不显示label的边框
@@ -307,9 +310,10 @@ void PMPTrans::on_pushButton3_clicked()
 
 		ui.progressBar->setValue(80);
 		spl->resize(1200, 800);
-		spl->move(200, 100);
+		spl->move(240, 110);
 		ui.progressBar->setValue(90);
 		spl->show();
+		ui.label_5->setText(codecChild->toUnicode("三维重建结果预览"));
 		ui.progressBar->setValue(100);
 		Sleep(0.5);
 		ui.progressBar->reset();

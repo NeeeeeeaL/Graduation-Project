@@ -1,9 +1,9 @@
 #include "circshift.h"
 
 
-void circshift(Mat & out, const Point & delta)
+void circshift(cv::Mat & out, const cv::Point & delta)
 {
-	Size sz = out.size();
+	cv::Size sz = out.size();
 
 	// 错误检查
 	assert(sz.height > 0 && sz.width > 0);
@@ -21,45 +21,45 @@ void circshift(Mat & out, const Point & delta)
 
 
 	// 多维的Mat也能移动
-	vector<Mat> planes;
+	vector<cv::Mat> planes;
 	split(out, planes);
 
 	for (size_t i = 0; i < planes.size(); i++)
 	{
 		// 竖直方向移动
-		Mat tmp0, tmp1, tmp2, tmp3;
-		Mat q0(planes[i], Rect(0, 0, sz.width, sz.height - y));
-		Mat q1(planes[i], Rect(0, sz.height - y, sz.width, y));
+		cv::Mat tmp0, tmp1, tmp2, tmp3;
+		cv::Mat q0(planes[i], cv::Rect(0, 0, sz.width, sz.height - y));
+		cv::Mat q1(planes[i], cv::Rect(0, sz.height - y, sz.width, y));
 		q0.copyTo(tmp0);
 		q1.copyTo(tmp1);
-		tmp0.copyTo(planes[i](Rect(0, y, sz.width, sz.height - y)));
-		tmp1.copyTo(planes[i](Rect(0, 0, sz.width, y)));
+		tmp0.copyTo(planes[i](cv::Rect(0, y, sz.width, sz.height - y)));
+		tmp1.copyTo(planes[i](cv::Rect(0, 0, sz.width, y)));
 
 		// 水平方向移动
-		Mat q2(planes[i], Rect(0, 0, sz.width - x, sz.height));
-		Mat q3(planes[i], Rect(sz.width - x, 0, x, sz.height));
+		cv::Mat q2(planes[i], cv::Rect(0, 0, sz.width - x, sz.height));
+		cv::Mat q3(planes[i], cv::Rect(sz.width - x, 0, x, sz.height));
 		q2.copyTo(tmp2);
 		q3.copyTo(tmp3);
-		tmp2.copyTo(planes[i](Rect(x, 0, sz.width - x, sz.height)));
-		tmp3.copyTo(planes[i](Rect(0, 0, x, sz.height)));
+		tmp2.copyTo(planes[i](cv::Rect(x, 0, sz.width - x, sz.height)));
+		tmp3.copyTo(planes[i](cv::Rect(0, 0, x, sz.height)));
 	}
 
 	merge(planes, out);
 }
 
-void fftshift(Mat & out)
+void fftshift(cv::Mat & out)
 {
-	Size sz = out.size();
-	Point pt(0, 0);
+	cv::Size sz = out.size();
+	cv::Point pt(0, 0);
 	pt.x = (int)floor(sz.width / 2.0);//floor: 计算不大于 arg 的最大整数值
 	pt.y = (int)floor(sz.height / 2.0);
 	circshift(out, pt);
 }
 
-void ifftshift(Mat & out)
+void ifftshift(cv::Mat & out)
 {
-	Size sz = out.size();
-	Point pt(0, 0);
+	cv::Size sz = out.size();
+	cv::Point pt(0, 0);
 	pt.x = (int)ceil(sz.width / 2.0);//ceil: 计算不小于 arg 的最小整数值
 	pt.y = (int)ceil(sz.height / 2.0);
 	circshift(out, pt);

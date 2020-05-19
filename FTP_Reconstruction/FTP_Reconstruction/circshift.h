@@ -5,9 +5,9 @@
 #include <opencv2\imgproc\imgproc.hpp>
 #include <vector>
 
-using namespace cv;
+
 using namespace std;
 
-void circshift(Mat &out, const Point &delta);
-void fftshift(Mat &out);
-void ifftshift(Mat &out);
+void circshift(cv::Mat &out, const cv::Point &delta);
+void fftshift(cv::Mat &out);
+void ifftshift(cv::Mat &out);

@@ -2,7 +2,7 @@
 
 #include "main.h"
 
-using namespace cv;
+
 using namespace std;
 
-void showImg(const char *windowName, const Mat & src);
+void showImg(const char *windowName, const cv::Mat & src);

@@ -1,11 +1,11 @@
 #include "showImg.h"
 
-void showImg(const char *windowName, const Mat & src)
+void showImg(const char *windowName, const cv::Mat & src)
 {
-	const int windowWidth = 700;//489
+	const int windowWidth = 650;//489
 	const int windowHeight = 500;//500
 
-	namedWindow(windowName, WINDOW_NORMAL);
-	resizeWindow(windowName, windowWidth, windowHeight);
-	imshow(windowName, src);
+	cv::namedWindow(windowName, cv::WINDOW_NORMAL);
+	cv::resizeWindow(windowName, windowWidth, windowHeight);
+	cv::imshow(windowName, src);
 }
