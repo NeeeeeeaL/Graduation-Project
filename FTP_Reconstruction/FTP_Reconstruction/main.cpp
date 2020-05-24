@@ -8,7 +8,7 @@ int main()
 {
 	/***************** 原条纹图像处理 ********************/
 
-	cv::Mat imgOriginal_src = cv::imread("3-1.bmp", 0);//15.5blue;
+	cv::Mat imgOriginal_src = cv::imread("4-1.bmp", 0);//15.5blue;
 	//cvtColor(imgOriginal_src, imgOriginal_src, cv::COLOR_BGR2GRAY);
 
 	if (imgOriginal_src.empty())
@@ -69,7 +69,7 @@ int main()
 	//showImg("img_ifft", imgOriginal_ifft);
 
 	/***************** 调制条纹图像处理 ******************/
-	cv::Mat imgModulated_src = cv::imread("3-2.bmp", 0);//15.5blue
+	cv::Mat imgModulated_src = cv::imread("4-2.bmp", 0);//15.5blue
 	//cvtColor(imgModulated_src, imgModulated_src, cv::COLOR_BGR2GRAY);
 
 
@@ -170,36 +170,38 @@ int main()
 
 	//相位解包裹
 	cv::Mat unwrappedPhase(imgModulated_src.rows, imgModulated_src.cols, CV_32F, cv::Scalar(0));
-	//unwrap(wrappedPhase, unwrappedPhase);
+	unwrap(wrappedPhase, unwrappedPhase);
 
-	if (!libunwrapInitialize())    //初始化，在.h中能找到这个函数，对应的名字
-	{
-		cout << "Could not initialize MatDLL!" << endl;
-		//exit(0);
-	}
-	mclmcrInitialize();
+	//mclInitializeApplication(NULL, 0);
+	//if (!libunwrapInitialize())    //初始化，在.h中能找到这个函数，对应的名字
+	//{
+	//	cout << "Could not initialize MatDLL!" << endl;
+	//	//exit(0);
+	//}
+	//mclmcrInitialize();
 
 
 	// Mat2mwArray
-	
-	mwArray wrappedArray(imgModulated_src.rows, imgModulated_src.cols, mxDOUBLE_CLASS);
-	//cv::Mat src_t = wrappedPhase.t();
-	wrappedArray.SetData(wrappedPhase.data, wrappedPhase.rows*wrappedPhase.cols); //
+	//
+	//mwArray wrappedArray(imgModulated_src.rows, imgModulated_src.cols, mxDOUBLE_CLASS);
+	////cv::Mat src_t = wrappedPhase.t();
+	//wrappedArray.SetData(wrappedPhase.data, wrappedPhase.rows*wrappedPhase.cols); //
 
-	mwArray unwrappedArray(wrappedPhase.rows, wrappedPhase.cols, mxSINGLE_CLASS);
+	//mwArray unwrappedArray(wrappedPhase.rows, wrappedPhase.cols, mxSINGLE_CLASS);
 
-	//myUnwrap(1, wrappedArray, unwrappedArray);
+	//myUnwrap(1, unwrappedArray, wrappedArray);
 
 	//mwArry2Mat
-	for (int j = 0; j<unwrappedPhase.rows; ++j)
-	{
-		float* pdata = unwrappedPhase.ptr<float>(j);
-		for (int i = 0; i<unwrappedPhase.cols; ++i)
-		{
-			pdata[i] = unwrappedArray(j + 1, i + 1); /// 元素访问（行号，列号）
-		}
-	}
-	libunwrapTerminate();
+
+	//for (int i = 0; i < unwrappedPhase.rows; ++i)
+	//{
+	//	for (int j = 0; j < unwrappedPhase.cols; ++j)
+	//	{
+	//		unwrappedPhase.at<float>(i, j) = unwrappedArray(i + 1, j + 1);
+	//	}
+	//}
+
+	//libunwrapTerminate();
 
 	cv::Mat unwrappedPhaseNormal(imgModulated_src.rows, imgModulated_src.cols, CV_32F, cv::Scalar(0));
 

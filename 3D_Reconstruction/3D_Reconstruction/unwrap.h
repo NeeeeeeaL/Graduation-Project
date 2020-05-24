@@ -5,7 +5,6 @@
 #include <opencv2\imgproc\imgproc.hpp>
 #include <iostream>
 
-//#define BYTE unsigned char
 
 #define mySwap(x,y) {EDGE t; t=x; x=y; y=t;}
 #define order(x,y) if (x.reliab > y.reliab) mySwap(x,y)

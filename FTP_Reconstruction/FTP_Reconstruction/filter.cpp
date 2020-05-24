@@ -6,9 +6,9 @@ void filt(const cv::Mat & src, cv::Mat & imgFilt)
 
 {
 	//设计非对称汉宁窗
-	const int hannRows = 26; //原图：50；ROI3：26；ROI4：30；鼠标：32
-	const int hannCols = 412; //原图：1348；ROI3：412；ROI4：750；鼠标：1490
-	const int offsetY = 18; //原图：向下偏移44；ROI3：20；ROI4：25；鼠标：30
+	const int hannRows = 14; //原图：50；ROI3：14；ROI4：30；鼠标：32; test:62
+	const int hannCols = 400; //原图：1348；ROI3：412；ROI4：750；鼠标：1490; test:1514
+	const int offsetY = 27; //原图：向下偏移44；ROI3：19；ROI4：25；鼠标：30; test: 58
 
 	cv::Mat hann = cv::Mat::zeros(hannRows, hannCols, CV_64FC1);
 	for (int i = 0; i < hannRows; ++i)
@@ -16,14 +16,14 @@ void filt(const cv::Mat & src, cv::Mat & imgFilt)
 		for (int j = 0; j < hannCols; ++j)
 		{
 			hann.at<double>(i, j) = 0.5 +
-				0.5 * cos(2.0 * PI * sqrt(pow((i - hannRows / 2.0), 2) / pow(25.0, 2) + pow((j - hannCols / 2.0), 2) / pow(500.0, 2)));
+				0.5 * cos(2.0 * PI * sqrt(pow((i - hannRows / 2.0), 2) / pow(20.0, 2) + pow((j - hannCols / 2.0), 2) / pow(800.0, 2)));
 			//原图：40， 1200；ROI3：25， 500；鼠标：50， 1200
 		}
 	}
 
 	//showImg("Hann", hann);
 	cv::namedWindow("Hann", cv::WINDOW_NORMAL);
-	cv::resizeWindow("Hann", 800, 30);
+	cv::resizeWindow("Hann", hannCols, hannRows);
 	cv::imshow("Hann", hann);
 
 	//滤波
