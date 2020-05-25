@@ -108,3 +108,20 @@ Mat getPhase(Mat src1, Mat src2, Mat src3, Mat src4)
 
 	return phase;
 }
+
+Mat subtract(Mat src1, Mat src2)
+{
+	Mat dst(src1.size(), CV_64F);
+	const int imgWidth = src1.cols;
+	const int imgHeight = src1.rows;
+
+	for (int i = 0; i < imgHeight; ++i)
+	{
+		for (int j = 0; j < imgWidth; ++j)
+		{
+			dst.at<double>(i, j) = src2.at<double>(i, j) - src1.at<double>(i, j);
+		}
+	}
+
+	return dst;
+}

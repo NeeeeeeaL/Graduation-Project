@@ -64,3 +64,20 @@ void ifftshift(cv::Mat & out)
 	pt.y = (int)ceil(sz.height / 2.0);
 	circshift(out, pt);
 }
+
+cv::Mat subtract(cv::Mat src1, cv::Mat src2)
+{
+	cv::Mat dst(src1.size(), CV_64F);
+	const int imgWidth = src1.cols;
+	const int imgHeight = src1.rows;
+
+	for (int i = 0; i < imgHeight; ++i)
+	{
+		for (int j = 0; j < imgWidth; ++j)
+		{
+			dst.at<double>(i, j) = src2.at<double>(i, j) - src1.at<double>(i, j);
+		}
+	}
+
+	return dst;
+}

@@ -27,18 +27,64 @@
      <height>581</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>.苹方-简</family>
+     <pointsize>9</pointsize>
+     <weight>3</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QTableView {
+    color: black;                                       /*表格内文字颜色*/
+    gridline-color: black;                              /*表格内框颜色*/
+    background-color: rgb(255, 255, 255);               /*表格内背景色*/
+    alternate-background-color: rgb(198, 198, 198);
+    selection-color: black;                             /*选中区域的文字颜色*/
+    selection-background-color: rgb(198, 198, 198);        /*选中区域的背景色*/
+    border: 2px black;
+    border-radius: 2px;
+    padding: 2px 4px;
+	font: 25 9pt &quot;.苹方-简&quot;;
+}
+
+QHeaderView {
+    color: black;
+    background-color: white;
+    border: 1px solid rgb(144, 144, 144);
+    border-left-color: rgba(255, 255, 255, 0);
+    border-top-color: rgba(255, 255, 255, 0);
+    border-radius:0px;
+    min-height:30px;
+	min-width:25px;
+	font: 25 9pt &quot;.苹方-简&quot;;
+}
+
+QTableView QTableCornerButton::section {
+
+    color: red;
+    background-color: white;
+    border: 0px solid #f6f7fa;
+    border-radius:0px;
+    border-color: rgb(64, 64, 64);
+ }
+
+</string>
+   </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>1080</x>
-     <y>730</y>
+     <x>610</x>
+     <y>740</y>
      <width>93</width>
      <height>28</height>
     </rect>
    </property>
    <property name="text">
-    <string>导出</string>
+    <string>查询数据库</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit">

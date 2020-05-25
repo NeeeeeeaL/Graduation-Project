@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
 	label->setWindowFlags(Qt::FramelessWindowHint);//隐藏边框
 	//将窗口移动到合适的位置
-	label->move(120, 80);
+	label->move(400, 200);
 	label->show();
 
 	QTime t;

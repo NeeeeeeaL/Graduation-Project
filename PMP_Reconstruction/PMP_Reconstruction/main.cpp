@@ -115,6 +115,12 @@ int main()
 	//normalize(resultPhase, resultPhaseNormal, 0, 1, CV_MINMAX);
 	//showImg("resultPhase", resultPhaseNormal);
 
+	/*********************piœ‡“∆∑®*************************/
+	Mat dst(imgHeight, imgWidth, CV_64F, Scalar(0));
+	dst = subtract(imgSrc1, imgSrc3);
+	showImg("piPhase", dst);
+	imwrite("piPhase0.bmp", dst);
+
 	waitKey(0);
 	destroyAllWindows();
 }

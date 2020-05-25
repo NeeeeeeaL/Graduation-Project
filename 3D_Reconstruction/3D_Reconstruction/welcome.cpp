@@ -11,7 +11,7 @@ Welcome::Welcome(QWidget *parent)
 	setAttribute(Qt::WA_TranslucentBackground);
 
 	//将窗口移动到合适的位置
-	this->move(120, 40);
+	this->move(200, 100);
 
 
 }

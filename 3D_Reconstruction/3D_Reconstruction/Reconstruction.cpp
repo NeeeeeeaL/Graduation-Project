@@ -92,6 +92,9 @@ Reconstruction::Reconstruction(QWidget *parent)
 	//线程相关
 	//connect(thread, &MyThread::signalEndPlot, this, &Reconstruction::dealEndPlot);
 	//connect(thread, &MyThread::signalEndPlot, this, &Reconstruction::killThread);
+
+	//标定相关
+	connect(&calibWidget, SIGNAL(signalCaliProgress(int)), this, SLOT(dealCaliProgress(int)));
 	
 	//其他功能模块Widget初始化
 	ui.label_3->setText(codecParent->toUnicode("相机标定"));
@@ -154,6 +157,15 @@ void Reconstruction::killThread()
 
 void Reconstruction::dealTransmit()
 {
+}
+
+void Reconstruction::dealCaliProgress(int progress)
+{
+	if (progress == 10)
+	{
+		ui.progressBar->setVisible(true);
+		ui.progressBar->setValue(10);
+	}
 }
 
 //绘图程序中尽量不要进行复杂的数据处理

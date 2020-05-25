@@ -36,6 +36,8 @@ public:
 	void killThread();
 	void dealTransmit();
 
+	
+
 	DataList* dataWidget;
 	QSplitter* spl;
 	Calibration* caliWidget;
@@ -120,6 +122,9 @@ void on_actionPMP_triggered();
 
 //ComboBox 切换
 void on_comboBox_activated(int);
+
+//处理标定相关函数
+void dealCaliProgress(int);
 
 };
 

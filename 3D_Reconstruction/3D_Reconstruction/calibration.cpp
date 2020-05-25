@@ -181,6 +181,8 @@ void Calibration::on_pushButton2_clicked()
 
 	}
 	ui.tabWidget->setCurrentIndex(1);
+
+	emit signalCaliProgress(10);
 }
 
 //´ò¿ªÔ­Í¼Ïñ

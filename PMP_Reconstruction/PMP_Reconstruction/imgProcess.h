@@ -10,3 +10,4 @@ using namespace std;
 void showImg(const char *windowName, const Mat & src);
 Mat getMask(Mat src1,  Mat src2,  Mat src3,  Mat src4);
 Mat getPhase(Mat src1, Mat src2, Mat src3, Mat src4);
+Mat subtract(Mat src1, Mat src2);

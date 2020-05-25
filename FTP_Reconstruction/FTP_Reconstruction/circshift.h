@@ -11,3 +11,4 @@ using namespace std;
 void circshift(cv::Mat &out, const cv::Point &delta);
 void fftshift(cv::Mat &out);
 void ifftshift(cv::Mat &out);
+cv::Mat subtract(cv::Mat src1, cv::Mat src2);

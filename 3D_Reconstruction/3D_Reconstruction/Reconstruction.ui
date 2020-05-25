@@ -81,7 +81,7 @@ QTabBar::tab{ width: 120px; height:25px; border-radius: 4px; margin-bottom: 6px;
 </string>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_7">
      <property name="font">

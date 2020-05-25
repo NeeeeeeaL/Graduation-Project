@@ -443,7 +443,7 @@ public:
 
         retranslateUi(ReconstructionClass);
 
-        tabWidget1->setCurrentIndex(5);
+        tabWidget1->setCurrentIndex(1);
         toolBox->setCurrentIndex(0);
 
 

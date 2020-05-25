@@ -8,20 +8,6 @@ DataList::DataList(QWidget *parent)
 	ui.setupUi(this);
 
 
-	/*********************数据库连接及数据表显示********************/
-	QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");//选择驱动QMYSQL
-
-	db.setHostName("localhost");
-	db.setUserName("root");
-	db.setPassword("yjm666");
-	db.setDatabaseName("3dreconstruction");
-	//默认的端口可以不写
-	//db.setPort(3306);
-
-	if (db.open())
-		cout << "Connection with database is successful!";
-	else
-		QMessageBox::warning(this, "Connection is failed!", db.lastError().text());
 
 
 	//查询所有数据
@@ -58,27 +44,41 @@ DataList::DataList(QWidget *parent)
 	//}
 
 
-	//窗体设置
+	
+
+
+}
+
+//查看数据库
+void DataList::on_pushButton_clicked()
+{
+
+	/*********************数据库连接及数据表显示********************/
+	QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");//选择驱动QMYSQL
+
+	db.setHostName("localhost");
+	db.setUserName("root");
+	db.setPassword("yjm666");
+	db.setDatabaseName("3dreconstruction");
+	//默认的端口可以不写
+	//db.setPort(3306);
+
+	if (db.open())
+		cout << "Connection with database is successful!";
+	else
+		QMessageBox::warning(this, "Connection is failed!", db.lastError().text());
 
 	//设置模型
 	model = new QSqlTableModel(this);
 	model->setTable("position");//指定admin数据表
 
 
-	//把model放在tabview
+								//把model放在tabview
 	ui.tableView->setModel(model);
+	ui.tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
 	//显示model的数据
 	model->select();
-
-}
-
-//导出按钮
-void DataList::on_pushButton_clicked()
-{
-	//测试界面是否处于激活状态
-	qDebug() << "Fuck!" << endl;
-	ui.lineEdit->setText("active!");
 }
 
 DataList::~DataList()

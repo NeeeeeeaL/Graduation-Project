@@ -46,6 +46,10 @@ public:
 
 	void dealLoadCalibImg();
 
+signals:
+	void signalCaliProgress(int);
+
+
 public slots:
 	void on_pushButton1_clicked();
 	void on_pushButton2_clicked();
