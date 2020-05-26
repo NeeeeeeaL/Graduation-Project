@@ -21,7 +21,7 @@ Calibration::~Calibration()
 //标定
 void Calibration::on_pushButton2_clicked()
 {
-	string outfilename = "..//sample//left//caliberation_result.txt";
+	string outfilename = "..//sample//cali//caliberation_result.txt";
 	////保存标定的结果  ofstream 是从内存写到硬盘
 	ofstream fout(outfilename);
 
@@ -30,7 +30,7 @@ void Calibration::on_pushButton2_clicked()
 	//像素坐标系的原点位于图像的左上角
 
 	//图像数量
-	int imageCount = 12;
+	int imageCount = 1;
 	//图像尺寸
 	cv::Size imageSize;
 	//标定板上每行每列的角点数
@@ -52,7 +52,7 @@ void Calibration::on_pushButton2_clicked()
 		{
 			//找不到角点
 			cout << "Can not find chessboard corners!" << endl;
-			exit(1);
+
 		}
 		else
 		{
@@ -202,7 +202,7 @@ void Calibration::on_pushButton1_clicked()
 				/***********读入四幅原光栅图像************/
 
 			case 0: {
-				imgSrc1 = cv::imread("..\\sample\\left\\left01.jpg");
+				imgSrc1 = cv::imread("..\\sample\\cali\\标定板(1).jpg");//..\\sample\\left\\left01.jpg
 				calibImg.push_back(imgSrc1);
 				imgLabel.push_back(ui.label1);
 				imgLabel2.push_back(ui.label1_2);
@@ -210,7 +210,7 @@ void Calibration::on_pushButton1_clicked()
 			}break;
 
 				case 1: {
-				imgSrc2 = cv::imread("..\\sample\\left\\left02.jpg");
+				imgSrc2 = cv::imread("..\\sample\\cali\\标定板(2).jpg");
 				calibImg.push_back(imgSrc2);
 				imgLabel.push_back(ui.label2);
 				imgLabel2.push_back(ui.label2_2);
@@ -219,7 +219,7 @@ void Calibration::on_pushButton1_clicked()
 				}break;
 
 				case 2: {
-				imgSrc3 = cv::imread("..\\sample\\left\\left03.jpg");
+				imgSrc3 = cv::imread("..\\sample\\cali\\标定板(3).jpg");
 				calibImg.push_back(imgSrc3);
 				imgLabel.push_back(ui.label3);
 				imgLabel2.push_back(ui.label3_2);
@@ -228,7 +228,7 @@ void Calibration::on_pushButton1_clicked()
 				}break;
 
 				case 3: {
-				imgSrc4 = cv::imread("..\\sample\\left\\left04.jpg");
+				imgSrc4 = cv::imread("..\\sample\\cali\\标定板(4).jpg");
 				calibImg.push_back(imgSrc4);
 				imgLabel.push_back(ui.label4);
 				imgLabel2.push_back(ui.label4_2);
@@ -237,7 +237,7 @@ void Calibration::on_pushButton1_clicked()
 				}break;
 
 				case 4: {
-				imgSrc5 = cv::imread("..\\sample\\left\\left05.jpg");
+				imgSrc5 = cv::imread("..\\sample\\cali\\标定板(5).bmp");
 				calibImg.push_back(imgSrc5);
 				imgLabel.push_back(ui.label5);
 				imgLabel2.push_back(ui.label5_2);
@@ -246,7 +246,7 @@ void Calibration::on_pushButton1_clicked()
 				}break;
 
 				case 5: {
-				imgSrc6 = cv::imread("..\\sample\\left\\left06.jpg");
+				imgSrc6 = cv::imread("..\\sample\\cali\\标定板(6).bmp");
 				calibImg.push_back(imgSrc6);
 				imgLabel.push_back(ui.label6);
 				imgLabel2.push_back(ui.label6_2);
@@ -255,7 +255,7 @@ void Calibration::on_pushButton1_clicked()
 				}break;
 
 				case 6: {
-				imgSrc7 = cv::imread("..\\sample\\left\\left07.jpg");
+				imgSrc7 = cv::imread("..\\sample\\cali\\标定板(7).bmp");
 				calibImg.push_back(imgSrc7);
 				imgLabel.push_back(ui.label7);
 				imgLabel2.push_back(ui.label7_2);
@@ -264,7 +264,7 @@ void Calibration::on_pushButton1_clicked()
 				}break;
 
 				case 7: {
-				imgSrc8 = cv::imread("..\\sample\\left\\left08.jpg");
+				imgSrc8 = cv::imread("..\\sample\\cali\\标定板(8).bmp");
 				calibImg.push_back(imgSrc8);
 				imgLabel.push_back(ui.label8);
 				imgLabel2.push_back(ui.label8_2);
@@ -272,7 +272,7 @@ void Calibration::on_pushButton1_clicked()
 
 				}break;
 				case 8: {
-				imgSrc9 = cv::imread("..\\sample\\left\\left09.jpg");
+				imgSrc9 = cv::imread("..\\sample\\cali\\标定板(9).bmp");
 				calibImg.push_back(imgSrc9);
 				imgLabel.push_back(ui.label9);
 				imgLabel2.push_back(ui.label9_2);
@@ -281,7 +281,7 @@ void Calibration::on_pushButton1_clicked()
 				}break;
 
 				case 9: {
-				imgSrc10 = cv::imread("..\\sample\\left\\left10.jpg");
+				imgSrc10 = cv::imread("..\\sample\\cali\\标定板(10).bmp");
 				calibImg.push_back(imgSrc10);
 				imgLabel.push_back(ui.label10);
 				imgLabel2.push_back(ui.label10_2);
@@ -290,7 +290,7 @@ void Calibration::on_pushButton1_clicked()
 				}break;
 
 				case 10: {
-				imgSrc11 = cv::imread("..\\sample\\left\\left11.jpg");
+				imgSrc11 = cv::imread("..\\sample\\cali\\标定板(11).bmp");
 				calibImg.push_back(imgSrc11);
 				imgLabel.push_back(ui.label11);
 				imgLabel2.push_back(ui.label11_2);
@@ -299,7 +299,7 @@ void Calibration::on_pushButton1_clicked()
 				}break;
 
 				case 11: {
-				imgSrc12 = cv::imread("..\\sample\\left\\left12.jpg");
+				imgSrc12 = cv::imread("..\\sample\\cali\\标定板(12).bmp");
 				calibImg.push_back(imgSrc12);
 				imgLabel.push_back(ui.label12);
 				imgLabel2.push_back(ui.label12_2);

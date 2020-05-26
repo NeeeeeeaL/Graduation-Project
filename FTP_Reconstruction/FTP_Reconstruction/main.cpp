@@ -7,7 +7,8 @@ using namespace std;
 int main()
 {
 	/***************** 原条纹图像处理 ********************/
-	cv::Mat imgOriginal_src = cv::imread("6-0.bmp", 0);//15.5blue;
+
+	cv::Mat imgOriginal_src = cv::imread("7-1.bmp", 0);//15.5blue;
 	//cvtColor(imgOriginal_src, imgOriginal_src, cv::COLOR_BGR2GRAY);
 
 	if (imgOriginal_src.empty())
@@ -68,12 +69,8 @@ int main()
 	//showImg("img_ifft", imgOriginal_ifft);
 
 	/***************** 调制条纹图像处理 ******************/
-	cv::Mat tmp1 = cv::imread("6-1.bmp", 0);
-	cv::Mat tmp2 = cv::imread("6-2.bmp", 0);
-	tmp1.convertTo(tmp1, CV_64F, 1.0 / 255.0);
-	tmp2.convertTo(tmp2, CV_64F, 1.0 / 255.0);
 
-	cv::Mat imgModulated_src = subtract(tmp1, tmp2);;//15.5blue
+	cv::Mat imgModulated_src = cv::imread("7-2.bmp", 0);
 	//cvtColor(imgModulated_src, imgModulated_src, cv::COLOR_BGR2GRAY);
 
 

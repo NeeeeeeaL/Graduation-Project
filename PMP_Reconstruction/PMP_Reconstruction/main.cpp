@@ -116,10 +116,26 @@ int main()
 	//showImg("resultPhase", resultPhaseNormal);
 
 	/*********************piœ‡“∆∑®*************************/
+	Mat pi1 = imread("7-1.bmp", 0);
+	Mat pi2 = imread("7-2.bmp", 0);
+
+	pi1.convertTo(pi1, CV_64F, 1.0 / 255.0);
+	pi2.convertTo(pi2, CV_64F, 1.0 / 255.0);
+
 	Mat dst(imgHeight, imgWidth, CV_64F, Scalar(0));
-	dst = subtract(imgSrc1, imgSrc3);
+	dst = subtract(pi1, pi2);
 	showImg("piPhase", dst);
-	imwrite("piPhase0.bmp", dst);
+	
+	for (int i = 0; i < dst.rows; ++i)
+	{
+		for (int j = 0; j < dst.cols; ++j)
+		{
+
+			dst.at<double>(i, j) *= 255;
+		}
+	}
+	dst.convertTo(dst, CV_8U);
+	imwrite("dst1.bmp", dst);
 
 	waitKey(0);
 	destroyAllWindows();
