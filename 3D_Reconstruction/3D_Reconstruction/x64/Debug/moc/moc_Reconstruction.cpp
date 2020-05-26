@@ -86,7 +86,7 @@ static const uint qt_meta_data_Reconstruction[] = {
       11,    0,   88,    2, 0x0a /* Public */,
       12,    0,   89,    2, 0x0a /* Public */,
       13,    1,   90,    2, 0x0a /* Public */,
-      14,    1,   93,    2, 0x0a /* Public */,
+      14,    0,   93,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -103,7 +103,7 @@ static const uint qt_meta_data_Reconstruction[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    2,
-    QMetaType::Void, QMetaType::Int,    2,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -126,7 +126,7 @@ void Reconstruction::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 9: _t->on_actionSave_triggered(); break;
         case 10: _t->on_actionPMP_triggered(); break;
         case 11: _t->on_comboBox_activated((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 12: _t->dealCaliProgress((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 12: _t->dealCaliProgress(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

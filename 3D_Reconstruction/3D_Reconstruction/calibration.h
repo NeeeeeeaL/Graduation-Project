@@ -15,7 +15,10 @@
 #include <vector>
 
 
+
 using namespace std;
+
+class Reconstruction;
 
 class Calibration : public QWidget
 {
@@ -44,10 +47,10 @@ public:
 	vector<QLabel*> imgLabel;
 	vector<QLabel*> imgLabel2;
 
-	void dealLoadCalibImg();
 
 signals:
-	void signalCaliProgress(int);
+	//信号可以重载
+	void signalCaliProgress();
 
 
 public slots:

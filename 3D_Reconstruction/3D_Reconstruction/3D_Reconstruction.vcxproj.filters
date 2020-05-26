@@ -20,9 +20,6 @@
     <ClCompile Include="display.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mythread.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="datalist.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -72,9 +69,6 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="cube.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="mythread.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

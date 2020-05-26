@@ -1,6 +1,7 @@
 #include "calibration.h"
 #include <QFile>
 #include <QFileDialog>
+#include "Reconstruction.h"
 
 using namespace std;
 
@@ -16,11 +17,6 @@ Calibration::~Calibration()
 {
 }
 
-void Calibration::dealLoadCalibImg()
-{
-	qDebug() << "Acquire the signal successfully!" << endl;
-
-}
 
 //标定
 void Calibration::on_pushButton2_clicked()
@@ -103,7 +99,7 @@ void Calibration::on_pushButton2_clicked()
 	vector<cv::Mat> tvecsMat;
 	//每幅图片的平移向量
 	vector<cv::Mat> rvecsMat;
-
+	
 	//初始化标定板上角点的三维坐标
 	int i, j, number;
 	for (number = 0; number < imageCount; number++)
@@ -125,7 +121,7 @@ void Calibration::on_pushButton2_clicked()
 		}
 		objectPoints.push_back(tempPointSet);
 	}
-
+	
 	//初始化每幅图像中的角点数量，假定每幅图像中都可以看到完整的标定板
 	for (i = 0; i < imageCount; i++)
 	{
@@ -165,7 +161,7 @@ void Calibration::on_pushButton2_clicked()
 	cv::Mat mapy = cv::Mat(imageSize, CV_32FC1);
 	cv::Mat R = cv::Mat::eye(3, 3, CV_32F);
 	std::cout << "显示矫正图像" << endl;
-
+	
 	for (int i = 0; i != imageCount; i++)
 	{
 		std::cout << "Frame #" << i + 1 << "..." << endl;
@@ -180,9 +176,11 @@ void Calibration::on_pushButton2_clicked()
 		LabelDisplayMat(newimage, imgLabel2[i]);
 
 	}
+
 	ui.tabWidget->setCurrentIndex(1);
 
-	emit signalCaliProgress(10);
+	emit signalCaliProgress();
+
 }
 
 //打开原图像

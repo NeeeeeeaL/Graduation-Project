@@ -46,9 +46,6 @@ Reconstruction::Reconstruction(QWidget *parent)
 	ui.progressBar->setMaximum(100);
 	ui.progressBar->reset();
 
-	//线程初始化
-	//thread = new MyThread(this);
-
 	//将窗口移动到合适的位置
 	this->move(50, 45);
 	this->setWindowTitle("FTP Translation");
@@ -85,16 +82,6 @@ Reconstruction::Reconstruction(QWidget *parent)
 	connect(&windowPMP, &PMPTrans::signalNotOpen, this, &Reconstruction::dealNotOpen);
 	connect(&windowPMP, &PMPTrans::signalNotGetP, this, &Reconstruction::dealNotGetP);
 	connect(&windowPMP, &PMPTrans::signalNotUnwrap, this, &Reconstruction::dealNotUnwrap);
-
-	//与子窗口连接，向子窗口发送信号
-	connect(this, &Reconstruction::signalLoadCalibImg, &calibWidget, &Calibration::dealLoadCalibImg);
-
-	//线程相关
-	//connect(thread, &MyThread::signalEndPlot, this, &Reconstruction::dealEndPlot);
-	//connect(thread, &MyThread::signalEndPlot, this, &Reconstruction::killThread);
-
-	//标定相关
-	connect(&calibWidget, SIGNAL(signalCaliProgress(int)), this, SLOT(dealCaliProgress(int)));
 	
 	//其他功能模块Widget初始化
 	ui.label_3->setText(codecParent->toUnicode("相机标定"));
@@ -109,6 +96,9 @@ Reconstruction::Reconstruction(QWidget *parent)
 	caliWidget = new Calibration(this);
 	caliWidget->move(220, 55);
 	caliWidget->show();
+
+	//标定相关:子窗口新建对象后再连接
+	connect(caliWidget, SIGNAL(signalCaliProgress()), this, SLOT(dealCaliProgress()));
 
 	cubeWidget = new Cube(this);
 	cubeWidget->hide();
@@ -140,32 +130,10 @@ void Reconstruction::dealNotUnwrap()
 
 }
 
-//关闭进度条
-void Reconstruction::dealEndPlot()
-{
-	ui.progressBar->setVisible(false);
-}
 
-//关闭进程
-void Reconstruction::killThread()
+void Reconstruction::dealCaliProgress()
 {
-	thread->quit();
-
-	//等待线程完全停止
-	thread->wait();
-}
-
-void Reconstruction::dealTransmit()
-{
-}
-
-void Reconstruction::dealCaliProgress(int progress)
-{
-	if (progress == 10)
-	{
-		ui.progressBar->setVisible(true);
-		ui.progressBar->setValue(10);
-	}
+	QMessageBox::about(this, codecParent->toUnicode("提示"), codecParent->toUnicode("标定成功！"));
 }
 
 //绘图程序中尽量不要进行复杂的数据处理

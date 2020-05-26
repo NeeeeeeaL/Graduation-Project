@@ -7,7 +7,6 @@
 #include <opencv2\imgproc\imgproc.hpp>
 #include <iostream>
 #include <QSplitter>
-#include "mythread.h"
 #include "pmpTrans.h"
 #include "welcome.h"
 #include "datalist.h"
@@ -31,13 +30,6 @@ public:
 	void dealNotGetP();
 	void dealNotUnwrap();
 
-	//线程相关处理函数
-	void dealEndPlot();
-	void killThread();
-	void dealTransmit();
-
-	
-
 	DataList* dataWidget;
 	QSplitter* spl;
 	Calibration* caliWidget;
@@ -53,14 +45,11 @@ protected:
 
 
 private:
-	Ui::ReconstructionClass ui;
+	
 
 	PMPTrans windowPMP;
 	Welcome welcomeW;
-	Calibration calibWidget;
 	QSqlTableModel *model;
-
-	MyThread *thread;//线程对象
 
 private:
 	//判断按钮是否按过标志位
@@ -74,6 +63,9 @@ private:
 	bool hideCube = false;
 
 public:
+	//供线程调用
+	Ui::ReconstructionClass ui;
+
 	//尽量避免对全局变量进行操作，可在函数内声明临时变量，
 	//对临时变量进行操作，完成后再将值赋给全局变量
 	QImage img1, img2;
@@ -124,7 +116,7 @@ void on_actionPMP_triggered();
 void on_comboBox_activated(int);
 
 //处理标定相关函数
-void dealCaliProgress(int);
+void dealCaliProgress();
 
 };
 

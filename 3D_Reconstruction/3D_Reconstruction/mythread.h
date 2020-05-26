@@ -7,6 +7,7 @@
 #include <opencv2\imgproc\imgproc.hpp>
 
 
+
 //extern cv::Mat imgPlot;
 
 class MyThread : public QThread
@@ -16,8 +17,6 @@ class MyThread : public QThread
 public:
 	MyThread(QObject *parent);
 	~MyThread();
-
-
 
 protected:
 	//线程处理函数
