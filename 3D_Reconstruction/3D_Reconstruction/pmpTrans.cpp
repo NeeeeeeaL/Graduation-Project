@@ -111,50 +111,50 @@ void PMPTrans::on_actionOpen_triggered()
 				/***********读入四幅原光栅图像************/
 
 			case 0: {
-						imgSrc5 = cv::imread("..\\image\\phase4\\backGround3-0.bmp", 0);
+						imgSrc5 = cv::imread("..\\image\\phase4\\8-1.bmp", 0);//backGround3-0
 						LabelDisplayMat(imgSrc5, ui.label2_1);
 
 					}break;
 
 			case 1: {
-						imgSrc6 = cv::imread("..\\image\\phase4\\backGround3-1.bmp", 0);
+						imgSrc6 = cv::imread("..\\image\\phase4\\8-2.bmp", 0);
 						LabelDisplayMat(imgSrc6, ui.label2_2);
 
 					}break;
 
 			case 2: {
-						imgSrc7 = cv::imread("..\\image\\phase4\\backGround3-2.bmp", 0);
+						imgSrc7 = cv::imread("..\\image\\phase4\\8-3.bmp", 0);
 						LabelDisplayMat(imgSrc7, ui.label2_3);
 
 					}break;
 
 			case 3: {
-						imgSrc8 = cv::imread("..\\image\\phase4\\backGround3-3.bmp", 0);
+						imgSrc8 = cv::imread("..\\image\\phase4\\8-4.bmp", 0);
 						LabelDisplayMat(imgSrc8, ui.label2_4);
 
 					}break;
 
 				/**********读入四幅调制光栅图像*************/
 			case 4: {
-						imgSrc1 = cv::imread("..\\image\\phase4\\phase3-0.bmp", 0);
+						imgSrc1 = cv::imread("..\\image\\phase4\\8-5.bmp", 0);
 						LabelDisplayMat(imgSrc1, ui.label1_1);
 						
 					}break;
 
 			case 5: {
-						imgSrc2 = cv::imread("..\\image\\phase4\\phase3-1.bmp", 0);
+						imgSrc2 = cv::imread("..\\image\\phase4\\8-6.bmp", 0);
 						LabelDisplayMat(imgSrc2, ui.label1_2);
 						
 					}break;
 
 			case 6: {
-						imgSrc3 = cv::imread("..\\image\\phase4\\phase3-2.bmp", 0);
+						imgSrc3 = cv::imread("..\\image\\phase4\\8-7.bmp", 0);
 						LabelDisplayMat(imgSrc3, ui.label1_3);
 						
 					}break;
 
 			case 7: {
-						imgSrc4 = cv::imread("..\\image\\phase4\\phase3-3.bmp", 0);
+						imgSrc4 = cv::imread("..\\image\\phase4\\8-8.bmp", 0);
 						LabelDisplayMat(imgSrc4, ui.label1_4);
 						
 					}break;

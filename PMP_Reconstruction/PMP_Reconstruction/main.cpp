@@ -6,16 +6,16 @@ int main()
 {
 	/**********读入四幅光栅图像*************/
 
-	Mat imgSrc1 = imread("phase3-0.bmp", 0); //3- ：面具调制图
-	Mat imgSrc2 = imread("phase3-1.bmp", 0);
-	Mat imgSrc3 = imread("phase3-2.bmp", 0);
-	Mat imgSrc4 = imread("phase3-3.bmp", 0);
+	Mat imgSrc1 = imread("9-5.bmp", 0); //3- ：面具调制图
+	Mat imgSrc2 = imread("9-6.bmp", 0);
+	Mat imgSrc3 = imread("9-7.bmp", 0);
+	Mat imgSrc4 = imread("9-8.bmp", 0);
 
 	/***********读入四幅背景图像************/
-	Mat imgSrc5 = imread("backGround3-0.bmp", 0);
-	Mat imgSrc6 = imread("backGround3-1.bmp", 0);
-	Mat imgSrc7 = imread("backGround3-2.bmp", 0);
-	Mat imgSrc8 = imread("backGround3-3.bmp", 0);
+	Mat imgSrc5 = imread("9-1.bmp", 0);
+	Mat imgSrc6 = imread("9-2.bmp", 0);
+	Mat imgSrc7 = imread("9-3.bmp", 0);
+	Mat imgSrc8 = imread("9-4.bmp", 0);
 
 	imgSrc1.convertTo(imgSrc1, CV_64F, 1.0 / 255.0);
 	imgSrc2.convertTo(imgSrc2, CV_64F, 1.0 / 255.0);
@@ -116,26 +116,26 @@ int main()
 	//showImg("resultPhase", resultPhaseNormal);
 
 	/*********************pi相移法*************************/
-	Mat pi1 = imread("7-1.bmp", 0);
-	Mat pi2 = imread("7-2.bmp", 0);
+	//Mat pi1 = imread("7-1.bmp", 0);
+	//Mat pi2 = imread("7-2.bmp", 0);
 
-	pi1.convertTo(pi1, CV_64F, 1.0 / 255.0);
-	pi2.convertTo(pi2, CV_64F, 1.0 / 255.0);
+	//pi1.convertTo(pi1, CV_64F, 1.0 / 255.0);
+	//pi2.convertTo(pi2, CV_64F, 1.0 / 255.0);
 
-	Mat dst(imgHeight, imgWidth, CV_64F, Scalar(0));
-	dst = subtract(pi1, pi2);
-	showImg("piPhase", dst);
-	
-	for (int i = 0; i < dst.rows; ++i)
-	{
-		for (int j = 0; j < dst.cols; ++j)
-		{
+	//Mat dst(imgHeight, imgWidth, CV_64F, Scalar(0));
+	//dst = subtract(pi1, pi2);
+	//showImg("piPhase", dst);
+	//
+	//for (int i = 0; i < dst.rows; ++i)
+	//{
+	//	for (int j = 0; j < dst.cols; ++j)
+	//	{
 
-			dst.at<double>(i, j) *= 255;
-		}
-	}
-	dst.convertTo(dst, CV_8U);
-	imwrite("dst1.bmp", dst);
+	//		dst.at<double>(i, j) *= 255;
+	//	}
+	//}
+	//dst.convertTo(dst, CV_8U);
+	//imwrite("dst1.bmp", dst);
 
 	waitKey(0);
 	destroyAllWindows();

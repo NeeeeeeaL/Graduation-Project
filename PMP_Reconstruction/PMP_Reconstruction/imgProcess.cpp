@@ -5,8 +5,8 @@
 void showImg(const char * windowName, const Mat & src)
 {
 
-	const int windowWidth = 512;//489
-	const int windowHeight = 512;//500
+	const int windowWidth = 650;//489
+	const int windowHeight = 500;//500
 
 	namedWindow(windowName, WINDOW_NORMAL);
 	resizeWindow(windowName, windowWidth, windowHeight);
