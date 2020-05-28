@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_PMPTrans_t {
-    QByteArrayData data[11];
-    char stringdata0[183];
+    QByteArrayData data[12];
+    char stringdata0[205];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -41,14 +41,15 @@ QT_MOC_LITERAL(6, 67, 22), // "on_actionFTP_triggered"
 QT_MOC_LITERAL(7, 90, 23), // "on_actionOpen_triggered"
 QT_MOC_LITERAL(8, 114, 22), // "on_pushButton1_clicked"
 QT_MOC_LITERAL(9, 137, 22), // "on_pushButton2_clicked"
-QT_MOC_LITERAL(10, 160, 22) // "on_pushButton3_clicked"
+QT_MOC_LITERAL(10, 160, 22), // "on_pushButton3_clicked"
+QT_MOC_LITERAL(11, 183, 21) // "on_comboBox_activated"
 
     },
     "PMPTrans\0signalSwitch\0\0signalNotOpen\0"
     "signalNotGetP\0signalNotUnwrap\0"
     "on_actionFTP_triggered\0on_actionOpen_triggered\0"
     "on_pushButton1_clicked\0on_pushButton2_clicked\0"
-    "on_pushButton3_clicked"
+    "on_pushButton3_clicked\0on_comboBox_activated"
 };
 #undef QT_MOC_LITERAL
 
@@ -58,7 +59,7 @@ static const uint qt_meta_data_PMPTrans[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -66,17 +67,18 @@ static const uint qt_meta_data_PMPTrans[] = {
        4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   59,    2, 0x06 /* Public */,
-       3,    0,   60,    2, 0x06 /* Public */,
-       4,    0,   61,    2, 0x06 /* Public */,
-       5,    0,   62,    2, 0x06 /* Public */,
+       1,    0,   64,    2, 0x06 /* Public */,
+       3,    0,   65,    2, 0x06 /* Public */,
+       4,    0,   66,    2, 0x06 /* Public */,
+       5,    0,   67,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    0,   63,    2, 0x0a /* Public */,
-       7,    0,   64,    2, 0x0a /* Public */,
-       8,    0,   65,    2, 0x0a /* Public */,
-       9,    0,   66,    2, 0x0a /* Public */,
-      10,    0,   67,    2, 0x0a /* Public */,
+       6,    0,   68,    2, 0x0a /* Public */,
+       7,    0,   69,    2, 0x0a /* Public */,
+       8,    0,   70,    2, 0x0a /* Public */,
+       9,    0,   71,    2, 0x0a /* Public */,
+      10,    0,   72,    2, 0x0a /* Public */,
+      11,    1,   73,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -90,6 +92,7 @@ static const uint qt_meta_data_PMPTrans[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    2,
 
        0        // eod
 };
@@ -109,6 +112,7 @@ void PMPTrans::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 6: _t->on_pushButton1_clicked(); break;
         case 7: _t->on_pushButton2_clicked(); break;
         case 8: _t->on_pushButton3_clicked(); break;
+        case 9: _t->on_comboBox_activated((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -142,7 +146,6 @@ void PMPTrans::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
             }
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObject PMPTrans::staticMetaObject = {
@@ -170,13 +173,13 @@ int PMPTrans::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 10)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }

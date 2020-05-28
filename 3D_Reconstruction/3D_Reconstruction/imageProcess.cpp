@@ -126,9 +126,9 @@ void ImageProcess::ifft2(const cv::Mat & src, cv::Mat & Fourier)
 void ImageProcess::filt(const cv::Mat & src, cv::Mat & imgFilt)
 {
 	//设计非对称汉宁窗
-	const int hannRows = 14;
-	const int hannCols = 412;
-	const int offsetY = 27;
+	const int hannRows = 50;
+	const int hannCols = 160;
+	const int offsetY = 29;
 	
 	cv::Mat hann = cv::Mat::zeros(hannRows, hannCols, CV_64FC1);
 	for (int i = 0; i < hannRows; ++i)
@@ -136,7 +136,7 @@ void ImageProcess::filt(const cv::Mat & src, cv::Mat & imgFilt)
 		for (int j = 0; j < hannCols; ++j)
 		{
 			hann.at<double>(i, j) = 0.5 +
-				0.5 * cos(2.0 * PI * sqrt(pow((i - hannRows / 2.0), 2) / pow(20.0, 2) + pow((j - hannCols / 2.0), 2) / pow(400.0, 2)));
+				0.5 * cos(2.0 * PI * sqrt(pow((i - hannRows / 2.0), 2) / pow(49.0, 2) + pow((j - hannCols / 2.0), 2) / pow(170.0, 2)));
 		}
 	}
 

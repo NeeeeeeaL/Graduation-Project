@@ -6,9 +6,9 @@ void filt(const cv::Mat & src, cv::Mat & imgFilt)
 
 {
 	//设计非对称汉宁窗
-	const int hannRows = 56; //原图：50；ROI3：14；ROI4：30；鼠标：32; test:62
-	const int hannCols = 400; //原图：1348；ROI3：412；ROI4：750；鼠标：1490; test:1514
-	const int offsetY = 28; //原图：向下偏移44；ROI3：19；ROI4：25；鼠标：30; test: 58
+	const int hannRows = 50; //原图：50；ROI3：14；ROI4：30；鼠标：32; test:62; PCB:56
+	const int hannCols = 160; //原图：1348；ROI3：412；ROI4：750；鼠标：1490; test:1514; PCB:400
+	const int offsetY = 29; //原图：向下偏移44；ROI3：19；ROI4：25；鼠标：30; test: 58; PCB: 30
 
 	cv::Mat hann = cv::Mat::zeros(hannRows, hannCols, CV_64FC1);
 	for (int i = 0; i < hannRows; ++i)
@@ -16,8 +16,8 @@ void filt(const cv::Mat & src, cv::Mat & imgFilt)
 		for (int j = 0; j < hannCols; ++j)
 		{
 			hann.at<double>(i, j) = 0.5 +
-				0.5 * cos(2.0 * PI * sqrt(pow((i - hannRows / 2.0), 2) / pow(70.0, 2) + pow((j - hannCols / 2.0), 2) / pow(500.0, 2)));
-			//原图：40， 1200；ROI3：25， 500；鼠标：50， 1200
+				0.5 * cos(2.0 * PI * sqrt(pow((i - hannRows / 2.0), 2) / pow(49.0, 2) + pow((j - hannCols / 2.0), 2) / pow(170.0, 2)));
+			//原图：40， 1200；ROI3：25， 500；鼠标：50， 1200; PCB: 49, 600
 		}
 	}
 

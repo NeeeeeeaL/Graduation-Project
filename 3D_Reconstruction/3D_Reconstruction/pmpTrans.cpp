@@ -111,50 +111,50 @@ void PMPTrans::on_actionOpen_triggered()
 				/***********读入四幅原光栅图像************/
 
 			case 0: {
-						imgSrc5 = cv::imread("..\\image\\phase4\\8-1.bmp", 0);//backGround3-0
+						imgSrc5 = cv::imread("..\\image\\phase4\\12-1.bmp", 0);//backGround3-0
 						LabelDisplayMat(imgSrc5, ui.label2_1);
 
 					}break;
 
 			case 1: {
-						imgSrc6 = cv::imread("..\\image\\phase4\\8-2.bmp", 0);
+						imgSrc6 = cv::imread("..\\image\\phase4\\12-2.bmp", 0);
 						LabelDisplayMat(imgSrc6, ui.label2_2);
 
 					}break;
 
 			case 2: {
-						imgSrc7 = cv::imread("..\\image\\phase4\\8-3.bmp", 0);
+						imgSrc7 = cv::imread("..\\image\\phase4\\12-3.bmp", 0);
 						LabelDisplayMat(imgSrc7, ui.label2_3);
 
 					}break;
 
 			case 3: {
-						imgSrc8 = cv::imread("..\\image\\phase4\\8-4.bmp", 0);
+						imgSrc8 = cv::imread("..\\image\\phase4\\12-4.bmp", 0);
 						LabelDisplayMat(imgSrc8, ui.label2_4);
 
 					}break;
 
 				/**********读入四幅调制光栅图像*************/
 			case 4: {
-						imgSrc1 = cv::imread("..\\image\\phase4\\8-5.bmp", 0);
+						imgSrc1 = cv::imread("..\\image\\phase4\\12-5.bmp", 0);
 						LabelDisplayMat(imgSrc1, ui.label1_1);
 						
 					}break;
 
 			case 5: {
-						imgSrc2 = cv::imread("..\\image\\phase4\\8-6.bmp", 0);
+						imgSrc2 = cv::imread("..\\image\\phase4\\12-6.bmp", 0);
 						LabelDisplayMat(imgSrc2, ui.label1_2);
 						
 					}break;
 
 			case 6: {
-						imgSrc3 = cv::imread("..\\image\\phase4\\8-7.bmp", 0);
+						imgSrc3 = cv::imread("..\\image\\phase4\\12-7.bmp", 0);
 						LabelDisplayMat(imgSrc3, ui.label1_3);
 						
 					}break;
 
 			case 7: {
-						imgSrc4 = cv::imread("..\\image\\phase4\\8-8.bmp", 0);
+						imgSrc4 = cv::imread("..\\image\\phase4\\12-8.bmp", 0);
 						LabelDisplayMat(imgSrc4, ui.label1_4);
 						
 					}break;
@@ -190,6 +190,8 @@ void PMPTrans::on_pushButton1_clicked()
 
 		phaseFG = getP.getPhase(imgSrc1, imgSrc2, imgSrc3, imgSrc4);
 		phaseBG = getP.getPhase(imgSrc5, imgSrc6, imgSrc7, imgSrc8);
+		normalize(phaseFG, phaseFG, 0, 1, CV_MINMAX);
+		normalize(phaseBG, phaseBG, 0, 1, CV_MINMAX);
 		ui.progressBar->setValue(20);
 
 		/********解包裹*******/
@@ -321,6 +323,11 @@ void PMPTrans::on_pushButton3_clicked()
 	}
 	else
 		emit signalNotUnwrap();
+
+}
+
+void PMPTrans::on_comboBox_activated(int index)
+{
 
 }
 

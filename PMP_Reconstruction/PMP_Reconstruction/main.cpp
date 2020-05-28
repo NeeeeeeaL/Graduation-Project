@@ -6,16 +6,16 @@ int main()
 {
 	/**********读入四幅光栅图像*************/
 
-	Mat imgSrc1 = imread("9-5.bmp", 0); //3- ：面具调制图
-	Mat imgSrc2 = imread("9-6.bmp", 0);
-	Mat imgSrc3 = imread("9-7.bmp", 0);
-	Mat imgSrc4 = imread("9-8.bmp", 0);
+	Mat imgSrc1 = imread("12-5.bmp", 0); //3- ：面具调制图
+	Mat imgSrc2 = imread("12-6.bmp", 0);
+	Mat imgSrc3 = imread("12-7.bmp", 0);
+	Mat imgSrc4 = imread("12-8.bmp", 0);
 
 	/***********读入四幅背景图像************/
-	Mat imgSrc5 = imread("9-1.bmp", 0);
-	Mat imgSrc6 = imread("9-2.bmp", 0);
-	Mat imgSrc7 = imread("9-3.bmp", 0);
-	Mat imgSrc8 = imread("9-4.bmp", 0);
+	Mat imgSrc5 = imread("12-1.bmp", 0);
+	Mat imgSrc6 = imread("12-2.bmp", 0);
+	Mat imgSrc7 = imread("12-3.bmp", 0);
+	Mat imgSrc8 = imread("12-4.bmp", 0);
 
 	imgSrc1.convertTo(imgSrc1, CV_64F, 1.0 / 255.0);
 	imgSrc2.convertTo(imgSrc2, CV_64F, 1.0 / 255.0);
