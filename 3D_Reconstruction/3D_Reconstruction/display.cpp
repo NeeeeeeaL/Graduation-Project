@@ -22,11 +22,20 @@ Plot::Plot(QWidget* pw, cv::Mat & m)
 	coordinates()->axes[X1].setLabelString("x-axis");
 	coordinates()->axes[Y1].setLabelString("y-axis");
 
+	//相位-高度转换
+	//for (int i = 0; i < m.rows; ++i)
+	//{
+	//	for (int j = 0; j < m.cols; ++j)
+	//	{
+	//		m.at<double>(i, j) /= 18.0;
+	//	}
+	//}
+
 	double *imgData = (double *)m.data;
 	double **p2 = new double *[m.rows];
 	for (int i = 0; i < m.rows; i++)
 	{
-		p2[i] = imgData + i*m.cols;
+		p2[i] = imgData  + i*m.cols;
 	}
 
 	loadFromData(p2, m.rows, m.cols, 0, m.rows, 0, m.cols);

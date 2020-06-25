@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QMainWindow>
+#include <QSplitter>
 #include "ui_pmpTrans.h"
 #include <opencv2\core\core.hpp>
 #include <opencv2\highgui\highgui.hpp>
@@ -49,6 +50,8 @@ public:
 
 	cv::Mat wrappedPhase;
 	cv::Mat unwrappedPhase;
+
+	QSplitter* spl;
 
 signals:
 	/*

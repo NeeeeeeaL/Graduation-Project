@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 
 	QTime t;
 	t.start();
-	while (t.elapsed() < 3500)
+	while (t.elapsed() < 3800)
 	{
 		a.processEvents();
 	}

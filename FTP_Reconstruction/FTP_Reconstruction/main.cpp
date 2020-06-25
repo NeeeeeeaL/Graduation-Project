@@ -8,7 +8,7 @@ int main()
 {
 	/***************** 原条纹图像处理 ********************/
 
-	cv::Mat imgOriginal_src = cv::imread("7-1.bmp", 0);//15.5blue;
+	cv::Mat imgOriginal_src = cv::imread("4-1.bmp", 0);//15.5blue;
 	//cvtColor(imgOriginal_src, imgOriginal_src, cv::COLOR_BGR2GRAY);
 
 	if (imgOriginal_src.empty())
@@ -70,7 +70,7 @@ int main()
 
 	/***************** 调制条纹图像处理 ******************/
 
-	cv::Mat imgModulated_src = cv::imread("7-2.bmp", 0);
+	cv::Mat imgModulated_src = cv::imread("4-2.bmp", 0);
 	//cvtColor(imgModulated_src, imgModulated_src, cv::COLOR_BGR2GRAY);
 
 
